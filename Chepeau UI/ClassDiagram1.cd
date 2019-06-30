@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Chepeau_UI.CompletedOrders" Collapsed="true">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AATAAAAAACAAABAAACCAAAACAACAICAAAUAAIAAAAAA=</HashCode>
+      <FileName>Bar, Kitchen view\CompletedOrders.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.OrderList" Collapsed="true">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABSAAAABACAAgAAAAACAAEICAACAIEAAAUAAAIAAAAA=</HashCode>
+      <FileName>Bar, Kitchen view\OrderList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.Order_Table" Collapsed="true">
+    <Position X="8.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABRAAAABACAAARAAACCAQAACAACAIAAAIUAAAAABAAA=</HashCode>
+      <FileName>Bar, Kitchen view\OrderTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.LoginForm" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAACAAIhAAAACAAABCAAAAAAAAAAAgAACAAQA=</HashCode>
+      <FileName>Login, Overview\LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.ManagerUI" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAkACAAAAAkIACAAAACAIAgAAAAAAAAEQEAAAA=</HashCode>
+      <FileName>Login, Overview\ManagerUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.TablesOverviewUI" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQAgAAhwD4DAAABaADBAAACQAACIAAAEAAAAPENAwA=</HashCode>
+      <FileName>Login, Overview\TablesOverviewUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.AddCommentToItemUI" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAABCCIAARACCASAAAASAAAAAAQAgEQBAEAAgAA=</HashCode>
+      <FileName>Order\AddCommentToItemUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.ChooseMenuTypeUI" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIAgAABACAAAAAAAAiAAABCABAAAEQAAAAABAAAAAQ=</HashCode>
+      <FileName>Order\ChooseMenuTypeUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.SelectMenuItemsUI" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ogSxMACJASUAJAJGVADQFgiHAAAAAwIBAUFhFBSJAJI=</HashCode>
+      <FileName>Order\SelectMenuItemsUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.PayOrderUI" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAAAACKAAVAAACCCAAACAAAAAABADQAACCAQCBg=</HashCode>
+      <FileName>Payment\PayOrderUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.Program" Collapsed="true">
+    <Position X="7" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.TableInformationUI" Collapsed="true">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gGAEAAiJCGQAoRBAABDAAgQCAgElAQAAEAAAQASFIRI=</HashCode>
+      <FileName>Order\TableInformationUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.Properties.Resources" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chepeau_UI.Properties.Settings" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
