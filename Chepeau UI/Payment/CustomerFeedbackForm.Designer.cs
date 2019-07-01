@@ -30,7 +30,6 @@
         {
             this.btn_Feedback = new System.Windows.Forms.Button();
             this.txtBx_Feedback = new System.Windows.Forms.RichTextBox();
-            this.lbl_tezt = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_Feedback
@@ -51,28 +50,17 @@
             this.txtBx_Feedback.TabIndex = 1;
             this.txtBx_Feedback.Text = "";
             // 
-            // lbl_tezt
-            // 
-            this.lbl_tezt.AutoSize = true;
-            this.lbl_tezt.Location = new System.Drawing.Point(239, 298);
-            this.lbl_tezt.Name = "lbl_tezt";
-            this.lbl_tezt.Size = new System.Drawing.Size(35, 13);
-            this.lbl_tezt.TabIndex = 2;
-            this.lbl_tezt.Text = "label1";
-            // 
             // CustomerFeedbackFormUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(284, 370);
-            this.Controls.Add(this.lbl_tezt);
             this.Controls.Add(this.txtBx_Feedback);
             this.Controls.Add(this.btn_Feedback);
             this.Name = "CustomerFeedbackFormUI";
             this.Text = "CustomerFeedbackForm";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -80,6 +68,5 @@
 
         private System.Windows.Forms.Button btn_Feedback;
         private System.Windows.Forms.RichTextBox txtBx_Feedback;
-        private System.Windows.Forms.Label lbl_tezt;
     }
 }

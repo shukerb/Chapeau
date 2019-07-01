@@ -26,7 +26,7 @@ namespace ChepeauModel
             CalculatePrice(Order);
             BackUpTotalPrice= TotalPrice;
         }
-        
+        //calculates total price
         public void CalculatePrice(Order Order)
         {
             VAT = 0;
@@ -35,36 +35,57 @@ namespace ChepeauModel
             {
                 if (i.Type == Enum_Item_Type.Beer || i.Type == Enum_Item_Type.Wine)
                 {
-                    VAT = (decimal)21 / (decimal)100;
+                    VAT = (decimal)21 * i.Price/(decimal)100;
                 }
                 else
                 {
-                    VAT = (decimal)6 / (decimal)100;
+                    VAT = (decimal)6 * i.Price / (decimal)100;
                 }
-                price += (i.Price + (i.Price * (decimal)VAT)) * (decimal)i.Amount;
-                VAT += (decimal)VAT * i.Price;
+                price += (decimal)VAT * (decimal)i.Amount;
+                VAT += (decimal)VAT;
             }
             TotalPrice = price;
             
         }
+        // adds the tip to the total price
         public decimal AddTipToPrice(string tip, string fullPrice)
         {
             TotalPrice = decimal.Parse(tip) + decimal.Parse(fullPrice);
             return TotalPrice;          
         }
+        //records the time of payment
         public void RecordTimeOfPayment()
         {
             TimeStamp = DateTime.Now;
         }
-        public Table CleanTable(Table table)
-        {
-            table.Status = Enum_TableStatus.Free;
-            return table;
-        }
+        //adds the Bill's ID and comment from customer
         public void FinishBill(int id,string comment)
         {
             BillID = id;
             Feedback = comment;
+        }
+        //Checks if debit/credit card pin code is of length of 4 digits and composed of numbers
+        public bool CheckCard(string numbers)
+        {
+            bool check = true;
+            if (numbers.Length != 4)
+            {
+                check = false;
+            }
+
+            foreach (char c in numbers)
+            {
+                if (c != 0 && c != 1 && c != 2 && c != 3 && c != 4 && c != 5 && c != 6 && c != 7 && c != 8 && c != 9 && c == ' ')
+                {
+                    check = false;
+                }
+
+            }
+            return check;
+        }
+        public void RemoveTip()
+        {
+            TotalPrice = BackUpTotalPrice;
         }
 
     }
