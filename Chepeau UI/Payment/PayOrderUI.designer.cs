@@ -43,7 +43,6 @@
             this.txtBx_VAT = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btn_addTip = new System.Windows.Forms.Button();
-            this.btn_RemoveTip = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_payCard
@@ -181,16 +180,6 @@
             this.btn_addTip.UseVisualStyleBackColor = true;
             this.btn_addTip.Click += new System.EventHandler(this.btn_addTip_Click);
             // 
-            // btn_RemoveTip
-            // 
-            this.btn_RemoveTip.Location = new System.Drawing.Point(204, 403);
-            this.btn_RemoveTip.Name = "btn_RemoveTip";
-            this.btn_RemoveTip.Size = new System.Drawing.Size(124, 54);
-            this.btn_RemoveTip.TabIndex = 16;
-            this.btn_RemoveTip.Text = "Remove Tip";
-            this.btn_RemoveTip.UseVisualStyleBackColor = true;
-            this.btn_RemoveTip.Click += new System.EventHandler(this.btn_RemoveTip_Click);
-            // 
             // PayOrderUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,7 +187,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(362, 664);
-            this.Controls.Add(this.btn_RemoveTip);
             this.Controls.Add(this.btn_addTip);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtBx_VAT);
@@ -238,6 +226,5 @@
         public System.Windows.Forms.TextBox txtBx_VAT;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btn_addTip;
-        private System.Windows.Forms.Button btn_RemoveTip;
     }
 }
