@@ -259,7 +259,7 @@
             this.MinimizeBox = false;
             this.Name = "TableInformationUI";
             this.Text = "Table Information";
-            this.Load += new System.EventHandler(this.TableInformationUI_Load_1);
+            //this.Load += new System.EventHandler(this.TableInformationUI_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

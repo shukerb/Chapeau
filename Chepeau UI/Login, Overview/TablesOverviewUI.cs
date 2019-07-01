@@ -43,12 +43,12 @@ namespace Chepeau_UI
         //switch statment to check which button was clicked to open the table view 
         private void TablesButton_Click(object sender, EventArgs e)
         {
-            int TableNumber=0;
+            int TableNumber = 0;
             var btn = (Button)sender;
             foreach (Button button in tablButtonsList)
             {
                 if (btn.Name == button.Name)
-                    TableNumber = tablButtonsList.IndexOf(button)+1 ;
+                    TableNumber = tablButtonsList.IndexOf(button) + 1;
                 //else TableNumber = 0;
 
             }
@@ -87,7 +87,7 @@ namespace Chepeau_UI
             //}
             startTableView(TableNumber);
         }
-       
+
 
         //logOut button
         private void btn_logout_Click(object sender, EventArgs e)
@@ -106,7 +106,7 @@ namespace Chepeau_UI
             //the buttons list is used here.
             foreach (Button button in tablButtonsList)
             {
-                checkColor(button, tablButtonsList.IndexOf(button)+1 , tables);
+                checkColor(button, tablButtonsList.IndexOf(button) + 1, tables);
 
             }
             //for (int i = 0; i == tablButtonsList.Count; i++)
@@ -129,7 +129,7 @@ namespace Chepeau_UI
                 button.BackColor = Color.Green;
             else if (table.Status == Enum_TableStatus.Occupied)
                 button.BackColor = Color.Red;
-            else if (table.Status ==Enum_TableStatus.Reserved)
+            else if (table.Status == Enum_TableStatus.Reserved)
                 button.BackColor = Color.Yellow;
         }
 
@@ -162,13 +162,13 @@ namespace Chepeau_UI
             string status = "";
             order = takeOrder_Service.Check_If_Order_Exists(table);
 
-            if (order != null&&(order.Status!=Enum_OrderStatus.Not_Ready&&order.Status!=Enum_OrderStatus.Complete))
+            if (order != null && (order.Status != Enum_OrderStatus.Not_Ready && order.Status != Enum_OrderStatus.Complete))
             {
                 status = order.Status.ToString();
             }
             return status;
         }
 
-     
+
     }
 }
