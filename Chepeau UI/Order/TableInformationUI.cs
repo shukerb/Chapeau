@@ -52,7 +52,6 @@ namespace Chepeau_UI
                     HideButtons(new List<Button> { btn_reserve });
                     ShowButtons(new List<Button> { btn_cancelReservation });
                 }
-
             }
             else if (table.Status == Enum_TableStatus.Occupied)
             {
