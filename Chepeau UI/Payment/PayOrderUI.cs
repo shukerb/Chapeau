@@ -146,6 +146,14 @@ namespace Chepeau_UI
             string TotalPrice = bill.TotalPrice.ToString("0.00");
             lbl_totalPrice.Text = TotalPrice;
         }
+        
+
+        private void btn_ClearTip_Click(object sender, EventArgs e)
+        {
+            lbl_Tip.Text = "0";
+            bill.RemoveTip();
+            DisplayVatAndPrice(bill.VAT, bill.TotalPrice);
+        }
     }
 }
 

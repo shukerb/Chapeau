@@ -171,9 +171,21 @@ namespace Chepeau_UI
 
         private void btn_payBill_Click(object sender, EventArgs e)
         {
-            PayOrderUI payOrderUI = new PayOrderUI(order);
-            payOrderUI.Show();
-            Hide();
+            try
+            {
+                if (order.Status == Enum_OrderStatus.Served)
+
+                {
+                    PayOrderUI payOrderUI = new PayOrderUI(order);
+                    payOrderUI.Show();
+                    Hide();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Order must be first served.");
+
+            }
         }
         public void ClearOrder()
         {
