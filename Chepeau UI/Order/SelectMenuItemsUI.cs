@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using ChepeauLogic;
 using ChepeauModel;
-using System.Threading.Tasks;
-using System.Text;
 
 namespace Chepeau_UI
 {

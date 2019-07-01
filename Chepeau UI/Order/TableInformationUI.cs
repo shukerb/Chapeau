@@ -16,12 +16,11 @@ namespace Chepeau_UI
         private Employee user;
         private Order order;
 
-        public TableInformationUI(Table table, Employee user )
+        public TableInformationUI(Table table, Employee user)
         {
             InitializeComponent();
             this.table = table;
             this.user = user;
-            //this.order = order;
 
             table_Service = new Table_Service();
             takeOrder_Service = new TakeOrder_Service();
@@ -32,22 +31,8 @@ namespace Chepeau_UI
             HideButtons(new List<Button> { btn_alterOrder, btn_confirmDelete, btn_deleteItems, btn_payBill, btn_sendOrder,btn_OrderServed });
             clb_orderItems.Hide();
 
-            if (table.Status == Enum_TableStatus.Free || table.Status == Enum_TableStatus.Reserved)
-            {
-                HideButtons(new List<Button> { btn_takeOrder, btn_cancelReservation,btn_OrderServed });
-                lv_Order.Hide();
-                lbl_orderList.Hide();
-                if (table.Status == Enum_TableStatus.Reserved)
-                {
-                    HideButtons(new List<Button> { btn_reserve });
-                    ShowButtons(new List<Button> { btn_cancelReservation });
-                }
-               
-            }
-            else if (table.Status == Enum_TableStatus.Occupied)
-            {
-                HideButtons(new List<Button> { btn_occupy, btn_reserve });
-            }
+            CheckStatus();
+            CheckOrder();
         }
 
 
@@ -55,14 +40,29 @@ namespace Chepeau_UI
         {
             Close();
         }
-
-        //when the form loads, we need to check if there is an existing order
-        private void TableInformationUI_Load_1(object sender, EventArgs e)
+        private void CheckStatus()
         {
-            CheckOrder();
+            if (table.Status == Enum_TableStatus.Free || table.Status == Enum_TableStatus.Reserved)
+            {
+                HideButtons(new List<Button> { btn_takeOrder, btn_cancelReservation, btn_OrderServed });
+                lv_Order.Hide();
+                lbl_orderList.Hide();
+                if (table.Status == Enum_TableStatus.Reserved)
+                {
+                    HideButtons(new List<Button> { btn_reserve });
+                    ShowButtons(new List<Button> { btn_cancelReservation });
+                }
+
+            }
+            else if (table.Status == Enum_TableStatus.Occupied)
+            {
+                HideButtons(new List<Button> { btn_occupy, btn_reserve });
+            }
         }
         private void CheckOrder()
         {
+            order = takeOrder_Service.Check_If_Order_Exists(table.TableNumber);
+
             if (order != null)
             {
                 ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder });
@@ -90,15 +90,15 @@ namespace Chepeau_UI
         {
             table_Service.updateTable(table.TableNumber, Enum_TableStatus.Occupied);
 
-            HideButtons(new List<Button> { btn_occupy, btn_reserve });
-            ShowButtons(new List<Button> { btn_payBill, btn_takeOrder, btn_cancelReservation });
+            HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
+            ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
             lbl_orderList.Show();
             lv_Order.Show();
         }
 
         private void btn_takeOrder_Click(object sender, EventArgs e)
         {
-            //make new order from database
+            //get new order from database
             Order newOrder = takeOrder_Service.Create_Order(table, user);
 
             //create the new form where you can take your order
@@ -107,7 +107,7 @@ namespace Chepeau_UI
 
             ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder });
             HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete });
-            ShowOrder(order);
+            ShowOrder(newOrder);
         }
         private void btn_alterOrder_Click_1(object sender, EventArgs e)
         {
@@ -139,12 +139,12 @@ namespace Chepeau_UI
 
             lv_Order.Hide();
 
-            clb_orderItems.Show();
             clb_orderItems.Items.Clear();
             foreach (Item item in order.items)
             {
                 clb_orderItems.Items.Add(item.Name);
             }
+            clb_orderItems.Show();
         }
         private void btn_confirmDelete_Click(object sender, EventArgs e)
         {
@@ -202,6 +202,7 @@ namespace Chepeau_UI
             if (order.Status == Enum_OrderStatus.Ready)
             {
                 order.Status = Enum_OrderStatus.Served;
+                MessageBox.Show("Order is served!");
             }
             else order.Status = order.Status;
         }
