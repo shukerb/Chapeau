@@ -29,28 +29,30 @@ namespace ChepeauModel
         //calculates total price
         public void CalculatePrice(Order Order)
         {
-            VAT = 0;
+            decimal vat = 0;
             decimal price = 0;
             foreach (Item i in Order.items)
             {
                 if (i.Type == Enum_Item_Type.Beer || i.Type == Enum_Item_Type.Wine)
                 {
-                    VAT = (decimal)21 * i.Price / (decimal)100;
+                    vat = (decimal)21 * i.Price / (decimal)100;
                 }
                 else
                 {
-                    VAT = (decimal)6 * i.Price / (decimal)100;
+                    vat = (decimal)6 * i.Price / (decimal)100;
                 }
-                price +=((decimal)i.Price+ (decimal)VAT) * (decimal)i.Amount;
-                VAT += (decimal)VAT;
+                price +=((decimal)i.Price+ (decimal)vat) * (decimal)i.Amount;
+                vat = (decimal)vat*(decimal)i.Amount;
             }
-            TotalPrice = price;   
+            TotalPrice = price;
+            VAT = vat;  
         }
         // adds the tip to the total price
         public decimal AddTipToPrice(string tip, string fullPrice)
         {
+            Tip = decimal.Parse(tip);
             TotalPrice = decimal.Parse(tip) + decimal.Parse(fullPrice);
-            return TotalPrice;          
+            return TotalPrice;
         }
         //records the time of payment
         public void RecordTimeOfPayment()

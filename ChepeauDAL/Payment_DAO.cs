@@ -14,7 +14,7 @@ namespace ChepeauDAL
         //Creates payment record
         public void DB_Create_Payment_Record(Bill bill)
         {
-            string query = string.Format("INSERT INTO Bill (BillId, TotalPrice, Date, Tip, Feedback) VALUES ({0}, '{1}', @dt, {2}, '{3}')",
+            string query = string.Format("INSERT INTO Bill (BillId, TotalPrice, Date, Tip, Feedback) VALUES ({0}, '{1}', @dt, '{2}', '{3}')",
                 bill.BillID, bill.TotalPrice, bill.Tip,bill.Feedback);
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@dt", bill.TimeStamp);
