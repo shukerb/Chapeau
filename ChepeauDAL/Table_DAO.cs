@@ -8,9 +8,9 @@ namespace ChepeauDAL
 {
     public class Table_DAO : Base
     {
-        public void UpdateRecord(int tableID, Enum_TableStatus status)
+        public void UpdateRecord(Table table)
         {
-            string query = "UPDATE [Table] SET Status=" + status.ToString() + " WHERE TableID=" + tableID + "";
+            string query = "UPDATE [Table] SET [Status]=' + table.Status.ToString() + ' WHERE TableID=" + table.TableNumber  + "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

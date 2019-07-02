@@ -49,42 +49,7 @@ namespace Chepeau_UI
             {
                 if (btn.Name == button.Name)
                     TableNumber = tablButtonsList.IndexOf(button) + 1;
-                //else TableNumber = 0;
-
             }
-            //switch (btn.Name)
-            //{
-            //    case "btn_Table1":
-            //        TableNumber = 1;
-            //        break;
-            //    case "btn_Table2":
-            //        TableNumber = 2;
-            //        break;
-            //    case "btn_Table3":
-            //        TableNumber = 3;
-            //        break;
-            //    case "btn_Table4":
-            //        TableNumber = 4;
-            //        break;
-            //    case "btn_Table5":
-            //        TableNumber = 5;
-            //        break;
-            //    case "btn_Table6":
-            //        TableNumber = 6;
-            //        break;
-            //    case "btn_Table7":
-            //        TableNumber = 7;
-            //        break;
-            //    case "btn_Table8":
-            //        TableNumber = 8;
-            //        break;
-            //    case "btn_Table9":
-            //        TableNumber = 9;
-            //        break;
-            //    case "btn_Table10":
-            //        TableNumber = 10;
-            //        break;
-            //}
             startTableView(TableNumber);
         }
 
@@ -107,22 +72,18 @@ namespace Chepeau_UI
             foreach (Button button in tablButtonsList)
             {
                 checkColor(button, tablButtonsList.IndexOf(button) + 1, tables);
-
             }
-            //for (int i = 0; i == tablButtonsList.Count; i++)
-            //{
-            //    checkColor(tablButtonsList[i] , i+1, tables);
-            //    MessageBox.Show(i.ToString());
-            //}
         }
 
         //check the fit color for the table
         private void checkColor(Button button, int tableNumber, List<Table> tables)
         {
-            string status = CheckOrderstatus(tableNumber);
-            button.Text = ($"{tableNumber}  {status} ");
+            
+            
 
             Table table = tables.Find(x => x.TableNumber == tableNumber);
+            string status = CheckOrderstatus(table);
+            button.Text = ($"{tableNumber}  {status} ");
             //table.order = order;
 
             if (table.Status == Enum_TableStatus.Free)
@@ -157,7 +118,7 @@ namespace Chepeau_UI
         }
 
         //check the order status from the database 
-        private string CheckOrderstatus(int table)
+        private string CheckOrderstatus(Table table)
         {
             string status = "";
             order = takeOrder_Service.Check_If_Order_Exists(table);

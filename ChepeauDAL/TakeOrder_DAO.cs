@@ -87,10 +87,10 @@ namespace ChepeauDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return FindItem(ExecuteSelectQuery(query, sqlParameters), "DB_Get_Item_Amount");
         }
-        public Order DB_OrderExists_Check(int tableNumber)
+        public Order DB_OrderExists_Check(Table table)
         {
             string query = string.Format("SELECT * FROM [Order] WHERE TableID = {0} AND Status NOT LIKE 'Complete'",
-                tableNumber);
+                table.TableNumber);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return CheckOrder(ExecuteSelectQuery(query, sqlParameters));
         }

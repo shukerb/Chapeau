@@ -55,17 +55,20 @@ namespace Chepeau_UI
             }
             else if (table.Status == Enum_TableStatus.Occupied)
             {
-                HideButtons(new List<Button> { btn_occupy, btn_reserve });
+                HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
+                ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
+                lbl_orderList.Show();
+                lv_Order.Show();
             }
         }
         private void CheckOrder()
         {
-            order = takeOrder_Service.Check_If_Order_Exists(table.TableNumber);
+            order = takeOrder_Service.Check_If_Order_Exists(table);
 
             if (order != null)
             {
                 ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder });
-                HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete });
+                HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete,btn_cancelReservation });
 
                 ShowOrder(order);
             }
@@ -74,25 +77,28 @@ namespace Chepeau_UI
         /////////////////////// change the table status to reserved in the database
         private void btn_reserve_Click(object sender, EventArgs e)
         {
-            table_Service.updateTable(table.TableNumber, Enum_TableStatus.Reserved);
+            table.Status = Enum_TableStatus.Reserved;
+            table_Service.updateTable(table);
             Close();
         }
         //////////////////////////// change the table status to Free in the database
         private void btn_cancelReservation_Click_1(object sender, EventArgs e)
         {
-            takeOrder_Service.Update_OrderStatus(order, Enum_OrderStatus.Complete);
-            table_Service.updateTable(int.Parse(lbl_TableNumber.Text), Enum_TableStatus.Free);
+            //takeOrder_Service.Update_OrderStatus(order, Enum_OrderStatus.Complete);
+            table.Status = Enum_TableStatus.Free;
+            table_Service.updateTable(table);
             Close();
         }
         ///////////////////////// change the table status to Occupied in the database
         private void btn_occupy_Click(object sender, EventArgs e)
         {
-            table_Service.updateTable(table.TableNumber, Enum_TableStatus.Occupied);
+            table.Status = Enum_TableStatus.Occupied;
+            table_Service.updateTable(table);
 
-            HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
-            ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
-            lbl_orderList.Show();
-            lv_Order.Show();
+            //HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
+            //ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
+            //lbl_orderList.Show();
+            //lv_Order.Show();
         }
 
         ///////////////////////// creating, altering and showing order

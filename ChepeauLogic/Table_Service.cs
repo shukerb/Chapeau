@@ -40,9 +40,9 @@ namespace ChepeauLogic
             }
         }
         //change the Status of the table
-        public void updateTable(int id, Enum_TableStatus status)
+        public void updateTable(Table table)
         {
-            Table_DB.UpdateRecord(id, status);
+            Table_DB.UpdateRecord(table);
         }
     }
 }

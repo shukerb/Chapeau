@@ -49,9 +49,9 @@ namespace ChepeauLogic
         }
 
         //order exists?
-        public Order Check_If_Order_Exists(int tableNumber)
+        public Order Check_If_Order_Exists(Table table)
         {
-            return order_DAO.DB_OrderExists_Check(tableNumber);
+            return order_DAO.DB_OrderExists_Check(table);
         }
     }
 }
