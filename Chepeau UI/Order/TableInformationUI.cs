@@ -99,8 +99,8 @@ namespace Chepeau_UI
         private void btn_takeOrder_Click(object sender, EventArgs e)
         {
             //get new order from database
-            Order newOrder = takeOrder_Service.Create_Order(table, user);
-            GoToChooseMenuTypeUI(newOrder);
+            order = takeOrder_Service.Create_Order(table, user);
+            GoToChooseMenuTypeUI(order);
 
             ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder });
             HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete });

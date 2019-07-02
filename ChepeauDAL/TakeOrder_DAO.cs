@@ -71,7 +71,7 @@ namespace ChepeauDAL
         //get info on an object
         public Order DB_Get_Order(Table table)
         {
-            string query = string.Format("SELECT * FROM [Order] WHERE TableID = {0} AND Status != 6", table.TableNumber);
+            string query = string.Format("SELECT * FROM [Order] WHERE TableID = {0} AND Status NOT LIKE 'Complete'", table.TableNumber);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return FindOrder(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -89,7 +89,7 @@ namespace ChepeauDAL
         }
         public Order DB_OrderExists_Check(int tableNumber)
         {
-            string query = string.Format("SELECT * FROM [Order] WHERE TableID = {0} AND Status != 'Complete'",
+            string query = string.Format("SELECT * FROM [Order] WHERE TableID = {0} AND Status NOT LIKE 'Complete'",
                 tableNumber);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return CheckOrder(ExecuteSelectQuery(query, sqlParameters));
