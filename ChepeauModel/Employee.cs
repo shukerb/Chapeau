@@ -14,11 +14,11 @@ namespace ChepeauModel
         public int EmployeeID { get; set; }
 
         //position will be Manager, Waiter, KitchenStaff
-        public Employee(string name, int password, int position, int employeeID)
+        public Employee(string name, int password, Enum_Employee position, int employeeID)
         {
             Name = name;
             Password = password;
-            Position = (Enum_Employee)position;
+            Position = position;
             EmployeeID = employeeID;
         }
 
