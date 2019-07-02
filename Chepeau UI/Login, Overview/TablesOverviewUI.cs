@@ -40,6 +40,7 @@ namespace Chepeau_UI
             timer1.Interval = 10000;
             timer1.Start();
         }
+
         //switch statment to check which button was clicked to open the table view 
         private void TablesButton_Click(object sender, EventArgs e)
         {
@@ -83,7 +84,7 @@ namespace Chepeau_UI
 
             Table table = tables.Find(x => x.TableNumber == tableNumber);
             string status = CheckOrderstatus(table);
-            button.Text = ($"{tableNumber}  {status} ");
+            button.Text = ($"{tableNumber}\n{status} ");
             //table.order = order;
 
             if (table.Status == Enum_TableStatus.Free)
@@ -107,7 +108,7 @@ namespace Chepeau_UI
         {
             TablesStatus();
         }
-
+        // this is only available for user type Manager
         private void btn_Back_Click(object sender, EventArgs e)
         {
             User_Service userService = new User_Service();

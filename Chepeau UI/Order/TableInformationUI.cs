@@ -220,7 +220,7 @@ namespace Chepeau_UI
         {
             order.Status = Enum_OrderStatus.Served;
             takeOrder_Service.Update_OrderStatus(order);
-            MessageBox.Show("Order is served!");
+            Close();
             
         }
     }

@@ -63,6 +63,7 @@
             this.btn_Table1.Size = new System.Drawing.Size(83, 66);
             this.btn_Table1.TabIndex = 0;
             this.btn_Table1.Text = "1";
+            this.btn_Table1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table1.UseVisualStyleBackColor = false;
             this.btn_Table1.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -77,6 +78,7 @@
             this.btn_Table2.Size = new System.Drawing.Size(83, 66);
             this.btn_Table2.TabIndex = 1;
             this.btn_Table2.Text = "2";
+            this.btn_Table2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table2.UseVisualStyleBackColor = false;
             this.btn_Table2.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -91,6 +93,7 @@
             this.btn_Table4.Size = new System.Drawing.Size(83, 66);
             this.btn_Table4.TabIndex = 3;
             this.btn_Table4.Text = "4";
+            this.btn_Table4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table4.UseVisualStyleBackColor = false;
             this.btn_Table4.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -105,6 +108,7 @@
             this.btn_Table3.Size = new System.Drawing.Size(83, 66);
             this.btn_Table3.TabIndex = 2;
             this.btn_Table3.Text = "3";
+            this.btn_Table3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table3.UseVisualStyleBackColor = false;
             this.btn_Table3.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -119,6 +123,7 @@
             this.btn_Table6.Size = new System.Drawing.Size(83, 66);
             this.btn_Table6.TabIndex = 5;
             this.btn_Table6.Text = "6";
+            this.btn_Table6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table6.UseVisualStyleBackColor = false;
             this.btn_Table6.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -133,6 +138,7 @@
             this.btn_Table5.Size = new System.Drawing.Size(83, 66);
             this.btn_Table5.TabIndex = 4;
             this.btn_Table5.Text = "5";
+            this.btn_Table5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table5.UseVisualStyleBackColor = false;
             this.btn_Table5.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -147,6 +153,7 @@
             this.btn_Table8.Size = new System.Drawing.Size(83, 66);
             this.btn_Table8.TabIndex = 7;
             this.btn_Table8.Text = "8";
+            this.btn_Table8.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table8.UseVisualStyleBackColor = false;
             this.btn_Table8.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -161,6 +168,7 @@
             this.btn_Table7.Size = new System.Drawing.Size(83, 66);
             this.btn_Table7.TabIndex = 6;
             this.btn_Table7.Text = "7";
+            this.btn_Table7.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table7.UseVisualStyleBackColor = false;
             this.btn_Table7.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -175,6 +183,7 @@
             this.btn_Table9.Size = new System.Drawing.Size(83, 66);
             this.btn_Table9.TabIndex = 8;
             this.btn_Table9.Text = "9";
+            this.btn_Table9.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table9.UseVisualStyleBackColor = false;
             this.btn_Table9.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -189,6 +198,7 @@
             this.btn_Table10.Size = new System.Drawing.Size(83, 66);
             this.btn_Table10.TabIndex = 9;
             this.btn_Table10.Text = "10";
+            this.btn_Table10.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.btn_Table10.UseVisualStyleBackColor = false;
             this.btn_Table10.Click += new System.EventHandler(this.TablesButton_Click);
             // 
@@ -225,7 +235,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // PB_Free
@@ -291,7 +301,6 @@
             this.MinimizeBox = false;
             this.Name = "TablesOverviewUI";
             this.Text = "TablesOverviewUI";
-           
             ((System.ComponentModel.ISupportInitialize)(this.PB_Free)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Occupied)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Reserved)).EndInit();
