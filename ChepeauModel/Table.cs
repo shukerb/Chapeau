@@ -12,10 +12,10 @@ namespace ChepeauModel
         public Enum_TableStatus Status { get; set; }
         public Order order { get; set; }
 
-        public Table(int tableNumber, int status)
+        public Table(int tableNumber, Enum_TableStatus status)
         {
             TableNumber = tableNumber;
-            Status = (Enum_TableStatus)status;
+            Status = status;
         }
     }
 }

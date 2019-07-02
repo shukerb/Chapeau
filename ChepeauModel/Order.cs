@@ -18,7 +18,7 @@ namespace ChepeauModel
         public string Feedback { get; set; }
 
         //this constructor is used for the database
-        public Order(int orderID, int tableID, int employeeID, int status, DateTime date, string feedback)
+        public Order(int orderID, int tableID, int employeeID, Enum_OrderStatus status, DateTime date, string feedback)
         {
             //make a new table and employee out of the ID
             Table table = new Table(tableID, 0);
@@ -27,7 +27,7 @@ namespace ChepeauModel
             ID = orderID;
             Table = table;
             Employee = employee;
-            Status = (Enum_OrderStatus)status;
+            Status = status;
             TimeStamp = date;
             Feedback = feedback;
         }

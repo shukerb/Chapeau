@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
 using ChepeauModel;
@@ -31,11 +32,9 @@ namespace ChepeauDAL
         private List<Table> ReadTables(DataTable dataTable)
         {
             List<Table> tables = new List<Table>();
-
             foreach (DataRow dr in dataTable.Rows)
             {
-                Table table = new Table((int)dr["TableID"], (int)dr["Status"]);
-
+                Table table = new Table((int)dr["TableID"], (Enum_TableStatus)Enum.Parse(typeof(Enum_TableStatus), (string)dr["Status"], true));
                 tables.Add(table);
             }
             return tables;
@@ -46,7 +45,6 @@ namespace ChepeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 Table table = new Table((int)dr["TableID"], (int)dr["Status"]);
-
                 tables.Add(table);
             }
             return tables[0];

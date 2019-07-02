@@ -33,15 +33,15 @@ namespace ChepeauDAL
         public void DB_Create_Order(Table table, Employee user)
         {
             string query = string.Format("INSERT INTO [Order] (TableID, EmployeeID, Date, Status, Feedback) VALUES ({0}, {1}, @dt, '{2}', '{3}')",
-                table.TableNumber, user.EmployeeID, 1, "");
+                table.TableNumber, user.EmployeeID, Enum_OrderStatus.Not_Ready.ToString(), "");
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@dt", DateTime.Now);
             ExecuteEditQuery(query, sqlParameters);
         }
         public void DB_Update_Order_Status(Order order, Enum_OrderStatus status)
         {
-            string query = string.Format("UPDATE [Order] SET [Status] = {0} WHERE OrderID = {1}",
-                (int)status, order.ID);
+            string query = string.Format("UPDATE [Order] SET [Status] = '{0}' WHERE OrderID = {1}",
+                status.ToString(), order.ID);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -89,7 +89,7 @@ namespace ChepeauDAL
         }
         public Order DB_OrderExists_Check(int tableNumber)
         {
-            string query = string.Format("SELECT * FROM [Order] WHERE TableID = {0} AND Status != 6",
+            string query = string.Format("SELECT * FROM [Order] WHERE TableID = {0} AND Status != 'Complete'",
                 tableNumber);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return CheckOrder(ExecuteSelectQuery(query, sqlParameters));
@@ -103,7 +103,8 @@ namespace ChepeauDAL
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (int)dr["Status"], (DateTime)dr["Date"], (string)dr["Feedback"]);
+                    Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus) Enum.Parse(typeof(Enum_OrderStatus), 
+                        (string)dr["Status"], true), (DateTime)dr["Date"], (string)dr["Feedback"]);
                     orders.Add(order);
                 }
                 return orders[0];
@@ -117,7 +118,8 @@ namespace ChepeauDAL
             List<Order> orders = new List<Order>();
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (int)dr["Status"], (DateTime)dr["Date"], (string)dr["Feedback"]);
+                Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), 
+                    (string)dr["Status"], true), (DateTime)dr["Date"], (string)dr["Feedback"]);
                 orders.Add(order);
             }
             return orders[0];

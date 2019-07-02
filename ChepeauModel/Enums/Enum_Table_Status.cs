@@ -8,7 +8,7 @@ namespace ChepeauModel
 {
     public enum Enum_TableStatus
     {
-        Free = 1,
+        Free,
         Occupied,
         Reserved
     }
