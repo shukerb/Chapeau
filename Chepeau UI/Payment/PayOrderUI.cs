@@ -26,8 +26,8 @@ namespace Chepeau_UI
            
             Order = order;
             bill = new Bill(order);
-            ShowOrder(order);
-                       
+
+            ShowOrder(order);                      
             DisplayVatAndPrice(bill.VAT, bill.TotalPrice);
             lbl_Tip.Text = "0";
         }
@@ -60,7 +60,9 @@ namespace Chepeau_UI
         // returns to table information
         private void btn_back_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            TableInformationUI tableInfo = new TableInformationUI(Order.Table,Order.Employee);
+            tableInfo.Show();
+            Close();
         }
 
         //ShowOrder display all order items in ListView
@@ -89,7 +91,6 @@ namespace Chepeau_UI
             
             try
             {
-
                 bill.RecordTimeOfPayment();
                 CustomerFeedbackFormUI feedback = new CustomerFeedbackFormUI(bill,Order);
                 feedback.Show();
