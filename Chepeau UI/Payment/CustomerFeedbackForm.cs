@@ -15,14 +15,14 @@ namespace Chepeau_UI
 {
     public partial class CustomerFeedbackFormUI : Form
     {
-        private Bill Bill;
-        private Order Order;
+        private Bill bill;
+        private Order order;
         public CustomerFeedbackFormUI(Bill bill,Order order)
         {
             InitializeComponent();
 
-            Bill = bill;
-            Order = order;       
+            this.bill = bill;
+            this.order = order;       
         }
 
         private void btn_Feedback_Click(object sender, EventArgs e)
@@ -30,18 +30,20 @@ namespace Chepeau_UI
             try
             {
                 ChepeauLogic.Payment_Service payment = new ChepeauLogic.Payment_Service();
-                Bill.FinishBill(payment.AssignOrderID(), txtBx_Feedback.Text);
-                payment.CreateBill(Bill);
+                bill.FinishBill(payment.AssignOrderID(), txtBx_Feedback.Text);
+                payment.CreateBill(bill);
 
                 ChepeauLogic.TakeOrder_Service freeOrder = new ChepeauLogic.TakeOrder_Service();
-                freeOrder.Update_OrderStatus(Order, Enum_OrderStatus.Complete);
+                order.Status = Enum_OrderStatus.Complete;
+                freeOrder.Update_OrderStatus(order);
 
                 ChepeauLogic.Table_Service tableService = new ChepeauLogic.Table_Service();
-                Table table = tableService.GetTable(Order.Table.TableNumber);
+                Table table = tableService.GetTable(order.Table.TableNumber);
                 table.Status = Enum_TableStatus.Free;
                 tableService.updateTable(table);
 
-                ReturnToTableOverview();
+                Close();
+                //ReturnToTableOverview();
             }
             catch (Exception)
             {
@@ -57,11 +59,11 @@ namespace Chepeau_UI
                 MessageBox.Show(error);
             }
         }
-        private void ReturnToTableOverview()
-        {
-            TablesOverviewUI tableOverview = new TablesOverviewUI(Order.Employee);
-            tableOverview.Show();
-            this.Close();
-        }
+        //private void ReturnToTableOverview()
+        //{
+        //    TablesOverviewUI tableOverview = new TablesOverviewUI(Order.Employee);
+        //    tableOverview.Show();
+        //    this.Close();
+        //}
     }
 }

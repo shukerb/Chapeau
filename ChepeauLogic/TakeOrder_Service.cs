@@ -24,9 +24,9 @@ namespace ChepeauLogic
         {
             order_DAO.DB_Manipulate_OrderContent(item, order, type);
         }
-        public void Update_OrderStatus(Order order, Enum_OrderStatus status)
+        public void Update_OrderStatus(Order order)
         {
-            order_DAO.DB_Update_Order_Status(order, status);
+            order_DAO.DB_Update_Order_Status(order);
         }
         public void Decrease_Stock(Item item)
         {

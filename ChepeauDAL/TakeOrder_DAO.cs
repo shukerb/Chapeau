@@ -38,10 +38,10 @@ namespace ChepeauDAL
                 sqlParameters[0] = new SqlParameter("@dt", DateTime.Now);
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void DB_Update_Order_Status(Order order, Enum_OrderStatus status)
+        public void DB_Update_Order_Status(Order order)
         {
             string query = string.Format("UPDATE [Order] SET [Status] = '{0}' WHERE OrderID = {1}",
-                status.ToString(), order.ID);
+                order.Status.ToString(), order.ID);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

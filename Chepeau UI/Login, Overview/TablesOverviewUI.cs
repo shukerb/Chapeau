@@ -123,7 +123,7 @@ namespace Chepeau_UI
             string status = "";
             order = takeOrder_Service.Check_If_Order_Exists(table);
 
-            if (order != null && (order.Status != Enum_OrderStatus.Not_Ready && order.Status != Enum_OrderStatus.Complete))
+            if (order != null && (order.Status != Enum_OrderStatus.Not_Ready && order.Status != Enum_OrderStatus.Complete&& order.Status != Enum_OrderStatus.Served))
             {
                 status = order.Status.ToString();
             }

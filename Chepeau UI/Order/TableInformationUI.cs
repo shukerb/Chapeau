@@ -53,13 +53,13 @@ namespace Chepeau_UI
                     ShowButtons(new List<Button> { btn_cancelReservation });
                 }
             }
-            else if (table.Status == Enum_TableStatus.Occupied)
-            {
-                HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
-                ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
-                lbl_orderList.Show();
-                lv_Order.Show();
-            }
+            //else if (table.Status == Enum_TableStatus.Occupied)
+            //{
+            //    HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
+            //    ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
+            //    lbl_orderList.Show();
+            //    lv_Order.Show();
+            //}
         }
         private void CheckOrder()
         {
@@ -67,7 +67,7 @@ namespace Chepeau_UI
 
             if (order != null)
             {
-                ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder });
+                ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder,btn_OrderServed });
                 HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete,btn_cancelReservation });
 
                 ShowOrder(order);
@@ -95,10 +95,10 @@ namespace Chepeau_UI
             table.Status = Enum_TableStatus.Occupied;
             table_Service.updateTable(table);
 
-            //HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
-            //ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
-            //lbl_orderList.Show();
-            //lv_Order.Show();
+            HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
+            ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
+            lbl_orderList.Show();
+            lv_Order.Show();
         }
 
         ///////////////////////// creating, altering and showing order
@@ -166,7 +166,8 @@ namespace Chepeau_UI
         }
         private void btn_sendOrder_Click(object sender, EventArgs e)
         {
-            takeOrder_Service.Update_OrderStatus(order, Enum_OrderStatus.Sent);
+            order.Status= Enum_OrderStatus.Sent;
+            takeOrder_Service.Update_OrderStatus(order);
             foreach (Item item in order.items)
             {
                 takeOrder_Service.Decrease_Stock(item);
@@ -217,12 +218,10 @@ namespace Chepeau_UI
 
         private void btn_OrderServed_Click(object sender, EventArgs e)
         {
-            if (order.Status == Enum_OrderStatus.Ready)
-            {
-                order.Status = Enum_OrderStatus.Served;
-                MessageBox.Show("Order is served!");
-            }
-            else order.Status = order.Status;
+            order.Status = Enum_OrderStatus.Served;
+            takeOrder_Service.Update_OrderStatus(order);
+            MessageBox.Show("Order is served!");
+            
         }
     }
 }

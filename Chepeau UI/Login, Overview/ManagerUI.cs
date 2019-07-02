@@ -14,8 +14,10 @@ namespace Chepeau_UI
 {
     public partial class ManagerUI : Form
     {
+        Employee user;
         public ManagerUI(Employee user)
         {
+            this.user = user;
             InitializeComponent();
             lbl_UserName.Text = user.Name;
         }
@@ -30,8 +32,7 @@ namespace Chepeau_UI
 
         private void btn_tableOverview_Click(object sender, EventArgs e)
         {
-            User_Service userService = new User_Service();
-            Employee user = userService.GetUser(lbl_UserName.Text);
+        
             TablesOverviewUI overview = new TablesOverviewUI(user);
             Hide();
             overview.ShowDialog();
