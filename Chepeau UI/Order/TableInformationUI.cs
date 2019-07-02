@@ -95,26 +95,26 @@ namespace Chepeau_UI
             lv_Order.Show();
         }
 
+        ///////////////////////// creating, altering and showing order
         private void btn_takeOrder_Click(object sender, EventArgs e)
         {
             //get new order from database
             Order newOrder = takeOrder_Service.Create_Order(table, user);
-
-            //create the new form where you can take your order
-            takeOrderUI = new ChooseMenuTypeUI(newOrder);
-            takeOrderUI.ShowDialog();
+            GoToChooseMenuTypeUI(newOrder);
 
             ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder });
             HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete });
-            ShowOrder(newOrder);
         }
         private void btn_alterOrder_Click_1(object sender, EventArgs e)
+        {
+            GoToChooseMenuTypeUI(order);
+        }
+        private void GoToChooseMenuTypeUI(Order order)
         {
             takeOrderUI = new ChooseMenuTypeUI(order);
             takeOrderUI.ShowDialog();
             ShowOrder(order);
         }
-
         private void ShowOrder(Order showOrder)
         {
             //get the last instance of the order items from the database

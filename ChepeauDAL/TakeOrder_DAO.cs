@@ -35,7 +35,7 @@ namespace ChepeauDAL
             string query = string.Format("INSERT INTO [Order] (TableID, EmployeeID, Date, Status, Feedback) VALUES ({0}, {1}, @dt, '{2}', '{3}')",
                 table.TableNumber, user.EmployeeID, Enum_OrderStatus.Not_Ready.ToString(), "");
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@dt", DateTime.Now);
+                sqlParameters[0] = new SqlParameter("@dt", DateTime.Now);
             ExecuteEditQuery(query, sqlParameters);
         }
         public void DB_Update_Order_Status(Order order, Enum_OrderStatus status)
