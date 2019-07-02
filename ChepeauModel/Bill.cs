@@ -41,7 +41,7 @@ namespace ChepeauModel
                 {
                     VAT = (decimal)6 * i.Price / (decimal)100;
                 }
-                price += (decimal)VAT * (decimal)i.Amount;
+                price +=((decimal)i.Price+ (decimal)VAT) * (decimal)i.Amount;
                 VAT += (decimal)VAT;
             }
             TotalPrice = price;   
