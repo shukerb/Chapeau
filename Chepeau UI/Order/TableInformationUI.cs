@@ -176,6 +176,7 @@ namespace Chepeau_UI
 
             //    {
                     PayOrderUI payOrderUI = new PayOrderUI(order);
+                    payOrderUI.TopMost = true;
                     payOrderUI.Show();
                     Hide();
                 //}
