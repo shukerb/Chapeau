@@ -32,10 +32,10 @@ namespace ChepeauModel
             Feedback = feedback;
         }
         //this constructor is used for bar/kitchen view
-        public Order(int orderID, int status, DateTime timeStamp, int tableID)
+        public Order(int orderID, Enum_OrderStatus status, DateTime timeStamp, int tableID)
         {
             ID = orderID;
-            Status = (Enum_OrderStatus)status;
+            Status = status;
             TimeStamp = timeStamp;
             TableID = tableID;
         }

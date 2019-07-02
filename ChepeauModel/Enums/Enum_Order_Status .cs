@@ -9,7 +9,7 @@ namespace ChepeauModel
     public enum Enum_OrderStatus
     {
         //when you make a new order
-        Not_Ready = 1,
+        Not_Ready,
         ////when you send the order to the kitchen or bar
         Sent,
         //when the chef or bartender accept it

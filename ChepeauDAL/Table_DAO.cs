@@ -10,7 +10,7 @@ namespace ChepeauDAL
     {
         public void UpdateRecord(int tableID, Enum_TableStatus status)
         {
-            string query = "UPDATE [Table] SET Status=" + (int)status + " WHERE TableID=" + tableID + "";
+            string query = "UPDATE [Table] SET Status=" + status.ToString() + " WHERE TableID=" + tableID + "";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -44,7 +44,7 @@ namespace ChepeauDAL
             List<Table> tables = new List<Table>();
             foreach (DataRow dr in dataTable.Rows)
             {
-                Table table = new Table((int)dr["TableID"], (int)dr["Status"]);
+                Table table = new Table((int)dr["TableID"], (Enum_TableStatus)Enum.Parse(typeof(Enum_TableStatus), (string)dr["Status"], true));
                 tables.Add(table);
             }
             return tables[0];

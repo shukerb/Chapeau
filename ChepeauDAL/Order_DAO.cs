@@ -14,21 +14,21 @@ namespace ChepeauDAL
         //gets all current orders that are not ready
         public List<Order> GetOrders()
         {
-            string query = "SELECT [OrderID], [Status], [Date], [TableID] FROM [Order] WHERE [Status] = 2 OR [Status] = 3";
+            string query = "SELECT [OrderID], [Status], [Date], [TableID] FROM [Order] WHERE [Status] = 'Sent' OR [Status] = 'Preparing'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
         }
         //gets all completed orders
         public List<Order> GetCompletedOrders()
         {
-            string query = "SELECT [OrderID], [Status], [Date], [TableID] FROM [Order] WHERE [Status] = 6";
+            string query = "SELECT [OrderID], [Status], [Date], [TableID] FROM [Order] WHERE [Status] = 'Complete'";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
         }
         //sets the current order to ready from not ready
         public void ReadyOrder(int orderID, int tableID)
         {
-            string updateOrder = string.Format("UPDATE [Order] set [Status] = 4 WHERE [OrderID] = {0} AND [TableID] = {1}", orderID, tableID);
+            string updateOrder = string.Format("UPDATE [Order] set [Status] = 'Ready' WHERE [OrderID] = {0} AND [TableID] = {1}", orderID, tableID);
             SqlParameter[] sqlParameterAdmin = new SqlParameter[0];
             ExecuteEditQuery(updateOrder, sqlParameterAdmin);
         }
@@ -36,10 +36,10 @@ namespace ChepeauDAL
         private List<Order> ReadOrder(DataTable dataTable)
         {
             List<Order> orders = new List<Order>();
-
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order((int)dr["OrderID"], (int)dr["Status"], (DateTime)dr["Date"], (int)dr["TableID"]);
+                Order order = new Order((int)dr["OrderID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true), 
+                    (DateTime)dr["Date"], (int)dr["TableID"]);
                 orders.Add(order);
             }
             return orders;

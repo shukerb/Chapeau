@@ -103,8 +103,8 @@ namespace ChepeauDAL
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus) Enum.Parse(typeof(Enum_OrderStatus), 
-                        (string)dr["Status"], true), (DateTime)dr["Date"], (string)dr["Feedback"]);
+                    Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus) Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true), 
+                        (DateTime)dr["Date"], (string)dr["Feedback"]);
                     orders.Add(order);
                 }
                 return orders[0];
@@ -118,8 +118,8 @@ namespace ChepeauDAL
             List<Order> orders = new List<Order>();
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), 
-                    (string)dr["Status"], true), (DateTime)dr["Date"], (string)dr["Feedback"]);
+                Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true), 
+                    (DateTime)dr["Date"], (string)dr["Feedback"]);
                 orders.Add(order);
             }
             return orders[0];
