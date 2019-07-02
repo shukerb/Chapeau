@@ -36,8 +36,10 @@ namespace Chepeau_UI
                 ChepeauLogic.TakeOrder_Service freeOrder = new ChepeauLogic.TakeOrder_Service();
                 freeOrder.Update_OrderStatus(Order, Enum_OrderStatus.Complete);
 
-                ChepeauLogic.Table_Service table = new ChepeauLogic.Table_Service();
-                table.updateTable(Order.Table.TableNumber, Enum_TableStatus.Free);
+                ChepeauLogic.Table_Service tableService = new ChepeauLogic.Table_Service();
+                Table table = tableService.GetTable(Order.Table.TableNumber);
+                table.Status = Enum_TableStatus.Free;
+                tableService.updateTable(table);
 
                 ReturnToTableOverview();
             }
