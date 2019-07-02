@@ -42,10 +42,11 @@ namespace ChepeauModel
                     vat = (decimal)6 * i.Price / (decimal)100;
                 }
                 price +=((decimal)i.Price+ (decimal)vat) * (decimal)i.Amount;
-                vat = (decimal)vat*(decimal)i.Amount;
+                VAT += (decimal)vat*(decimal)i.Amount;
+                
             }
             TotalPrice = price;
-            VAT = vat;  
+             
         }
         // adds the tip to the total price
         public decimal AddTipToPrice(string tip, string fullPrice)
