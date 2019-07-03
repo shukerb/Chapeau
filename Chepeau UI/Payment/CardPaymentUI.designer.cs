@@ -31,7 +31,7 @@
             this.btn_checkPin = new System.Windows.Forms.Button();
             this.txtBx_pin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_4digitsWarningText = new System.Windows.Forms.Label();
             this.btn_Back = new System.Windows.Forms.Button();
             this.txtBx_fullPrice = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,15 +70,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Pin:";
             // 
-            // label2
+            // lbl_4digitsWarningText
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(137, 226);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 21);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "(must be 4 digits)";
+            this.lbl_4digitsWarningText.AutoSize = true;
+            this.lbl_4digitsWarningText.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_4digitsWarningText.Location = new System.Drawing.Point(137, 226);
+            this.lbl_4digitsWarningText.Name = "lbl_4digitsWarningText";
+            this.lbl_4digitsWarningText.Size = new System.Drawing.Size(143, 21);
+            this.lbl_4digitsWarningText.TabIndex = 3;
+            this.lbl_4digitsWarningText.Text = "(must be 4 digits)";
             // 
             // btn_Back
             // 
@@ -140,7 +140,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBx_fullPrice);
             this.Controls.Add(this.btn_Back);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbl_4digitsWarningText);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBx_pin);
             this.Controls.Add(this.btn_checkPin);
@@ -156,7 +156,7 @@
         private System.Windows.Forms.Button btn_checkPin;
         private System.Windows.Forms.TextBox txtBx_pin;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_4digitsWarningText;
         private System.Windows.Forms.Button btn_Back;
         private System.Windows.Forms.TextBox txtBx_fullPrice;
         private System.Windows.Forms.Label label3;

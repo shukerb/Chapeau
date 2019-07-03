@@ -34,26 +34,10 @@ namespace Chepeau_UI
         // shows payment with card windows form and passes order and bill values to it
         private void btn_PayWithCard_Click(object sender, EventArgs e)
         {
-            try {
-                
-                Card_payment cardPayUI = new Card_payment(bill, Order);
-                cardPayUI.Show();
+            Card_payment cardPayUI = new Card_payment(bill, Order);
+            cardPayUI.Show();
 
-                Close();
-            }
-            catch(Exception)
-            {
-                DateTime TimeOfError = DateTime.Now;
-                string error = "Could not connect to the Database, please try again later.";
-                string filename = "error.txt";
-                StreamWriter errorlog = new StreamWriter(filename, true);
-
-                errorlog.WriteLine(error);
-                errorlog.WriteLine(TimeOfError);
-                errorlog.Close();
-
-                MessageBox.Show(error);
-            }
+            Close();       
         }
 
         // returns to table information
@@ -61,6 +45,7 @@ namespace Chepeau_UI
         {
             TableInformationUI tableInfo = new TableInformationUI(Order.Table, Order.Employee);
             tableInfo.Show();
+
             Close();
         }
 
@@ -87,28 +72,10 @@ namespace Chepeau_UI
         // when the button is clicked it saves the information inside the database
         private void btn_payCash_Click(object sender, EventArgs e)
         {
-            
-            try
-            {
-                CustomerFeedbackFormUI feedback = new CustomerFeedbackFormUI(bill,Order);
-                feedback.Show();
-                
-                Hide();
-            }
+            CustomerFeedbackFormUI feedback = new CustomerFeedbackFormUI(bill, Order);
+            feedback.Show();
 
-            catch (Exception)
-            {
-                DateTime TimeOfError = DateTime.Now;
-                string error = "Could not connect to the Database, please try again later.";
-                string filename = "error.txt";
-                StreamWriter errorlog = new StreamWriter(filename, true);
-
-                errorlog.WriteLine(error);
-                errorlog.WriteLine(TimeOfError);
-                errorlog.Close();
-
-                MessageBox.Show(error);
-            }
+            Close();          
         }
 
        // adds tip to price    
@@ -119,8 +86,7 @@ namespace Chepeau_UI
         }
         // calls AddTipToPrice method to add the tip to price and display it
         private void btn_addTip_Click(object sender, EventArgs e)
-        {
-            
+        {          
             try
             {
                 AddTipToPrice(txtBx_Tip.Text, txtBX_totalPrice.Text);
