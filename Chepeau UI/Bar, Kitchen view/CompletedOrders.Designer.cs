@@ -59,7 +59,8 @@
             // 
             // listViewCompleted
             // 
-            this.listViewCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewCompleted.GridLines = true;
             this.listViewCompleted.Location = new System.Drawing.Point(17, 116);
             this.listViewCompleted.Name = "listViewCompleted";
             this.listViewCompleted.Size = new System.Drawing.Size(453, 525);

@@ -73,15 +73,10 @@ namespace Chepeau_UI
             //showing all of the completed orders from today
             foreach (Order order in completedorders)
             {
-                if (order.TimeStamp.Day == DateTime.Today.Day && order.Status == Enum_OrderStatus.Ready || 
-                    order.TimeStamp.Day == DateTime.Today.Day && order.Status == Enum_OrderStatus.Served || 
-                    order.TimeStamp.Day == DateTime.Today.Day && order.Status == Enum_OrderStatus.Complete)
+                ListViewItem li = CheckOrder(order);
+                if (li != null)
                 {
-                    ListViewItem li = CheckOrder(order);
-                    if (li != null)
-                    {
-                        listViewCompleted.Items.Add(li);
-                    }
+                    listViewCompleted.Items.Add(li);
                 }
             }
         }
