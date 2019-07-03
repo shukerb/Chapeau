@@ -19,6 +19,8 @@ namespace Chepeau_UI
         Employee employee;
         Timer timer;
         Order order = new Order();
+        Order_Service service = new Order_Service();
+
         public Order_Table(Order order, Employee user)
         {
             employee = user;
@@ -37,6 +39,9 @@ namespace Chepeau_UI
             this.order = order;
             TakeOrder_Service take = new TakeOrder_Service();
             order.items = take.Get_Order_Items(order);
+
+            //status of the order changes to prepared
+            OrderPrepared();
 
             //the time the order was created
             lbl_timetbl.Text = order.TimeStamp.ToString("hh:mm:ss");
@@ -86,8 +91,8 @@ namespace Chepeau_UI
                 }
             }
         }
+
         //once an order is ready, click on the ready order button
-        Order_Service service = new Order_Service();
         private void btn_complete_Click(object sender, EventArgs e)
         {
             service.ReadyOrder(order);
@@ -95,11 +100,10 @@ namespace Chepeau_UI
             MessageBox.Show("Order status changed to 'Ready'!", "Order Ready");
         }
 
-        private void btn_prepare_Click(object sender, EventArgs e)
+        private void OrderPrepared()
         {
             order.Status = Enum_OrderStatus.Preparing;
-            Order_Service orderstat = new Order_Service();
-            orderstat.Preparing(order);
+            service.Preparing(order);
         }
     }
 }
