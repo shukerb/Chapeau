@@ -94,7 +94,8 @@ namespace Chepeau_UI
 
             catch (Exception)
             {
-                MessageBox.Show("Please use only numbers for the tip.");
+                MessageBox.Show("Use only numbers for the tip.");
+                txtBx_Tip.Text = "0";
             }
         }
 
