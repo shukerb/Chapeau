@@ -16,8 +16,6 @@ namespace Chepeau_UI
         //this list will be used to check the status of the table and to check which button was clicked 
         private List<Button> tablButtonsList;
 
-
-
         public TablesOverviewUI(Employee user)
         {
 

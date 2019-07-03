@@ -81,13 +81,19 @@ namespace Chepeau_UI
             foreach (Item item in order.items)
             {
                 ListViewItem li = new ListViewItem();
-                if (employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Soft_Drink || employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Hot_Drink || employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Beer || employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Wine)
+                if (employee.Position == Enum_Employee.Barman)
                 {
-                    li = Item(item);
+                    if (item.Type == Enum_Item_Type.Beer || item.Type == Enum_Item_Type.Hot_Drink || item.Type == Enum_Item_Type.Soft_Drink || item.Type == Enum_Item_Type.Wine)
+                    {
+                        li = Item(item);
+                    }
                 }
-                else
+                else if (employee.Position == Enum_Employee.Chef)
                 {
-                    li = Item(item);
+                    if (item.Type == Enum_Item_Type.Dinner_Desserts || item.Type == Enum_Item_Type.Dinner_Mains || item.Type == Enum_Item_Type.Dinner_Starters || item.Type == Enum_Item_Type.Lunch_Bites || item.Type == Enum_Item_Type.Lunch_Mains || item.Type == Enum_Item_Type.Lunch_Specials)
+                    {
+                        li = Item(item);
+                    }
                 }
                 listViewOrder.Items.Add(li);
             }
