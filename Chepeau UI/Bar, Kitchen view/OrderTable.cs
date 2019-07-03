@@ -90,7 +90,7 @@ namespace Chepeau_UI
         Order_Service service = new Order_Service();
         private void btn_complete_Click(object sender, EventArgs e)
         {
-            //service.ReadyOrder(order.ID, order.TableID);
+            service.ReadyOrder(order);
             Close();
             MessageBox.Show("Order status changed to 'Ready'!", "Order Ready");
         }
@@ -98,7 +98,8 @@ namespace Chepeau_UI
         private void btn_prepare_Click(object sender, EventArgs e)
         {
             order.Status = Enum_OrderStatus.Preparing;
-            
+            Order_Service orderstat = new Order_Service();
+            orderstat.Preparing(order);
         }
     }
 }
