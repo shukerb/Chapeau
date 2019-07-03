@@ -27,9 +27,10 @@ namespace ChepeauDAL
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        //gets a list of items for the order
         public List<Item> GetItems(Order order)
         {
-            string query = string.Format("SELECT [Type] from [OrderContent] WHERE [OrderID] = {0}", order.ID);
+            string query = string.Format("SELECT [ItemName], [Amount], [Comment], [Type], [Status] from [OrderContent] WHERE [OrderID] = {0}", order.ID);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadItems(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -50,7 +51,7 @@ namespace ChepeauDAL
             ExecuteEditQuery(updateOrder, sqlParameterAdmin);
         }
 
-        //for assigning the data to Order
+        //for assigning the data to Orders
         private List<Order> ReadOrder(DataTable dataTable)
         {
             List<Order> orders = new List<Order>();
@@ -62,12 +63,13 @@ namespace ChepeauDAL
             return orders;
         }
 
+        //for assigning the data to Items
         private List<Item> ReadItems(DataTable dataTable)
         {
             List<Item> items = new List<Item>();
             foreach (DataRow dr in dataTable.Rows)
             {
-                Item item = new Item((string)dr["Type"]);
+                Item item = new Item((string)dr["ItemName"], (int)dr["Amount"], (string)dr["Comment"], (string)dr["Type"], (string)dr["Status"]);
             }
             return items;
         }

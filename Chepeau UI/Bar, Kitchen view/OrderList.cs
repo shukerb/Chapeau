@@ -90,13 +90,11 @@ namespace Chepeau_UI
             listViewSent.Columns.Add("Table ID", 100, HorizontalAlignment.Left);
             listViewSent.Columns.Add("Time Created", 140, HorizontalAlignment.Left);
 
-            TakeOrder_Service take = new TakeOrder_Service();
             foreach (Order order in orders)
             {
                 if (order.Status == Enum_OrderStatus.Sent)
                 {
-                    order.items = take.Get_Order_Items(order);
-                    ListViewItem li = CheckItem(order);
+                    ListViewItem li = Item(order);
                     listViewSent.Items.Add(li);
                 }
             }
@@ -111,49 +109,21 @@ namespace Chepeau_UI
             listViewPreparing.Columns.Add("Table ID", 100, HorizontalAlignment.Left);
             listViewPreparing.Columns.Add("Time Created", 140, HorizontalAlignment.Left);
 
-            TakeOrder_Service take = new TakeOrder_Service();
             foreach (Order order in orders)
             {
                 if (order.Status == Enum_OrderStatus.Preparing)
                 {
-                    order.items = take.Get_Order_Items(order);
-                    ListViewItem li = CheckItem(order);
+                    ListViewItem li = Item(order);
                     listViewPreparing.Items.Add(li);
                 }
             }
-        }
-
-        private ListViewItem CheckItem(Order order)
-        {
-            foreach (Item item in order.items)
-            {
-                if (employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Soft_Drink ||
-                    employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Hot_Drink ||
-                    employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Beer ||
-                    employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Wine)
-                {
-                    ListViewItem li = Item(order);
-                    return li;
-                }
-                else if (employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Desserts ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Mains ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Starters ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Bites ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Mains ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Specials)
-                {
-                    ListViewItem li = Item(order);
-                    return li;
-                }
-            }
-            return null;
         }
         //adding the items to an listviewitem
         private ListViewItem Item(Order order)
         {
             ListViewItem li = new ListViewItem(order.ID.ToString());
             li.SubItems.Add(order.TableID.ToString());
-            li.SubItems.Add(order.TimeStamp.ToString("HH:mm:tt"));
+            li.SubItems.Add(order.TimeStamp.ToString("HH:mm"));
             li.Tag = order;
             return li;
         }

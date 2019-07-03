@@ -53,10 +53,14 @@ namespace ChepeauModel
             Status = (Enum_Item_Status)Enum.Parse(typeof(Enum_Item_Status), status, true);
         }
 
-        //used for chef and kitchen
-        public Item(string type)
+        //used for bar and kitchen
+        public Item(string name, int amount, string comment, string type, string status)
         {
+            Name = name;
+            Amount = amount;
+            Comment = comment;
             Type = (Enum_Item_Type)Enum.Parse(typeof(Enum_Item_Type), type, true);
+            Status = (Enum_Item_Status)Enum.Parse(typeof(Enum_Item_Status), status, true);
         }
     }
 }

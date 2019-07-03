@@ -43,10 +43,6 @@ namespace Chepeau_UI
             timer = new Timer();
             StartTimer(timer);
 
-            //retrieve the current order items
-            Order_Service take = new Order_Service();
-            order.items = take.GetItems(order);
-
             //the time the order was created
             lbl_timetbl.Text = order.TimeStamp.ToString("HH:mm");
             ShowOrder();
@@ -64,6 +60,7 @@ namespace Chepeau_UI
             Refresh();
             Invalidate();
             lbl_timenow.Text = DateTime.Now.ToString("HH:mm");
+            ShowOrder();
             Application.DoEvents();
         }
 
@@ -78,6 +75,9 @@ namespace Chepeau_UI
         //showing the listview
         private void ShowOrder()
         {
+            //retrieve the current order items
+            order.items = service.GetItems(order);
+
             listViewOrder.View = View.Details;
 
             listViewOrder.Columns.Add("Name", 160, HorizontalAlignment.Left);
@@ -88,21 +88,7 @@ namespace Chepeau_UI
             {
                 if (item.Status == Enum_Item_Status.Preparing)
                 {
-                    ListViewItem li = new ListViewItem();
-                    if (employee.Position == Enum_Employee.Barman)
-                    {
-                        if (item.Type == Enum_Item_Type.Soft_Drink || item.Type == Enum_Item_Type.Hot_Drink || item.Type == Enum_Item_Type.Beer || item.Type == Enum_Item_Type.Wine)
-                        {
-                            li = Item(item);
-                        }
-                    }
-                    else if (employee.Position == Enum_Employee.Chef)
-                    {
-                        if (item.Type == Enum_Item_Type.Dinner_Desserts || item.Type == Enum_Item_Type.Dinner_Mains || item.Type == Enum_Item_Type.Dinner_Starters || item.Type == Enum_Item_Type.Lunch_Bites || item.Type == Enum_Item_Type.Lunch_Mains || item.Type == Enum_Item_Type.Lunch_Specials)
-                        {
-                            li = Item(item);
-                        }
-                    }
+                    ListViewItem li = Item(item);
                     listViewOrder.Items.Add(li);
                 }
             }
