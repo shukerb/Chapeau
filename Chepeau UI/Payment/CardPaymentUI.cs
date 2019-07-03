@@ -31,25 +31,25 @@ namespace Chepeau_UI
         // sets payement method to with VISA and opens Feedback form
         private void btn_PayVisa_Click(object sender, EventArgs e)
         {
-            Bill.SetPaymentMethod(Enum_Payment_Type.Visa);
+            Bill.SetPaymentMethod("Visa");
             CreateFeedbackForm();
         }
         // sets payement method to with Maetsro and opens Feedback form             
         private void btn_PayMaestro_Click(object sender, EventArgs e)
         {
-            Bill.SetPaymentMethod(Enum_Payment_Type.Maestro);
+            Bill.SetPaymentMethod("Maestro");
             CreateFeedbackForm();
         }
         // sets payement method to with Pin and opens Feedback form
         private void btn_PayPin_Click(object sender, EventArgs e)
         {
-            Bill.SetPaymentMethod(Enum_Payment_Type.Pin);
+            Bill.SetPaymentMethod("Pin");
             CreateFeedbackForm();
         }
         // sets payement method to with Cash and opens Feedback form
         private void btn_PayCash_Click(object sender, EventArgs e)
         {
-            Bill.SetPaymentMethod(Enum_Payment_Type.Cash);
+            Bill.SetPaymentMethod("Cash");
             CreateFeedbackForm();
         }
         // returns to normal payment window

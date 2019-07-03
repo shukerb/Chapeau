@@ -46,7 +46,6 @@
     <Compile Include="Enums\Enum_Item_Type.cs" />
     <Compile Include="Enums\Enum_Employee.cs" />
     <Compile Include="Enums\Enum_Menu_Type.cs" />
-    <Compile Include="Enums\Enum_Payment_Type.cs" />
     <Compile Include="Enums\Enum_Table_Status.cs" />
     <Compile Include="Enums\Enum_Order_Status .cs" />
     <Compile Include="Enums\Enum_Item_Status.cs" />

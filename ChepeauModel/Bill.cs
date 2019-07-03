@@ -18,7 +18,7 @@ namespace ChepeauModel
         public decimal VAT { get; private set; }
         public decimal Tip { get; private set; }
         public string Feedback { get; private set; }
-        public Enum_Payment_Type PaymentMethod { get; private set; }
+        public string PaymentMethod { get; private set; }
 
         //Calculates total price and stores it in back up
         public Bill(Order Order)
@@ -69,7 +69,7 @@ namespace ChepeauModel
         {
             TotalPrice = BackUpTotalPrice;
         }
-        public void SetPaymentMethod(Enum_Payment_Type paymentMethod)
+        public void SetPaymentMethod(string paymentMethod)
         {
             PaymentMethod = paymentMethod;
         }
