@@ -89,22 +89,19 @@ namespace Chepeau_UI
                 if (item.Status == Enum_Item_Status.Preparing)
                 {
                     ListViewItem li = new ListViewItem();
-                    if (employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Soft_Drink ||
-                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Hot_Drink ||
-                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Beer ||
-                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Wine)
+                    if (employee.Position == Enum_Employee.Barman)
                     {
-                        li = Item(item);
+                        if (item.Type == Enum_Item_Type.Soft_Drink || item.Type == Enum_Item_Type.Hot_Drink || item.Type == Enum_Item_Type.Beer || item.Type == Enum_Item_Type.Wine)
+                        {
+                            li = Item(item);
+                        }
                     }
-
-                    if (employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Desserts ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Mains ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Starters ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Bites ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Mains ||
-                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Specials)
+                    else if (employee.Position == Enum_Employee.Chef)
                     {
-                        li = Item(item);
+                        if (item.Type == Enum_Item_Type.Dinner_Desserts || item.Type == Enum_Item_Type.Dinner_Mains || item.Type == Enum_Item_Type.Dinner_Starters || item.Type == Enum_Item_Type.Lunch_Bites || item.Type == Enum_Item_Type.Lunch_Mains || item.Type == Enum_Item_Type.Lunch_Specials)
+                        {
+                            li = Item(item);
+                        }
                     }
                     listViewOrder.Items.Add(li);
                 }
