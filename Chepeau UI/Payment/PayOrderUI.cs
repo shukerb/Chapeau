@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using ChepeauLogic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChepeauModel;
-using System.IO;
 
 namespace Chepeau_UI
 {
@@ -32,7 +23,7 @@ namespace Chepeau_UI
         }
 
         // shows payment with card windows form and passes order and bill values to it
-        private void btn_PayWithCard_Click(object sender, EventArgs e)
+        private void btn_Pay_Click(object sender, EventArgs e)
         {
             Card_payment cardPayUI = new Card_payment(bill, Order);
             cardPayUI.Show();
@@ -67,15 +58,6 @@ namespace Chepeau_UI
 
                 listViewPay.Items.Add(listViewItem);
             }          
-        }
-
-        // when the button is clicked it saves the information inside the database
-        private void btn_payCash_Click(object sender, EventArgs e)
-        {
-            CustomerFeedbackFormUI feedback = new CustomerFeedbackFormUI(bill, Order);
-            feedback.Show();
-
-            Close();          
         }
 
        // adds tip to price    

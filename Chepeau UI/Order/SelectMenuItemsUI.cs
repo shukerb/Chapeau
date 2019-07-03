@@ -16,6 +16,8 @@ namespace Chepeau_UI
         public SelectMenuItemsUI(Order order, Enum_Menu_Type menuType)
         {
             InitializeComponent();
+            Text = $"Select {menuType.ToString()} Items";
+
             service = new TakeOrder_Service();
             this.order = order;
 

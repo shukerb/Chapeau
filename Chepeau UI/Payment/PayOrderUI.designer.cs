@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_payCard = new System.Windows.Forms.Button();
-            this.btn_payCash = new System.Windows.Forms.Button();
+            this.btn_Pay = new System.Windows.Forms.Button();
             this.listViewPay = new System.Windows.Forms.ListView();
             this.btn_back = new System.Windows.Forms.Button();
             this.txtBX_totalPrice = new System.Windows.Forms.TextBox();
@@ -46,27 +45,16 @@
             this.lbl2_EuroSignTxt = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btn_payCard
+            // btn_Pay
             // 
-            this.btn_payCard.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_payCard.Location = new System.Drawing.Point(49, 591);
-            this.btn_payCard.Name = "btn_payCard";
-            this.btn_payCard.Size = new System.Drawing.Size(273, 44);
-            this.btn_payCard.TabIndex = 0;
-            this.btn_payCard.Text = "Pay Card";
-            this.btn_payCard.UseVisualStyleBackColor = true;
-            this.btn_payCard.Click += new System.EventHandler(this.btn_PayWithCard_Click);
-            // 
-            // btn_payCash
-            // 
-            this.btn_payCash.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_payCash.Location = new System.Drawing.Point(49, 541);
-            this.btn_payCash.Name = "btn_payCash";
-            this.btn_payCash.Size = new System.Drawing.Size(273, 44);
-            this.btn_payCash.TabIndex = 1;
-            this.btn_payCash.Text = "Pay Cash";
-            this.btn_payCash.UseVisualStyleBackColor = true;
-            this.btn_payCash.Click += new System.EventHandler(this.btn_payCash_Click);
+            this.btn_Pay.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Pay.Location = new System.Drawing.Point(49, 549);
+            this.btn_Pay.Name = "btn_Pay";
+            this.btn_Pay.Size = new System.Drawing.Size(273, 63);
+            this.btn_Pay.TabIndex = 0;
+            this.btn_Pay.Text = "Pay ";
+            this.btn_Pay.UseVisualStyleBackColor = true;
+            this.btn_Pay.Click += new System.EventHandler(this.btn_Pay_Click);
             // 
             // listViewPay
             // 
@@ -225,8 +213,7 @@
             this.Controls.Add(this.txtBX_totalPrice);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.listViewPay);
-            this.Controls.Add(this.btn_payCash);
-            this.Controls.Add(this.btn_payCard);
+            this.Controls.Add(this.btn_Pay);
             this.Name = "PayOrderUI";
             this.Text = "Pay Order";
             this.ResumeLayout(false);
@@ -236,8 +223,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_payCard;
-        private System.Windows.Forms.Button btn_payCash;
+        private System.Windows.Forms.Button btn_Pay;
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Label lbl_TotalPriceTxt;
         private System.Windows.Forms.Label lbl_TipTxt;

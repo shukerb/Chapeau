@@ -18,6 +18,7 @@ namespace ChepeauModel
         public decimal VAT { get; private set; }
         public decimal Tip { get; private set; }
         public string Feedback { get; private set; }
+        public Enum_Payment_Type PaymentMethod { get; private set; }
 
         //Calculates total price and stores it in back up
         public Bill(Order Order)
@@ -62,30 +63,15 @@ namespace ChepeauModel
             BillID = id;
             Feedback = comment;
         }
-        //Checks if debit/credit card pin code is of length of 4 digits and composed of numbers
-        public bool CheckCard(string numbers)
-        {
-            bool check = true;
-            if (numbers.Length != 4)
-            {
-                check = false;
-            }
-
-            foreach (char c in numbers)
-            {
-                if (c != 0 && c != 1 && c != 2 && c != 3 && c != 4 && c != 5 && c != 6 && c != 7 && c != 8 && c != 9 && c == ' ')
-                {
-                    check = false;
-                }
-
-            }
-            return check;
-        }
+        
         //removes tip from full price
         public void RemoveTip()
         {
             TotalPrice = BackUpTotalPrice;
         }
-
+        public void SetPaymentMethod(Enum_Payment_Type paymentMethod)
+        {
+            PaymentMethod = paymentMethod;
+        }
     }
 }
