@@ -21,7 +21,7 @@ namespace Chepeau_UI
         Order_Service service = new Order_Service();
         List<Order> completedorders = new List<Order>();
 
-        public CompletedOrders(string view)
+        public CompletedOrders(Employee user)
         {
             this.view = view;
 

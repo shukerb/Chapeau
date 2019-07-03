@@ -19,16 +19,16 @@ namespace Chepeau_UI
         Timer timer;
         Order_Service service = new Order_Service();
         List<Order> orders;
-        string view;
+        Employee employee;
 
-        public OrderList(string view)
+        public OrderList(Employee user)
         {
-            //we use view for the names of the forms
-            this.view = view;
+            //we use employee to check if theyre a chef or bartender
+            employee = user;
 
             InitializeComponent();
 
-            if (view == "Kitchen")
+            if (user.Position == Enum_Employee.Chef)
             {
                 this.Text = "Kitchen Order List";
             }
@@ -41,7 +41,7 @@ namespace Chepeau_UI
             timer.Interval = (1000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
-            //get the orders that are not ready
+            //get the orders that are sent to the chef or bartender
             orders = service.GetOrders();
             ShowOrders();
         }
@@ -65,8 +65,8 @@ namespace Chepeau_UI
         //if the view is kitchen or bar, the next form title gets changed, and opens the new form
         private void btn_completedorders_Click(object sender, EventArgs e)
         {
-            CompletedOrders completed = new CompletedOrders(view);
-            if (view == "Kitchen")
+            CompletedOrders completed = new CompletedOrders(employee);
+            if (employee.Position == Enum_Employee.Chef)
             {
                 completed.Text = "Completed Orders Kitchen";
                 completed.ShowDialog();
@@ -80,7 +80,6 @@ namespace Chepeau_UI
 
         private void ShowOrders()
         {
-            listViewOrders.GridLines = true;
             listViewOrders.View = View.Details;
 
             listViewOrders.Columns.Add("Order ID", 100, HorizontalAlignment.Left);

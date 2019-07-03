@@ -54,12 +54,12 @@ namespace Chepeau_UI
                     }
                     else if (user.Position == Enum_Employee.Chef)
                     {
-                        OrderList kitchen = new OrderList("Kitchen");
+                        OrderList kitchen = new OrderList(user);
                         kitchen.ShowDialog();
                     }
                     else if (user.Position == Enum_Employee.Barman)
                     {
-                        OrderList bar = new OrderList("Bar");
+                        OrderList bar = new OrderList(user);
                         bar.ShowDialog();
                     }
                     Close();
