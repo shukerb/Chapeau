@@ -28,7 +28,7 @@ namespace Chepeau_UI
             lbl_TableNumber.Text = $"{this.table.TableNumber}";
 
             //hide the unnecessary buttons
-            HideButtons(new List<Button> { btn_alterOrder, btn_confirmDelete, btn_deleteItems, btn_payBill, btn_sendOrder,btn_OrderServed });
+            HideButtons(new List<Button> { btn_alterOrder, btn_confirmDelete, btn_deleteItems, btn_payBill, btn_sendOrder, btn_OrderServed });
             clb_orderItems.Hide();
 
             CheckStatus();
@@ -104,8 +104,8 @@ namespace Chepeau_UI
 
             if (order != null)
             {
-                ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder,btn_OrderServed });
-                HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete,btn_cancelReservation });
+                ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder, btn_OrderServed });
+                HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete, btn_cancelReservation });
 
                 ShowOrder(order);
             }
@@ -173,7 +173,7 @@ namespace Chepeau_UI
         }
         private void btn_sendOrder_Click(object sender, EventArgs e)
         {
-            order.Status= Enum_OrderStatus.Sent;
+            order.Status = Enum_OrderStatus.Sent;
             takeOrder_Service.Update_OrderStatus(order);
             ChangeItemStatus("DECREASE");
         }
@@ -191,7 +191,7 @@ namespace Chepeau_UI
                     item.Status = Enum_Item_Status.Served;
                 if (type == "DECREASE" && item.Status == Enum_Item_Status.New)
                     item.Status = Enum_Item_Status.Preparing;
-                    takeOrder_Service.Decrease_Stock(item);
+                takeOrder_Service.Decrease_Stock(item);
 
                 takeOrder_Service.Change_ItemsStatus(item, order);
             }
@@ -202,22 +202,9 @@ namespace Chepeau_UI
         #region Ivaylo
         private void btn_payBill_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (order.Status == Enum_OrderStatus.Served)
-
-            //    {
-                    PayOrderUI payOrderUI = new PayOrderUI(order);
-                    payOrderUI.TopMost = true;
-                    payOrderUI.Show();
-                    Hide();
-                //}
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Order must be first served.");
-
-            //}
+            PayOrderUI payOrderUI = new PayOrderUI(order);
+            payOrderUI.ShowDialog();
+            Hide();
         }
         public void ClearOrder()
         {
