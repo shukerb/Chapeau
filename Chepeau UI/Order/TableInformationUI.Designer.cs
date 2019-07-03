@@ -31,6 +31,7 @@
             this.lv_Order = new System.Windows.Forms.ListView();
             this.ItemName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ItemAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ItemStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbl_TableNumber = new System.Windows.Forms.Label();
             this.btn_takeOrder = new System.Windows.Forms.Button();
             this.btn_payBill = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.btn_confirmDelete = new System.Windows.Forms.Button();
             this.btn_sendOrder = new System.Windows.Forms.Button();
             this.btn_OrderServed = new System.Windows.Forms.Button();
-            this.ItemStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lv_Order
@@ -73,6 +73,11 @@
             // 
             this.ItemAmount.Text = "Amount";
             this.ItemAmount.Width = 75;
+            // 
+            // ItemStatus
+            // 
+            this.ItemStatus.Text = "Status";
+            this.ItemStatus.Width = 90;
             // 
             // lbl_TableNumber
             // 
@@ -231,14 +236,9 @@
             this.btn_OrderServed.Name = "btn_OrderServed";
             this.btn_OrderServed.Size = new System.Drawing.Size(98, 26);
             this.btn_OrderServed.TabIndex = 17;
-            this.btn_OrderServed.Text = "Served";
+            this.btn_OrderServed.Text = "Serve";
             this.btn_OrderServed.UseVisualStyleBackColor = true;
             this.btn_OrderServed.Click += new System.EventHandler(this.btn_OrderServed_Click);
-            // 
-            // ItemStatus
-            // 
-            this.ItemStatus.Text = "Status";
-            this.ItemStatus.Width = 90;
             // 
             // TableInformationUI
             // 

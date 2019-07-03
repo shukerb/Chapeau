@@ -80,7 +80,7 @@ namespace ChepeauDAL
         {
             string query = string.Format("SELECT * FROM [Order] WHERE TableID = {0} AND Status NOT LIKE 'Complete'", table.TableNumber);
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return FindOrder(ExecuteSelectQuery(query, sqlParameters));
+            return CheckOrder(ExecuteSelectQuery(query, sqlParameters));
         }
         public Item DB_Get_Item_Amount(Item item, Order order)
         {
@@ -104,8 +104,7 @@ namespace ChepeauDAL
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true),
-                        (DateTime)dr["Date"], (string)dr["Feedback"]);
+                    Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"],(string)dr["Status"], (DateTime)dr["Date"], (string)dr["Feedback"]);
                     orders.Add(order);
                 }
                 return orders[0];
@@ -114,17 +113,6 @@ namespace ChepeauDAL
         }
 
         //finding things in the database
-        private Order FindOrder(DataTable dataTable)
-        {
-            List<Order> orders = new List<Order>();
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true),
-                    (DateTime)dr["Date"], (string)dr["Feedback"]);
-                orders.Add(order);
-            }
-            return orders[0];
-        }
         private Item FindItem(DataTable dataTable, string type)
         {
             List<Item> items = new List<Item>();

@@ -18,7 +18,7 @@ namespace Chepeau_UI
     {
         private Employee employee;
         private Timer timer;
-        private Order order = new Order();
+        private Order order;
         private Order_Service service = new Order_Service();
 
         public Order_Table(Order order, Employee user)
