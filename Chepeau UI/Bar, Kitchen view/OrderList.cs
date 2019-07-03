@@ -75,22 +75,20 @@ namespace Chepeau_UI
                 completed.ShowDialog();
             }
         }
-
+        //method to show both listviews
         private void ShowOrders()
         {
             ShowListViewSent();
             ShowListViewPreparing();
         }
-
+        //show the listview for sent orders
         private void ShowListViewSent()
         {
             listViewSent.View = View.Details;
 
-            listViewSent.Columns.Add("Order ID", 70, HorizontalAlignment.Left);
-            listViewSent.Columns.Add("Table ID", 70, HorizontalAlignment.Left);
-            listViewSent.Columns.Add("Time Created", 120, HorizontalAlignment.Left);
-            listViewSent.Columns.Add("Status", 80, HorizontalAlignment.Left);
-
+            listViewSent.Columns.Add("Order ID", 100, HorizontalAlignment.Left);
+            listViewSent.Columns.Add("Table ID", 100, HorizontalAlignment.Left);
+            listViewSent.Columns.Add("Time Created", 140, HorizontalAlignment.Left);
             foreach (Order order in orders)
             {
                 if (order.Status == Enum_OrderStatus.Sent)
@@ -100,16 +98,14 @@ namespace Chepeau_UI
                 }
             }
         }
-
+        //listview for preparing orders
         private void ShowListViewPreparing()
         {
             listViewPreparing.View = View.Details;
 
-            listViewPreparing.Columns.Add("Order ID", 70, HorizontalAlignment.Left);
-            listViewPreparing.Columns.Add("Table ID", 70, HorizontalAlignment.Left);
-            listViewPreparing.Columns.Add("Time Created", 120, HorizontalAlignment.Left);
-            listViewPreparing.Columns.Add("Status", 80, HorizontalAlignment.Left);
-
+            listViewPreparing.Columns.Add("Order ID", 100, HorizontalAlignment.Left);
+            listViewPreparing.Columns.Add("Table ID", 100, HorizontalAlignment.Left);
+            listViewPreparing.Columns.Add("Time Created", 140, HorizontalAlignment.Left);
             foreach (Order order in orders)
             {
                 if (order.Status == Enum_OrderStatus.Preparing)
@@ -125,7 +121,6 @@ namespace Chepeau_UI
             ListViewItem li = new ListViewItem(order.ID.ToString());
             li.SubItems.Add(order.TableID.ToString());
             li.SubItems.Add(order.TimeStamp.ToString("HH:mm:tt"));
-            li.SubItems.Add(order.Status.ToString());
             li.Tag = order;
             return li;
         }

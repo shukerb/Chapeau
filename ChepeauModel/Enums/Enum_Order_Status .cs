@@ -12,7 +12,7 @@ namespace ChepeauModel
         Not_Ready,
         ////when you send the order to the kitchen or bar
         Sent,
-        //when the chef or bartender accept it
+        //when the chef or bartender accepts the order
         Preparing,
         // when the chef or bartender is done
         Ready,
