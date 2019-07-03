@@ -38,7 +38,7 @@
             // 
             // lbl_timenow
             // 
-            this.lbl_timenow.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_timenow.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_timenow.Location = new System.Drawing.Point(100, 12);
             this.lbl_timenow.Name = "lbl_timenow";
             this.lbl_timenow.Size = new System.Drawing.Size(196, 56);
@@ -48,7 +48,7 @@
             // 
             // lbl_timetbl
             // 
-            this.lbl_timetbl.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_timetbl.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_timetbl.Location = new System.Drawing.Point(339, 96);
             this.lbl_timetbl.Name = "lbl_timetbl";
             this.lbl_timetbl.Size = new System.Drawing.Size(132, 35);
@@ -58,7 +58,7 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(171, 35);
@@ -75,7 +75,7 @@
             // 
             // btn_back
             // 
-            this.btn_back.Font = new System.Drawing.Font("Microsoft Tai Le", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_back.Font = new System.Drawing.Font("Microsoft Tai Le", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_back.Location = new System.Drawing.Point(385, 12);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(85, 53);
@@ -86,7 +86,7 @@
             // 
             // btn_complete
             // 
-            this.btn_complete.Font = new System.Drawing.Font("Microsoft Tai Le", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_complete.Font = new System.Drawing.Font("Microsoft Tai Le", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_complete.Location = new System.Drawing.Point(12, 580);
             this.btn_complete.Name = "btn_complete";
             this.btn_complete.Size = new System.Drawing.Size(457, 61);
