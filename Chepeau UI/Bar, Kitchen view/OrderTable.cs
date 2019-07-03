@@ -80,22 +80,22 @@ namespace Chepeau_UI
 
             foreach (Item item in order.items)
             {
-                ListViewItem li = new ListViewItem();
-                if (employee.Position == Enum_Employee.Barman)
+                if (item.Status == Enum_Item_Status.Preparing)
                 {
-                    if (item.Type == Enum_Item_Type.Beer || item.Type == Enum_Item_Type.Hot_Drink || item.Type == Enum_Item_Type.Soft_Drink || item.Type == Enum_Item_Type.Wine)
+                    ListViewItem li = new ListViewItem();
+                    if (employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Soft_Drink || 
+                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Hot_Drink || 
+                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Beer || 
+                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Wine)
                     {
                         li = Item(item);
                     }
-                }
-                else if (employee.Position == Enum_Employee.Chef)
-                {
-                    if (item.Type == Enum_Item_Type.Dinner_Desserts || item.Type == Enum_Item_Type.Dinner_Mains || item.Type == Enum_Item_Type.Dinner_Starters || item.Type == Enum_Item_Type.Lunch_Bites || item.Type == Enum_Item_Type.Lunch_Mains || item.Type == Enum_Item_Type.Lunch_Specials)
+                    else
                     {
                         li = Item(item);
                     }
+                    listViewOrder.Items.Add(li);
                 }
-                listViewOrder.Items.Add(li);
             }
         }
 

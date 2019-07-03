@@ -12,6 +12,7 @@ namespace ChepeauModel
         public int Stock { get; set; }
         public string Comment { get; set; }
 
+        public Enum_Item_Status Status { get; set; }
         public Enum_Item_Type Type { get; set; }
 
         public Item()
@@ -41,7 +42,7 @@ namespace ChepeauModel
         }
 
         //this constructor is for the orderContent table in the database
-        public Item(int orderID, string name, int itemID, int amount, string comment, decimal price)
+        public Item(int orderID, string name, int itemID, int amount, string comment, decimal price, string status)
         {
             OrderID = orderID;
             Name = name;
@@ -49,6 +50,7 @@ namespace ChepeauModel
             Amount = amount;
             Comment = comment;
             Price = price;
+            Status = (Enum_Item_Status)Enum.Parse(typeof(Enum_Item_Status), status, true);
         }
     }
 }

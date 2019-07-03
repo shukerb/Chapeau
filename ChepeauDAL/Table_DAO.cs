@@ -10,7 +10,7 @@ namespace ChepeauDAL
     {
         public void UpdateRecord(Table table)
         {
-            string query = string.Format("UPDATE [Table] SET [Status]= '{0}' WHERE TableID= {1}",table.Status,table.TableNumber);
+            string query = string.Format("UPDATE [Table] SET [Status]= '{0}' WHERE TableID= {1}", table.Status, table.TableNumber);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }

@@ -46,13 +46,15 @@
             this.btn_confirmDelete = new System.Windows.Forms.Button();
             this.btn_sendOrder = new System.Windows.Forms.Button();
             this.btn_OrderServed = new System.Windows.Forms.Button();
+            this.ItemStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lv_Order
             // 
             this.lv_Order.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ItemName,
-            this.ItemAmount});
+            this.ItemAmount,
+            this.ItemStatus});
             this.lv_Order.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lv_Order.GridLines = true;
             this.lv_Order.Location = new System.Drawing.Point(11, 82);
@@ -65,12 +67,12 @@
             // ItemName
             // 
             this.ItemName.Text = "Name";
-            this.ItemName.Width = 231;
+            this.ItemName.Width = 171;
             // 
             // ItemAmount
             // 
             this.ItemAmount.Text = "Amount";
-            this.ItemAmount.Width = 103;
+            this.ItemAmount.Width = 75;
             // 
             // lbl_TableNumber
             // 
@@ -233,6 +235,11 @@
             this.btn_OrderServed.UseVisualStyleBackColor = true;
             this.btn_OrderServed.Click += new System.EventHandler(this.btn_OrderServed_Click);
             // 
+            // ItemStatus
+            // 
+            this.ItemStatus.Text = "Status";
+            this.ItemStatus.Width = 90;
+            // 
             // TableInformationUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,5 +291,6 @@
         private System.Windows.Forms.Button btn_confirmDelete;
         private System.Windows.Forms.Button btn_sendOrder;
         private System.Windows.Forms.Button btn_OrderServed;
+        private System.Windows.Forms.ColumnHeader ItemStatus;
     }
 }
