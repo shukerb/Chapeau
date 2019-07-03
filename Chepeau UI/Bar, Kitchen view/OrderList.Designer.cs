@@ -51,7 +51,7 @@
             // lbl_timenow
             // 
             this.lbl_timenow.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_timenow.Location = new System.Drawing.Point(105, 17);
+            this.lbl_timenow.Location = new System.Drawing.Point(117, 16);
             this.lbl_timenow.Name = "lbl_timenow";
             this.lbl_timenow.Size = new System.Drawing.Size(260, 56);
             this.lbl_timenow.TabIndex = 47;
@@ -71,7 +71,7 @@
             // 
             // listViewSent
             // 
-            this.listViewSent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewSent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewSent.FullRowSelect = true;
             this.listViewSent.GridLines = true;
             this.listViewSent.Location = new System.Drawing.Point(12, 131);
@@ -83,7 +83,7 @@
             // 
             // listViewPreparing
             // 
-            this.listViewPreparing.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewPreparing.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewPreparing.FullRowSelect = true;
             this.listViewPreparing.GridLines = true;
             this.listViewPreparing.Location = new System.Drawing.Point(12, 414);

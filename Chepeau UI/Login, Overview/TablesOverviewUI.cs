@@ -16,8 +16,6 @@ namespace Chepeau_UI
         //this list will be used to check the status of the table and to check which button was clicked 
         private List<Button> tablButtonsList;
 
-
-
         public TablesOverviewUI(Employee user)
         {
 
@@ -79,9 +77,6 @@ namespace Chepeau_UI
         //check the fit color for the table
         private void checkColor(Button button, int tableNumber, List<Table> tables)
         {
-            
-            
-
             Table table = tables.Find(x => x.TableNumber == tableNumber);
             string status = CheckOrderstatus(table);
             button.Text = ($"{tableNumber}\n{status} ");

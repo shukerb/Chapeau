@@ -34,46 +34,27 @@ namespace Chepeau_UI
             CheckStatus();
             CheckOrder();
         }
-
-
         private void btn_Back_Click(object sender, EventArgs e)
         {
             Close();
         }
-        private void CheckStatus()
+        private void HideButtons(List<Button> buttons)
         {
-            if (table.Status == Enum_TableStatus.Free || table.Status == Enum_TableStatus.Reserved)
+            foreach (Button button in buttons)
             {
-                HideButtons(new List<Button> { btn_takeOrder, btn_cancelReservation, btn_OrderServed });
-                lv_Order.Hide();
-                lbl_orderList.Hide();
-                if (table.Status == Enum_TableStatus.Reserved)
-                {
-                    HideButtons(new List<Button> { btn_reserve });
-                    ShowButtons(new List<Button> { btn_cancelReservation });
-                }
+                button.Hide();
             }
-            //else if (table.Status == Enum_TableStatus.Occupied)
-            //{
-            //    HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
-            //    ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
-            //    lbl_orderList.Show();
-            //    lv_Order.Show();
-            //}
         }
-        private void CheckOrder()
+        private void ShowButtons(List<Button> buttons)
         {
-            order = takeOrder_Service.Check_If_Order_Exists(table);
-
-            if (order != null)
+            foreach (Button button in buttons)
             {
-                ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder,btn_OrderServed });
-                HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete,btn_cancelReservation });
-
-                ShowOrder(order);
+                button.Show();
             }
         }
 
+
+        #region Shuker
         /////////////////////// change the table status to reserved in the database
         private void btn_reserve_Click(object sender, EventArgs e)
         {
@@ -100,8 +81,35 @@ namespace Chepeau_UI
             lbl_orderList.Show();
             lv_Order.Show();
         }
+        private void CheckStatus()
+        {
+            if (table.Status == Enum_TableStatus.Free || table.Status == Enum_TableStatus.Reserved)
+            {
+                HideButtons(new List<Button> { btn_takeOrder, btn_cancelReservation, btn_OrderServed });
+                lv_Order.Hide();
+                lbl_orderList.Hide();
+                if (table.Status == Enum_TableStatus.Reserved)
+                {
+                    HideButtons(new List<Button> { btn_reserve });
+                    ShowButtons(new List<Button> { btn_cancelReservation });
+                }
+            }
+        }
+        #endregion
 
-        ///////////////////////// creating, altering and showing order
+        #region Kai
+        private void CheckOrder()
+        {
+            order = takeOrder_Service.Check_If_Order_Exists(table);
+
+            if (order != null)
+            {
+                ShowButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder,btn_OrderServed });
+                HideButtons(new List<Button> { btn_takeOrder, btn_confirmDelete,btn_cancelReservation });
+
+                ShowOrder(order);
+            }
+        }
         private void btn_takeOrder_Click(object sender, EventArgs e)
         {
             //get new order from database
@@ -131,12 +139,11 @@ namespace Chepeau_UI
             {
                 ListViewItem listViewItem = new ListViewItem(item.Name);
                 listViewItem.SubItems.Add(item.Amount.ToString());
-                listViewItem.SubItems.Add(item.Price.ToString());
+                listViewItem.SubItems.Add(item.Status.ToString());
                 lv_Order.Items.Add(listViewItem);
             }
             lv_Order.Show();
         }
-
         private void btn_deleteItems_Click(object sender, EventArgs e)
         {
             HideButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_sendOrder });
@@ -168,13 +175,31 @@ namespace Chepeau_UI
         {
             order.Status= Enum_OrderStatus.Sent;
             takeOrder_Service.Update_OrderStatus(order);
+            ChangeItemStatus("DECREASE");
+        }
+        private void btn_OrderServed_Click(object sender, EventArgs e)
+        {
+            order.Status = Enum_OrderStatus.Served;
+            takeOrder_Service.Update_OrderStatus(order);
+            ChangeItemStatus("SERVE");
+        }
+        private void ChangeItemStatus(string type)
+        {
             foreach (Item item in order.items)
             {
-                takeOrder_Service.Decrease_Stock(item);
-            }
-            MessageBox.Show("Order has been sent");
-        }
+                if (type == "SERVE" && item.Status == Enum_Item_Status.Preparing)
+                    item.Status = Enum_Item_Status.Served;
+                if (type == "DECREASE" && item.Status == Enum_Item_Status.New)
+                    item.Status = Enum_Item_Status.Preparing;
+                    takeOrder_Service.Decrease_Stock(item);
 
+                takeOrder_Service.Change_ItemsStatus(item, order);
+            }
+            ShowOrder(order);
+        }
+        #endregion
+
+        #region Ivaylo
         private void btn_payBill_Click(object sender, EventArgs e)
         {
             //try
@@ -200,28 +225,6 @@ namespace Chepeau_UI
             clb_orderItems.Hide();
             HideButtons(new List<Button> { btn_alterOrder, btn_deleteItems, btn_payBill, btn_confirmDelete });
         }
-
-        private void HideButtons(List<Button> buttons)
-        {
-            foreach (Button button in buttons)
-            {
-                button.Hide();
-            }
-        }
-        private void ShowButtons(List<Button> buttons)
-        {
-            foreach (Button button in buttons)
-            {
-                button.Show();
-            }
-        }
-
-        private void btn_OrderServed_Click(object sender, EventArgs e)
-        {
-            order.Status = Enum_OrderStatus.Served;
-            takeOrder_Service.Update_OrderStatus(order);
-            Close();
-            
-        }
+        #endregion
     }
 }

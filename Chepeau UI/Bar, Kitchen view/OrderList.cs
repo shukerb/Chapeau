@@ -18,6 +18,7 @@ namespace Chepeau_UI
     {
         private List<Order> orders;
         private Employee employee;
+        private Order_Service service = new Order_Service();
 
         public OrderList(Employee user)
         {
@@ -38,11 +39,6 @@ namespace Chepeau_UI
             //start the timer
             Timer timer = new Timer();
             StartTimer(timer);
-
-            //get the orders that are sent to the chef or bartender
-            Order_Service service = new Order_Service();
-            orders = service.GetOrders();
-            ShowOrders();
         }
 
         //button to log out of the chef/bartender
@@ -58,7 +54,10 @@ namespace Chepeau_UI
         private void timer1_Tick(object sender, EventArgs e)
         {
             Refresh();
-            lbl_timenow.Text = DateTime.Now.ToString("HH:mm:ss");
+            lbl_timenow.Text = DateTime.Now.ToString("HH:mm");
+            //get the orders that are sent to the chef or bartender
+            orders = service.GetOrders();
+            ShowOrders();
             Application.DoEvents();
         }
 
@@ -84,16 +83,20 @@ namespace Chepeau_UI
         //show the listview for sent orders
         private void ShowListViewSent()
         {
+            listViewSent.Clear();
             listViewSent.View = View.Details;
 
             listViewSent.Columns.Add("Order ID", 100, HorizontalAlignment.Left);
             listViewSent.Columns.Add("Table ID", 100, HorizontalAlignment.Left);
             listViewSent.Columns.Add("Time Created", 140, HorizontalAlignment.Left);
+
+            TakeOrder_Service take = new TakeOrder_Service();
             foreach (Order order in orders)
             {
                 if (order.Status == Enum_OrderStatus.Sent)
                 {
-                    ListViewItem li = Item(order);
+                    order.items = take.Get_Order_Items(order);
+                    ListViewItem li = CheckItem(order);
                     listViewSent.Items.Add(li);
                 }
             }
@@ -101,21 +104,51 @@ namespace Chepeau_UI
         //listview for preparing orders
         private void ShowListViewPreparing()
         {
+            listViewPreparing.Clear();
             listViewPreparing.View = View.Details;
 
             listViewPreparing.Columns.Add("Order ID", 100, HorizontalAlignment.Left);
             listViewPreparing.Columns.Add("Table ID", 100, HorizontalAlignment.Left);
             listViewPreparing.Columns.Add("Time Created", 140, HorizontalAlignment.Left);
+
+            TakeOrder_Service take = new TakeOrder_Service();
             foreach (Order order in orders)
             {
                 if (order.Status == Enum_OrderStatus.Preparing)
                 {
-                    ListViewItem li = Item(order);
+                    order.items = take.Get_Order_Items(order);
+                    ListViewItem li = CheckItem(order);
                     listViewPreparing.Items.Add(li);
                 }
             }
         }
 
+        private ListViewItem CheckItem(Order order)
+        {
+            foreach (Item item in order.items)
+            {
+                if (employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Soft_Drink ||
+                    employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Hot_Drink ||
+                    employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Beer ||
+                    employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Wine)
+                {
+                    ListViewItem li = Item(order);
+                    return li;
+                }
+                else if (employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Desserts ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Mains ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Starters ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Bites ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Mains ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Specials)
+                {
+                    ListViewItem li = Item(order);
+                    return li;
+                }
+            }
+            return null;
+        }
+        //adding the items to an listviewitem
         private ListViewItem Item(Order order)
         {
             ListViewItem li = new ListViewItem(order.ID.ToString());
@@ -134,6 +167,7 @@ namespace Chepeau_UI
             }
         }
 
+        //this method is for when a specific item is clicked in the listview, it brings up the new form
         private void listViewPreparing_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in listViewPreparing.SelectedItems)
@@ -142,14 +176,15 @@ namespace Chepeau_UI
             }
         }
 
+        //timer startup for refresh every second
         private void StartTimer(Timer timer)
         {
-            //timer startup for refresh every second
-            timer.Interval = (1000);
+            timer.Interval = (5000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
         }
 
+        //the OrderTable form is being made
         private void NewForm(ListViewItem item)
         {
             Order_Table table = new Order_Table((Order)item.Tag, employee);

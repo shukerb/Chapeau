@@ -9,13 +9,20 @@ namespace ChepeauDAL
     public class TakeOrder_DAO : Base
     {
         //insert data into the database
+        public void DB_Change_Item_Status(Item item, Order order)
+        {
+            string query = string.Format("UPDATE OrderContent SET [Status] = '{0}' WHERE ItemID = {1} AND OrderID = {2}",
+                item.Status.ToString(), item.ID, order.ID);
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            ExecuteEditQuery(query, sqlParameters);
+        }
         public void DB_Manipulate_OrderContent(Item item, Order order, string type)
         {
             string query = "";
             if (type == "INSERT")
             {
-                query = string.Format("INSERT INTO OrderContent (OrderID, ItemName, ItemID, Comment, Amount, Price) VALUES ({0}, '{1}', {2}, '{3}', {4}, {5})",
-                    order.ID, item.Name, item.ID, item.Comment, item.Amount, item.Price);
+                query = string.Format("INSERT INTO OrderContent (OrderID, ItemName, ItemID, Comment, Amount, Price, Status) VALUES ({0}, '{1}', {2}, '{3}', {4}, {5}, '{6}')",
+                    order.ID, item.Name, item.ID, item.Comment, item.Amount, item.Price, item.Status);
             }
             else if (type == "UPDATE")
             {
@@ -35,7 +42,7 @@ namespace ChepeauDAL
             string query = string.Format("INSERT INTO [Order] (TableID, EmployeeID, Date, Status, Feedback) VALUES ({0}, {1}, @dt, '{2}', '{3}')",
                 table.TableNumber, user.EmployeeID, Enum_OrderStatus.Not_Ready.ToString(), "");
             SqlParameter[] sqlParameters = new SqlParameter[1];
-                sqlParameters[0] = new SqlParameter("@dt", DateTime.Now);
+            sqlParameters[0] = new SqlParameter("@dt", DateTime.Now);
             ExecuteEditQuery(query, sqlParameters);
         }
         public void DB_Update_Order_Status(Order order)
@@ -45,7 +52,7 @@ namespace ChepeauDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             ExecuteEditQuery(query, sqlParameters);
         }
-        public void DB_Decrease_Stock(Item item)
+        public void DB_Update_Item_Stock(Item item)
         {
             string query = string.Format("UPDATE Item SET [Stock] = [Stock] - {0} WHERE ItemID = {1}",
                 item.Amount, item.ID);
@@ -103,7 +110,7 @@ namespace ChepeauDAL
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus) Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true), 
+                    Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true),
                         (DateTime)dr["Date"], (string)dr["Feedback"]);
                     orders.Add(order);
                 }
@@ -118,7 +125,7 @@ namespace ChepeauDAL
             List<Order> orders = new List<Order>();
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true), 
+                Order order = new Order((int)dr["OrderID"], (int)dr["TableID"], (int)dr["EmployeeID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true),
                     (DateTime)dr["Date"], (string)dr["Feedback"]);
                 orders.Add(order);
             }
@@ -139,7 +146,7 @@ namespace ChepeauDAL
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Item item = new Item((int)dr["OrderID"], (string)dr["ItemName"], (int)dr["ItemID"], (int)dr["Amount"], (string)dr["Comment"], (decimal)dr["Price"]);
+                    Item item = new Item((int)dr["OrderID"], (string)dr["ItemName"], (int)dr["ItemID"], (int)dr["Amount"], (string)dr["Comment"], (decimal)dr["Price"], (string)dr["Status"]);
                     items.Add(item);
                 }
             }
@@ -162,7 +169,7 @@ namespace ChepeauDAL
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Item item = new Item((int)dr["OrderID"], (string)dr["ItemName"], (int)dr["ItemID"], (int)dr["Amount"], (string)dr["Comment"], (decimal)dr["Price"]);
+                    Item item = new Item((int)dr["OrderID"], (string)dr["ItemName"], (int)dr["ItemID"], (int)dr["Amount"], (string)dr["Comment"], (decimal)dr["Price"], (string)dr["Status"]);
                     items.Add(item);
                 }
             }

@@ -48,6 +48,7 @@
     <Compile Include="Enums\Enum_Menu_Type.cs" />
     <Compile Include="Enums\Enum_Table_Status.cs" />
     <Compile Include="Enums\Enum_Order_Status .cs" />
+    <Compile Include="Enums\Enum_Item_Status.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -59,6 +59,7 @@
             // 
             // listViewCompleted
             // 
+            this.listViewCompleted.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewCompleted.Location = new System.Drawing.Point(17, 116);
             this.listViewCompleted.Name = "listViewCompleted";
             this.listViewCompleted.Size = new System.Drawing.Size(453, 525);
@@ -72,7 +73,7 @@
             // lbl_timenow
             // 
             this.lbl_timenow.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_timenow.Location = new System.Drawing.Point(12, 9);
+            this.lbl_timenow.Location = new System.Drawing.Point(153, 12);
             this.lbl_timenow.Name = "lbl_timenow";
             this.lbl_timenow.Size = new System.Drawing.Size(196, 56);
             this.lbl_timenow.TabIndex = 34;
