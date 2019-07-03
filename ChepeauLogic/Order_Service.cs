@@ -38,11 +38,24 @@ namespace ChepeauLogic
             }
         }
         //pushes the new status of the order from not ready to ready
-        public void ReadyOrder(int orderID, int tableID)
+        public void ReadyOrder(Order order)
         {
             try
             {
-                DB_GetOrder.ReadyOrder(orderID, tableID);
+                DB_GetOrder.ReadyOrder(order);
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Could not connect to the Database, please try again later.");
+            }
+        }
+
+        public void Preparing(Order order)
+        {
+            try
+            {
+                DB_GetOrder.Preparing(order);
             }
             catch (Exception)
             {

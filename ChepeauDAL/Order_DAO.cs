@@ -28,9 +28,16 @@ namespace ChepeauDAL
         }
 
         //sets the current order to ready from not ready
-        public void ReadyOrder(int orderID, int tableID)
+        public void ReadyOrder(Order order)
         {
-            string updateOrder = string.Format("UPDATE [Order] set [Status] = 'Ready' WHERE [OrderID] = {0} AND [TableID] = {1}", orderID, tableID);
+            string updateOrder = string.Format("UPDATE [Order] set [Status] = 'Ready' WHERE [OrderID] = {0} AND [TableID] = {1}", order.ID, order.TableID);
+            SqlParameter[] sqlParameterAdmin = new SqlParameter[0];
+            ExecuteEditQuery(updateOrder, sqlParameterAdmin);
+        }
+
+        public void Preparing(Order order)
+        {
+            string updateOrder = string.Format("UPDATE [Order] set [Status] = 'Preparing' WHERE [OrderID] = {0} AND [TableID] = {1}", order.ID, order.TableID);
             SqlParameter[] sqlParameterAdmin = new SqlParameter[0];
             ExecuteEditQuery(updateOrder, sqlParameterAdmin);
         }
