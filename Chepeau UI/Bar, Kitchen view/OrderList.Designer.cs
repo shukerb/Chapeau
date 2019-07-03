@@ -31,7 +31,10 @@
             this.btn_off = new System.Windows.Forms.Button();
             this.lbl_timenow = new System.Windows.Forms.Label();
             this.btn_completedorders = new System.Windows.Forms.Button();
-            this.listViewOrders = new System.Windows.Forms.ListView();
+            this.listViewSent = new System.Windows.Forms.ListView();
+            this.listViewPreparing = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_off
@@ -66,16 +69,46 @@
             this.btn_completedorders.UseVisualStyleBackColor = true;
             this.btn_completedorders.Click += new System.EventHandler(this.btn_completedorders_Click);
             // 
-            // listViewOrders
+            // listViewSent
             // 
-            this.listViewOrders.FullRowSelect = true;
-            this.listViewOrders.GridLines = true;
-            this.listViewOrders.Location = new System.Drawing.Point(12, 76);
-            this.listViewOrders.Name = "listViewOrders";
-            this.listViewOrders.Size = new System.Drawing.Size(458, 565);
-            this.listViewOrders.TabIndex = 49;
-            this.listViewOrders.UseCompatibleStateImageBehavior = false;
-            this.listViewOrders.Click += new System.EventHandler(this.listViewOrders_Click);
+            this.listViewSent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewSent.FullRowSelect = true;
+            this.listViewSent.GridLines = true;
+            this.listViewSent.Location = new System.Drawing.Point(12, 131);
+            this.listViewSent.Name = "listViewSent";
+            this.listViewSent.Size = new System.Drawing.Size(458, 227);
+            this.listViewSent.TabIndex = 49;
+            this.listViewSent.UseCompatibleStateImageBehavior = false;
+            this.listViewSent.Click += new System.EventHandler(this.listViewOrders_Click);
+            // 
+            // listViewPreparing
+            // 
+            this.listViewPreparing.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewPreparing.FullRowSelect = true;
+            this.listViewPreparing.GridLines = true;
+            this.listViewPreparing.Location = new System.Drawing.Point(12, 414);
+            this.listViewPreparing.Name = "listViewPreparing";
+            this.listViewPreparing.Size = new System.Drawing.Size(458, 227);
+            this.listViewPreparing.TabIndex = 50;
+            this.listViewPreparing.UseCompatibleStateImageBehavior = false;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 92);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(308, 36);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "Orders Received";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(12, 375);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(439, 36);
+            this.label2.TabIndex = 52;
+            this.label2.Text = "Orders Being Prepared";
             // 
             // OrderList
             // 
@@ -83,7 +116,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(482, 653);
-            this.Controls.Add(this.listViewOrders);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listViewPreparing);
+            this.Controls.Add(this.listViewSent);
             this.Controls.Add(this.btn_completedorders);
             this.Controls.Add(this.btn_off);
             this.Controls.Add(this.lbl_timenow);
@@ -98,6 +134,9 @@
         private System.Windows.Forms.Button btn_off;
         private System.Windows.Forms.Label lbl_timenow;
         private System.Windows.Forms.Button btn_completedorders;
-        private System.Windows.Forms.ListView listViewOrders;
+        private System.Windows.Forms.ListView listViewSent;
+        private System.Windows.Forms.ListView listViewPreparing;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

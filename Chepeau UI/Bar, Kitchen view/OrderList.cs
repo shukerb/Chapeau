@@ -58,8 +58,6 @@ namespace Chepeau_UI
         private void timer1_Tick(object sender, EventArgs e)
         {
             Refresh();
-            Invalidate();
-            Update();
             lbl_timenow.Text = DateTime.Now.ToString("HH:mm:ss");
             Application.DoEvents();
         }
@@ -80,41 +78,68 @@ namespace Chepeau_UI
 
         private void ShowOrders()
         {
-            listViewOrders.View = View.Details;
+            ShowListViewSent();
+            ShowListViewPreparing();
+        }
 
-            listViewOrders.Columns.Add("Order ID", 100, HorizontalAlignment.Left);
-            listViewOrders.Columns.Add("Table ID", 100, HorizontalAlignment.Left);
-            listViewOrders.Columns.Add("Time Created", 100, HorizontalAlignment.Left);
+        private void ShowListViewSent()
+        {
+            listViewSent.View = View.Details;
+
+            listViewSent.Columns.Add("Order ID", 70, HorizontalAlignment.Left);
+            listViewSent.Columns.Add("Table ID", 70, HorizontalAlignment.Left);
+            listViewSent.Columns.Add("Time Created", 120, HorizontalAlignment.Left);
+            listViewSent.Columns.Add("Status", 80, HorizontalAlignment.Left);
+
             foreach (Order order in orders)
             {
-                ListViewItem li = new ListViewItem(order.ID.ToString());
-                li.SubItems.Add(order.TableID.ToString());
-                li.SubItems.Add(order.TimeStamp.ToString("HH:mm:tt"));
-                li.Tag = order;
-                listViewOrders.Items.Add(li);
+                if (order.Status == Enum_OrderStatus.Sent)
+                {
+                    ListViewItem li = Item(order);
+                    listViewSent.Items.Add(li);
+                }
             }
         }
 
+        private void ShowListViewPreparing()
+        {
+            listViewPreparing.View = View.Details;
+
+            listViewPreparing.Columns.Add("Order ID", 70, HorizontalAlignment.Left);
+            listViewPreparing.Columns.Add("Table ID", 70, HorizontalAlignment.Left);
+            listViewPreparing.Columns.Add("Time Created", 120, HorizontalAlignment.Left);
+            listViewPreparing.Columns.Add("Status", 80, HorizontalAlignment.Left);
+
+            foreach (Order order in orders)
+            {
+                if (order.Status == Enum_OrderStatus.Preparing)
+                {
+                    ListViewItem li = Item(order);
+                    listViewPreparing.Items.Add(li);
+                }
+            }
+        }
+
+        private ListViewItem Item(Order order)
+        {
+            ListViewItem li = new ListViewItem(order.ID.ToString());
+            li.SubItems.Add(order.TableID.ToString());
+            li.SubItems.Add(order.TimeStamp.ToString("HH:mm:tt"));
+            li.SubItems.Add(order.Status.ToString());
+            li.Tag = order;
+            return li;
+        }
+
+        //this method is for when a specific item is clicked in the listview, it brings up the new form
         private void listViewOrders_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listViewOrders.SelectedItems)
+            foreach (ListViewItem item in listViewSent.SelectedItems)
             {
-                // ...
-               // item.tag
+                Order_Table table = new Order_Table((Order)item.Tag, employee);
+                Hide();
+                table.ShowDialog();
+                Show();
             }
-
-
-            //foreach (Order order in orders)
-            //{
-            //    if (order.TableID == listViewOrders.SelectedItems)
-            //    {
-            //        Order_Table ordertable = new Order_Table(order, view);
-            //        ordertable.Text = string.Format("Order Table {0}", order.TableID);
-            //        Hide();
-            //        ordertable.ShowDialog();
-            //        Show();
-            //    }
-            //}
         }
 
         private void StartTimer(Timer timer)
