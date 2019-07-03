@@ -79,9 +79,6 @@ namespace Chepeau_UI
         //check the fit color for the table
         private void checkColor(Button button, int tableNumber, List<Table> tables)
         {
-            
-            
-
             Table table = tables.Find(x => x.TableNumber == tableNumber);
             string status = CheckOrderstatus(table);
             button.Text = ($"{tableNumber}\n{status} ");

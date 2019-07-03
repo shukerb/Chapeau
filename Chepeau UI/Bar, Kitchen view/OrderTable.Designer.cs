@@ -39,7 +39,7 @@
             // lbl_timenow
             // 
             this.lbl_timenow.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_timenow.Location = new System.Drawing.Point(100, 12);
+            this.lbl_timenow.Location = new System.Drawing.Point(132, 12);
             this.lbl_timenow.Name = "lbl_timenow";
             this.lbl_timenow.Size = new System.Drawing.Size(196, 56);
             this.lbl_timenow.TabIndex = 33;
@@ -61,12 +61,14 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 96);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(171, 35);
+            this.label2.Size = new System.Drawing.Size(209, 35);
             this.label2.TabIndex = 31;
-            this.label2.Text = "Order Time";
+            this.label2.Text = "Order Content";
             // 
             // listViewOrder
             // 
+            this.listViewOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewOrder.GridLines = true;
             this.listViewOrder.Location = new System.Drawing.Point(13, 134);
             this.listViewOrder.Name = "listViewOrder";
             this.listViewOrder.Size = new System.Drawing.Size(458, 440);
@@ -91,7 +93,7 @@
             this.btn_complete.Name = "btn_complete";
             this.btn_complete.Size = new System.Drawing.Size(457, 61);
             this.btn_complete.TabIndex = 34;
-            this.btn_complete.Text = "Order Ready";
+            this.btn_complete.Text = "Finish Order";
             this.btn_complete.UseVisualStyleBackColor = true;
             this.btn_complete.Click += new System.EventHandler(this.btn_complete_Click);
             // 

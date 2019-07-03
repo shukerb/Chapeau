@@ -72,7 +72,7 @@
             // lbl_timenow
             // 
             this.lbl_timenow.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_timenow.Location = new System.Drawing.Point(12, 9);
+            this.lbl_timenow.Location = new System.Drawing.Point(147, 12);
             this.lbl_timenow.Name = "lbl_timenow";
             this.lbl_timenow.Size = new System.Drawing.Size(196, 56);
             this.lbl_timenow.TabIndex = 34;
