@@ -57,7 +57,7 @@
             this.lv_Order.GridLines = true;
             this.lv_Order.Location = new System.Drawing.Point(11, 82);
             this.lv_Order.Name = "lv_Order";
-            this.lv_Order.Size = new System.Drawing.Size(338, 253);
+            this.lv_Order.Size = new System.Drawing.Size(341, 253);
             this.lv_Order.TabIndex = 0;
             this.lv_Order.UseCompatibleStateImageBehavior = false;
             this.lv_Order.View = System.Windows.Forms.View.Details;
@@ -259,7 +259,6 @@
             this.MinimizeBox = false;
             this.Name = "TableInformationUI";
             this.Text = "Table Information";
-            //this.Load += new System.EventHandler(this.TableInformationUI_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
