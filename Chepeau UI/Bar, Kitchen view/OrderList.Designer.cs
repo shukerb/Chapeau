@@ -79,7 +79,7 @@
             this.listViewSent.Size = new System.Drawing.Size(458, 227);
             this.listViewSent.TabIndex = 49;
             this.listViewSent.UseCompatibleStateImageBehavior = false;
-            this.listViewSent.Click += new System.EventHandler(this.listViewOrders_Click);
+            this.listViewSent.Click += new System.EventHandler(this.listViewSent_Click);
             // 
             // listViewPreparing
             // 
@@ -91,6 +91,7 @@
             this.listViewPreparing.Size = new System.Drawing.Size(458, 227);
             this.listViewPreparing.TabIndex = 50;
             this.listViewPreparing.UseCompatibleStateImageBehavior = false;
+            this.listViewPreparing.Click += new System.EventHandler(this.listViewPreparing_Click);
             // 
             // label1
             // 
