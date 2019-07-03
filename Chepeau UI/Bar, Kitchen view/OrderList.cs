@@ -115,7 +115,7 @@ namespace Chepeau_UI
                 }
             }
         }
-
+        //adding the items to an listviewitem
         private ListViewItem Item(Order order)
         {
             ListViewItem li = new ListViewItem(order.ID.ToString());
@@ -134,6 +134,7 @@ namespace Chepeau_UI
             }
         }
 
+        //this method is for when a specific item is clicked in the listview, it brings up the new form
         private void listViewPreparing_Click(object sender, EventArgs e)
         {
             foreach (ListViewItem item in listViewPreparing.SelectedItems)
@@ -142,14 +143,15 @@ namespace Chepeau_UI
             }
         }
 
+        //timer startup for refresh every second
         private void StartTimer(Timer timer)
         {
-            //timer startup for refresh every second
             timer.Interval = (1000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
         }
 
+        //the OrderTable form is being made
         private void NewForm(ListViewItem item)
         {
             Order_Table table = new Order_Table((Order)item.Tag, employee);

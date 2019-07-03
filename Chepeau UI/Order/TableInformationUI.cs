@@ -172,7 +172,7 @@ namespace Chepeau_UI
             {
                 takeOrder_Service.Decrease_Stock(item);
             }
-            MessageBox.Show("Order has been sent");
+            MessageBox.Show("Order has been sent.");
         }
 
         private void btn_payBill_Click(object sender, EventArgs e)

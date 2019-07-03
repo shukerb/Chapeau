@@ -14,7 +14,7 @@ namespace ChepeauModel
         Dinner_Starters,
         Dinner_Mains,
         Dinner_Desserts,
-        Soft_Drink = 6,
+        Soft_Drink,
         Hot_Drink,
         Beer,
         Wine
