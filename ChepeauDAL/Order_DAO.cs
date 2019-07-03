@@ -22,7 +22,7 @@ namespace ChepeauDAL
         //gets all completed orders
         public List<Order> GetCompletedOrders()
         {
-            string query = "SELECT [OrderID], [Status], [Date], [TableID] FROM [Order] WHERE [Status] LIKE 'Complete' OR [Status] LIKE 'Served' OR [Status] LIKE 'Ready'";
+            string query = string.Format("SELECT [OrderID], [Status], [Date], [TableID] FROM [Order] WHERE [Date] = {0} AND ([Status] LIKE 'Complete' OR [Status] LIKE 'Served' OR [Status] LIKE 'Ready')", DateTime.Today.Day);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
         }
