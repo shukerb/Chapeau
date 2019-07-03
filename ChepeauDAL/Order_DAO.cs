@@ -27,6 +27,13 @@ namespace ChepeauDAL
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public List<Item> GetItems(Order order)
+        {
+            string query = string.Format("SELECT [Type] from [OrderContent] WHERE [OrderID] = {0}", order.ID);
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadItems(ExecuteSelectQuery(query, sqlParameters));
+        }
+
         //sets the current order to ready from preparing
         public void ReadyOrder(Order order)
         {
@@ -53,6 +60,16 @@ namespace ChepeauDAL
                 orders.Add(order);
             }
             return orders;
+        }
+
+        private List<Item> ReadItems(DataTable dataTable)
+        {
+            List<Item> items = new List<Item>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Item item = new Item((string)dr["Type"]);
+            }
+            return items;
         }
     }
 }

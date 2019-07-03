@@ -52,5 +52,11 @@ namespace ChepeauModel
             Price = price;
             Status = (Enum_Item_Status)Enum.Parse(typeof(Enum_Item_Status), status, true);
         }
+
+        //used for chef and kitchen
+        public Item(string type)
+        {
+            Type = (Enum_Item_Type)Enum.Parse(typeof(Enum_Item_Type), type, true);
+        }
     }
 }

@@ -24,6 +24,7 @@ namespace ChepeauLogic
                 throw new Exception("Could not connect to the Database, please try again later.");
             }
         }
+
         //for getting the completed orders from the database
         public List<Order> GetCompletedOrders()
         {
@@ -37,6 +38,22 @@ namespace ChepeauLogic
                 throw new Exception("Could not connect to the Database, please try again later.");
             }
         }
+
+        public List<Item> GetItems(Order order)
+        {
+            {
+                try
+                {
+                    return DB_GetOrder.GetItems(order);
+                }
+                catch (Exception)
+                {
+
+                    throw new Exception("Could not connect to the Database, please try again later.");
+                }
+            }
+        }
+
         //pushes the new status of the order from not ready to ready
         public void ReadyOrder(Order order)
         {
@@ -51,6 +68,7 @@ namespace ChepeauLogic
             }
         }
 
+        //for preparing an order
         public void Preparing(Order order)
         {
             try

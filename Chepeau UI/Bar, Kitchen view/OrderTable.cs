@@ -44,8 +44,8 @@ namespace Chepeau_UI
             StartTimer(timer);
 
             //retrieve the current order items
-            TakeOrder_Service take = new TakeOrder_Service();
-            order.items = take.Get_Order_Items(order);
+            Order_Service take = new Order_Service();
+            order.items = take.GetItems(order);
 
             //the time the order was created
             lbl_timetbl.Text = order.TimeStamp.ToString("HH:mm");
@@ -80,7 +80,7 @@ namespace Chepeau_UI
         {
             listViewOrder.View = View.Details;
 
-            listViewOrder.Columns.Add("Item Name", 160, HorizontalAlignment.Left);
+            listViewOrder.Columns.Add("Name", 160, HorizontalAlignment.Left);
             listViewOrder.Columns.Add("Amount", 70, HorizontalAlignment.Left);
             listViewOrder.Columns.Add("Comment", 120, HorizontalAlignment.Left);
 
