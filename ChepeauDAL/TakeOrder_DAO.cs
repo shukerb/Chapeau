@@ -14,8 +14,8 @@ namespace ChepeauDAL
             string query = "";
             if (type == "INSERT")
             {
-                query = string.Format("INSERT INTO OrderContent (OrderID, ItemName, ItemID, Comment, Amount, Price) VALUES ({0}, '{1}', {2}, '{3}', {4}, {5})",
-                    order.ID, item.Name, item.ID, item.Comment, item.Amount, item.Price);
+                query = string.Format("INSERT INTO OrderContent (OrderID, ItemName, ItemID, Comment, Amount, Price, Status) VALUES ({0}, '{1}', {2}, '{3}', {4}, {5}, '{6}')",
+                    order.ID, item.Name, item.ID, item.Comment, item.Amount, item.Price, item.Status);
             }
             else if (type == "UPDATE")
             {
@@ -139,7 +139,7 @@ namespace ChepeauDAL
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Item item = new Item((int)dr["OrderID"], (string)dr["ItemName"], (int)dr["ItemID"], (int)dr["Amount"], (string)dr["Comment"], (decimal)dr["Price"]);
+                    Item item = new Item((int)dr["OrderID"], (string)dr["ItemName"], (int)dr["ItemID"], (int)dr["Amount"], (string)dr["Comment"], (decimal)dr["Price"], (string)dr["Status"]);
                     items.Add(item);
                 }
             }
@@ -162,7 +162,7 @@ namespace ChepeauDAL
             {
                 foreach (DataRow dr in dataTable.Rows)
                 {
-                    Item item = new Item((int)dr["OrderID"], (string)dr["ItemName"], (int)dr["ItemID"], (int)dr["Amount"], (string)dr["Comment"], (decimal)dr["Price"]);
+                    Item item = new Item((int)dr["OrderID"], (string)dr["ItemName"], (int)dr["ItemID"], (int)dr["Amount"], (string)dr["Comment"], (decimal)dr["Price"], (string)dr["Status"]);
                     items.Add(item);
                 }
             }
