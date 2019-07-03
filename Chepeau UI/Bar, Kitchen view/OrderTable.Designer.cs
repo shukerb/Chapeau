@@ -35,12 +35,13 @@
             this.btn_back = new System.Windows.Forms.Button();
             this.btn_complete = new System.Windows.Forms.Button();
             this.btn_prepare = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl_timenow
             // 
             this.lbl_timenow.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_timenow.Location = new System.Drawing.Point(132, 12);
+            this.lbl_timenow.Location = new System.Drawing.Point(152, 12);
             this.lbl_timenow.Name = "lbl_timenow";
             this.lbl_timenow.Size = new System.Drawing.Size(196, 56);
             this.lbl_timenow.TabIndex = 33;
@@ -68,7 +69,7 @@
             // 
             // listViewOrder
             // 
-            this.listViewOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewOrder.GridLines = true;
             this.listViewOrder.Location = new System.Drawing.Point(13, 134);
             this.listViewOrder.Name = "listViewOrder";
@@ -109,6 +110,16 @@
             this.btn_prepare.UseVisualStyleBackColor = true;
             this.btn_prepare.Click += new System.EventHandler(this.btn_prepare_Click);
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(336, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 25);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "Created At:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // Order_Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -122,6 +133,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.listViewOrder);
             this.Controls.Add(this.btn_back);
+            this.Controls.Add(this.label1);
             this.Name = "Order_Table";
             this.Text = "OrderTable";
             this.ResumeLayout(false);
@@ -137,5 +149,6 @@
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Button btn_complete;
         private System.Windows.Forms.Button btn_prepare;
+        private System.Windows.Forms.Label label1;
     }
 }

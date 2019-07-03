@@ -48,7 +48,7 @@ namespace Chepeau_UI
             order.items = take.Get_Order_Items(order);
 
             //the time the order was created
-            lbl_timetbl.Text = order.TimeStamp.ToString("hh:mm");
+            lbl_timetbl.Text = order.TimeStamp.ToString("HH:mm");
             ShowOrder();
         }
 
@@ -89,11 +89,20 @@ namespace Chepeau_UI
                 if (item.Status == Enum_Item_Status.Preparing)
                 {
                     ListViewItem li = new ListViewItem();
-                    if (true)
+                    if (employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Soft_Drink ||
+                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Hot_Drink ||
+                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Beer ||
+                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Wine)
                     {
                         li = Item(item);
                     }
-                    else
+
+                    if (employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Desserts ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Mains ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Dinner_Starters ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Bites ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Mains ||
+                        employee.Position == Enum_Employee.Chef && item.Type == Enum_Item_Type.Lunch_Specials)
                     {
                         li = Item(item);
                     }
