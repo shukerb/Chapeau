@@ -13,13 +13,13 @@ using System.IO;
 
 namespace Chepeau_UI
 {
-    public partial class Card_payment : Form
+    public partial class PaymentUI : Form
     {
         private Bill Bill;
         private Order Order;
 
         // inside the constructor we pass the values of order and bill from previous form
-        public Card_payment(Bill bill, Order order)
+        public PaymentUI(Bill bill, Order order)
         {
             InitializeComponent();
 

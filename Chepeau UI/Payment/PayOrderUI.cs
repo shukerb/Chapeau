@@ -25,8 +25,9 @@ namespace Chepeau_UI
         // shows payment with card windows form and passes order and bill values to it
         private void btn_Pay_Click(object sender, EventArgs e)
         {
-            Card_payment cardPayUI = new Card_payment(bill, Order);
-            cardPayUI.Show();
+            PaymentUI PayUI = new PaymentUI(bill, Order);
+            PayUI.TopMost = true;
+            PayUI.Show();
 
             Close();       
         }
