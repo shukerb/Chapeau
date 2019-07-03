@@ -19,13 +19,12 @@ namespace Chepeau_UI
         public TableInformationUI(Table table, Employee user)
         {
             InitializeComponent();
-            this.table = table;
-            this.user = user;
+            lbl_TableNumber.Text = $"{table.TableNumber}";
 
             table_Service = new Table_Service();
             takeOrder_Service = new TakeOrder_Service();
-
-            lbl_TableNumber.Text = $"{this.table.TableNumber}";
+            this.table = table;
+            this.user = user;
 
             //hide the unnecessary buttons
             HideButtons(new List<Button> { btn_alterOrder, btn_confirmDelete, btn_deleteItems, btn_payBill, btn_sendOrder, btn_OrderServed });
@@ -112,7 +111,6 @@ namespace Chepeau_UI
         }
         private void btn_takeOrder_Click(object sender, EventArgs e)
         {
-            //get new order from database
             order = takeOrder_Service.Create_Order(table, user);
             GoToChooseMenuTypeUI(order);
 

@@ -16,6 +16,8 @@ namespace Chepeau_UI
         public AddCommentToItemUI(Item item, Order order)
         {
             InitializeComponent();
+            Text = $"Add Comment to {item.Name}";
+
             service = new TakeOrder_Service();
             this.item = item;
             this.order = order;

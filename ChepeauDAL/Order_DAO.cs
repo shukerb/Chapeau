@@ -57,7 +57,7 @@ namespace ChepeauDAL
             List<Order> orders = new List<Order>();
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order((int)dr["OrderID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true), (DateTime)dr["Date"], (int)dr["TableID"]);
+                Order order = new Order((int)dr["OrderID"], (string)dr["Status"], (DateTime)dr["Date"], (int)dr["TableID"]);
                 orders.Add(order);
             }
             return orders;
