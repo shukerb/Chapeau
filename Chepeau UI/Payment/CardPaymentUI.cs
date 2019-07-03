@@ -18,7 +18,7 @@ namespace Chepeau_UI
         private Bill Bill;
         private Order Order;
 
-        // inside the constructer we pass the values of order and bill from previous form
+        // inside the constructor we pass the values of order and bill from previous form
         public Card_payment(Bill bill, Order order)
         {
             InitializeComponent();
@@ -47,9 +47,7 @@ namespace Chepeau_UI
                 MessageBox.Show("Wrong security code.");
             }
         }
-        //Checks if debit/credit card pin code is of length of 4 digits and composed of numbers
-        
-        
+             
         // returns to normal payment window
         private void btn_Back_Click(object sender, EventArgs e)
         {

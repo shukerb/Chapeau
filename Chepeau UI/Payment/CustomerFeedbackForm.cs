@@ -19,12 +19,12 @@ namespace Chepeau_UI
         private Order order;
 
         // takes order and bill information
-        public CustomerFeedbackFormUI(Bill bill,Order order)
+        public CustomerFeedbackFormUI(Bill Bill,Order Order)
         {
             InitializeComponent();
 
-            this.bill = bill;
-            this.order = order;       
+            bill = Bill;
+            order = Order;       
         }
 
         // calls RecordPayment, CompleteOrder and FreeTable to to finish order,record data to database and free table

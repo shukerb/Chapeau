@@ -36,7 +36,7 @@
             // btn_Feedback
             // 
             this.btn_Feedback.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Feedback.Location = new System.Drawing.Point(58, 289);
+            this.btn_Feedback.Location = new System.Drawing.Point(100, 296);
             this.btn_Feedback.Name = "btn_Feedback";
             this.btn_Feedback.Size = new System.Drawing.Size(161, 53);
             this.btn_Feedback.TabIndex = 0;
@@ -46,9 +46,10 @@
             // 
             // txtBx_Feedback
             // 
-            this.txtBx_Feedback.Location = new System.Drawing.Point(35, 40);
+            this.txtBx_Feedback.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBx_Feedback.Location = new System.Drawing.Point(29, 44);
             this.txtBx_Feedback.Name = "txtBx_Feedback";
-            this.txtBx_Feedback.Size = new System.Drawing.Size(196, 234);
+            this.txtBx_Feedback.Size = new System.Drawing.Size(298, 234);
             this.txtBx_Feedback.TabIndex = 1;
             this.txtBx_Feedback.Text = "";
             // 
@@ -67,7 +68,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(284, 370);
+            this.ClientSize = new System.Drawing.Size(362, 370);
             this.Controls.Add(this.lbl_CommentText);
             this.Controls.Add(this.txtBx_Feedback);
             this.Controls.Add(this.btn_Feedback);

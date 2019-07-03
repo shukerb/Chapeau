@@ -55,9 +55,9 @@ namespace Chepeau_UI
             listViewPay.Items.Clear();
 
             listViewPay.View = View.Details;
-            listViewPay.Columns.Add("Item name", 100, HorizontalAlignment.Left);
+            listViewPay.Columns.Add("Name", 100, HorizontalAlignment.Left);
             listViewPay.Columns.Add("Price", 100, HorizontalAlignment.Left);
-            listViewPay.Columns.Add("Ammount", 100, HorizontalAlignment.Left);
+            listViewPay.Columns.Add("Amount", 100, HorizontalAlignment.Left);
             
             foreach (Item item in Order.items)
             {

@@ -12,7 +12,7 @@ namespace ChepeauModel
     {
         // there are all variables for the bill, so that when the bill is written into the database TimeStamp is used for time of the transaction
         public int BillID { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public DateTime TimeStamp { get; private set; }
         public decimal TotalPrice { get; private set; }
         public decimal BackUpTotalPrice { get; private set; }
         public decimal VAT { get; private set; }
@@ -29,7 +29,6 @@ namespace ChepeauModel
         public void CalculatePrice(Order Order)
         {
             decimal vat = 0;
-            decimal price = 0;
             foreach (Item i in Order.items)
             {
                 if (i.Type == Enum_Item_Type.Beer || i.Type == Enum_Item_Type.Wine)
@@ -40,12 +39,9 @@ namespace ChepeauModel
                 {
                     vat = (decimal)6 * i.Price / (decimal)100;
                 }
-                price +=((decimal)i.Price+ (decimal)vat) * (decimal)i.Amount;
-                VAT += (decimal)vat*(decimal)i.Amount;
-                
-            }
-            TotalPrice = price;
-             
+                TotalPrice += ((decimal)i.Price+ (decimal)vat) * (decimal)i.Amount;
+                VAT += (decimal)vat*(decimal)i.Amount;                
+            }           
         }
         // adds the tip to the total price
         public decimal AddTipToPrice(string tip, string fullPrice)
@@ -60,7 +56,7 @@ namespace ChepeauModel
             TimeStamp = DateTime.Now;
         }
         
-        //adds the Bill's ID and comment from customer
+        //adds the Bill's ID and feedback from customer
         public void FinishBill(int id,string comment)
         {
             BillID = id;

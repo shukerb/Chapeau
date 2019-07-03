@@ -70,6 +70,7 @@
             // 
             // listViewPay
             // 
+            this.listViewPay.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listViewPay.GridLines = true;
             this.listViewPay.Location = new System.Drawing.Point(49, 68);
             this.listViewPay.MultiSelect = false;
