@@ -30,8 +30,11 @@ namespace ChepeauLogic
         }
         public void Decrease_Stock(Item item)
         {
-            order_DAO.DB_Decrease_Stock(item);
-
+            order_DAO.DB_Update_Item_Stock(item);
+        }
+        public void Change_ItemsStatus(Item item, Order order)
+        {
+            order_DAO.DB_Change_Item_Status(item, order);
         }
 
         //get information about an object

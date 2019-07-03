@@ -114,7 +114,7 @@ namespace Chepeau_UI
             }
             else
             {
-                item.Status = Enum_Item_Status.Not_Served;
+                item.Status = Enum_Item_Status.New;
                 order.items.Add(item);
                 service.Manipulate_OrderContent(item, order, "INSERT");
             }

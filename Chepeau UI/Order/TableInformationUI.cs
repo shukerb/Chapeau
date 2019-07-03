@@ -38,6 +38,20 @@ namespace Chepeau_UI
         {
             Close();
         }
+        private void HideButtons(List<Button> buttons)
+        {
+            foreach (Button button in buttons)
+            {
+                button.Hide();
+            }
+        }
+        private void ShowButtons(List<Button> buttons)
+        {
+            foreach (Button button in buttons)
+            {
+                button.Show();
+            }
+        }
 
 
         #region Shuker
@@ -80,20 +94,6 @@ namespace Chepeau_UI
                     ShowButtons(new List<Button> { btn_cancelReservation });
                 }
             }
-            //else if (table.Status == Enum_TableStatus.Occupied)
-            //{
-            //    HideButtons(new List<Button> { btn_occupy, btn_reserve, btn_payBill });
-            //    ShowButtons(new List<Button> { btn_takeOrder, btn_cancelReservation });
-            //    lbl_orderList.Show();
-            //    lv_Order.Show();
-            //}
-        }
-
-        private void btn_OrderServed_Click(object sender, EventArgs e)
-        {
-            order.Status = Enum_OrderStatus.Served;
-            takeOrder_Service.Update_OrderStatus(order);
-            Close();
         }
         #endregion
 
@@ -175,25 +175,27 @@ namespace Chepeau_UI
         {
             order.Status= Enum_OrderStatus.Sent;
             takeOrder_Service.Update_OrderStatus(order);
+            ChangeItemStatus("DECREASE");
+        }
+        private void btn_OrderServed_Click(object sender, EventArgs e)
+        {
+            order.Status = Enum_OrderStatus.Served;
+            takeOrder_Service.Update_OrderStatus(order);
+            ChangeItemStatus("SERVE");
+        }
+        private void ChangeItemStatus(string type)
+        {
             foreach (Item item in order.items)
             {
-                takeOrder_Service.Decrease_Stock(item);
+                if (type == "SERVE" && item.Status == Enum_Item_Status.Preparing)
+                    item.Status = Enum_Item_Status.Served;
+                if (type == "DECREASE" && item.Status == Enum_Item_Status.New)
+                    item.Status = Enum_Item_Status.Preparing;
+                    takeOrder_Service.Decrease_Stock(item);
+
+                takeOrder_Service.Change_ItemsStatus(item, order);
             }
-            MessageBox.Show("Order has been sent.");
-        }
-        private void HideButtons(List<Button> buttons)
-        {
-            foreach (Button button in buttons)
-            {
-                button.Hide();
-            }
-        }
-        private void ShowButtons(List<Button> buttons)
-        {
-            foreach (Button button in buttons)
-            {
-                button.Show();
-            }
+            ShowOrder(order);
         }
         #endregion
 
