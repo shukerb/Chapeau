@@ -70,6 +70,7 @@ namespace ChepeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 Item item = new Item((string)dr["ItemName"], (int)dr["Amount"], (string)dr["Comment"], (string)dr["Status"], (string)dr["Type"]);
+                items.Add(item);
             }
             return items;
         }

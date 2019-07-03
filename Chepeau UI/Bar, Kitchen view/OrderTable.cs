@@ -80,16 +80,33 @@ namespace Chepeau_UI
             listViewOrder.Clear();
             listViewOrder.View = View.Details;
 
-            listViewOrder.Columns.Add("Name", 160, HorizontalAlignment.Left);
-            listViewOrder.Columns.Add("Amount", 70, HorizontalAlignment.Left);
+            listViewOrder.Columns.Add("Name", 220, HorizontalAlignment.Left);
+            listViewOrder.Columns.Add("Amount", 65, HorizontalAlignment.Left);
             listViewOrder.Columns.Add("Comment", 120, HorizontalAlignment.Left);
 
             foreach (Item item in order.items)
             {
+                ListViewItem li;
                 if (item.Status == Enum_Item_Status.Preparing)
                 {
-                    ListViewItem li = Item(item);
-                    listViewOrder.Items.Add(li);
+                    if (employee.Position == Enum_Employee.Chef && (item.Type == Enum_Item_Type.Dinner_Desserts ||
+                        item.Type == Enum_Item_Type.Dinner_Mains ||
+                        item.Type == Enum_Item_Type.Dinner_Starters ||
+                        item.Type == Enum_Item_Type.Lunch_Bites ||
+                        item.Type == Enum_Item_Type.Lunch_Mains ||
+                        item.Type == Enum_Item_Type.Lunch_Specials))
+                    {
+                        li = Item(item);
+                        listViewOrder.Items.Add(li);
+                    }
+                    else if (employee.Position == Enum_Employee.Barman && (item.Type == Enum_Item_Type.Beer ||
+                        item.Type == Enum_Item_Type.Hot_Drink ||
+                        item.Type == Enum_Item_Type.Soft_Drink ||
+                        item.Type == Enum_Item_Type.Wine))
+                    {
+                        li = Item(item);
+                        listViewOrder.Items.Add(li);
+                    }
                 }
             }
         }
