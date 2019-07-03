@@ -53,7 +53,7 @@ namespace Chepeau_UI
         //start the timer
         private void StartTimer(Timer timer)
         {
-            timer.Interval = (1000);
+            timer.Interval = (5000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
         }
@@ -77,7 +77,7 @@ namespace Chepeau_UI
                     ListViewItem li = new ListViewItem(order.ID.ToString());
                     li.SubItems.Add(order.TableID.ToString());
                     li.SubItems.Add(order.Status.ToString());
-                    li.SubItems.Add(order.TimeStamp.ToString("HH:mm:ss"));
+                    li.SubItems.Add(order.TimeStamp.ToString("HH:mm"));
 
                     listViewCompleted.Items.Add(li);
                 }
@@ -88,7 +88,7 @@ namespace Chepeau_UI
         {
             Refresh();
             Invalidate();
-            lbl_timenow.Text = DateTime.Now.ToString("HH:mm:ss");
+            lbl_timenow.Text = DateTime.Now.ToString("HH:mm");
             Application.DoEvents();
         }
     }

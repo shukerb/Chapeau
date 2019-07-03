@@ -24,9 +24,19 @@ namespace Chepeau_UI
         public Order_Table(Order order, Employee user)
         {
             employee = user;
+            this.order = order;
 
             InitializeComponent();
 
+            //check if the status is sent or preparing
+            if (order.Status == Enum_OrderStatus.Sent)
+            {
+                btn_complete.Hide();
+            }
+            else
+            {
+                btn_prepare.Hide();
+            }
             this.Text = string.Format("Order Table {0}", order.TableID);
 
             //timer needed for refresh
@@ -34,15 +44,11 @@ namespace Chepeau_UI
             StartTimer(timer);
 
             //retrieve the current order items
-            this.order = order;
             TakeOrder_Service take = new TakeOrder_Service();
             order.items = take.Get_Order_Items(order);
 
-            //status of the order changes to prepared
-            OrderPrepared();
-
             //the time the order was created
-            lbl_timetbl.Text = order.TimeStamp.ToString("hh:mm:ss");
+            lbl_timetbl.Text = order.TimeStamp.ToString("hh:mm");
             ShowOrder();
         }
 
@@ -57,14 +63,14 @@ namespace Chepeau_UI
         {
             Refresh();
             Invalidate();
-            lbl_timenow.Text = DateTime.Now.ToString("HH:mm:ss");
+            lbl_timenow.Text = DateTime.Now.ToString("HH:mm");
             Application.DoEvents();
         }
 
         //start the timer intervals
         private void StartTimer(Timer timer)
         {
-            timer.Interval = (1000);
+            timer.Interval = (5000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
         }
@@ -83,10 +89,7 @@ namespace Chepeau_UI
                 if (item.Status == Enum_Item_Status.Preparing)
                 {
                     ListViewItem li = new ListViewItem();
-                    if (employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Soft_Drink || 
-                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Hot_Drink || 
-                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Beer || 
-                        employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Wine)
+                    if (true)
                     {
                         li = Item(item);
                     }
@@ -111,8 +114,8 @@ namespace Chepeau_UI
         private void btn_complete_Click(object sender, EventArgs e)
         {
             service.ReadyOrder(order);
-            Close();
             MessageBox.Show("Order status changed to 'Ready'!", "Order Ready");
+            Close();
         }
 
         //changes the status of an order to being prepared
@@ -120,6 +123,14 @@ namespace Chepeau_UI
         {
             order.Status = Enum_OrderStatus.Preparing;
             service.Preparing(order);
+        }
+
+        //status of the order changes to prepared
+        private void btn_prepare_Click(object sender, EventArgs e)
+        {
+            OrderPrepared();
+            btn_complete.Show();
+            btn_prepare.Hide();
         }
     }
 }

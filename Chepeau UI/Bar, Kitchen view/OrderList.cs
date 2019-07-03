@@ -18,6 +18,7 @@ namespace Chepeau_UI
     {
         private List<Order> orders;
         private Employee employee;
+        private Order_Service service = new Order_Service();
 
         public OrderList(Employee user)
         {
@@ -38,11 +39,6 @@ namespace Chepeau_UI
             //start the timer
             Timer timer = new Timer();
             StartTimer(timer);
-
-            //get the orders that are sent to the chef or bartender
-            Order_Service service = new Order_Service();
-            orders = service.GetOrders();
-            ShowOrders();
         }
 
         //button to log out of the chef/bartender
@@ -58,7 +54,10 @@ namespace Chepeau_UI
         private void timer1_Tick(object sender, EventArgs e)
         {
             Refresh();
-            lbl_timenow.Text = DateTime.Now.ToString("HH:mm:ss");
+            lbl_timenow.Text = DateTime.Now.ToString("HH:mm");
+            //get the orders that are sent to the chef or bartender
+            orders = service.GetOrders();
+            ShowOrders();
             Application.DoEvents();
         }
 
@@ -84,6 +83,7 @@ namespace Chepeau_UI
         //show the listview for sent orders
         private void ShowListViewSent()
         {
+            listViewSent.Clear();
             listViewSent.View = View.Details;
 
             listViewSent.Columns.Add("Order ID", 100, HorizontalAlignment.Left);
@@ -101,6 +101,7 @@ namespace Chepeau_UI
         //listview for preparing orders
         private void ShowListViewPreparing()
         {
+            listViewPreparing.Clear();
             listViewPreparing.View = View.Details;
 
             listViewPreparing.Columns.Add("Order ID", 100, HorizontalAlignment.Left);
@@ -146,7 +147,7 @@ namespace Chepeau_UI
         //timer startup for refresh every second
         private void StartTimer(Timer timer)
         {
-            timer.Interval = (1000);
+            timer.Interval = (5000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
         }

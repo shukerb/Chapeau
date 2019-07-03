@@ -34,6 +34,7 @@
             this.listViewOrder = new System.Windows.Forms.ListView();
             this.btn_back = new System.Windows.Forms.Button();
             this.btn_complete = new System.Windows.Forms.Button();
+            this.btn_prepare = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_timenow
@@ -97,12 +98,24 @@
             this.btn_complete.UseVisualStyleBackColor = true;
             this.btn_complete.Click += new System.EventHandler(this.btn_complete_Click);
             // 
+            // btn_prepare
+            // 
+            this.btn_prepare.Font = new System.Drawing.Font("Microsoft Tai Le", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_prepare.Location = new System.Drawing.Point(14, 580);
+            this.btn_prepare.Name = "btn_prepare";
+            this.btn_prepare.Size = new System.Drawing.Size(457, 61);
+            this.btn_prepare.TabIndex = 35;
+            this.btn_prepare.Text = "Start Preparing";
+            this.btn_prepare.UseVisualStyleBackColor = true;
+            this.btn_prepare.Click += new System.EventHandler(this.btn_prepare_Click);
+            // 
             // Order_Table
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(482, 653);
+            this.Controls.Add(this.btn_prepare);
             this.Controls.Add(this.btn_complete);
             this.Controls.Add(this.lbl_timenow);
             this.Controls.Add(this.lbl_timetbl);
@@ -123,5 +136,6 @@
         private System.Windows.Forms.ListView listViewOrder;
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Button btn_complete;
+        private System.Windows.Forms.Button btn_prepare;
     }
 }
