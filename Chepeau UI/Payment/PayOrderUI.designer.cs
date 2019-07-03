@@ -32,18 +32,18 @@
             this.btn_payCash = new System.Windows.Forms.Button();
             this.listViewPay = new System.Windows.Forms.ListView();
             this.btn_back = new System.Windows.Forms.Button();
-            this.lbl_totalPrice = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbl_Tip = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.txtBX_totalPrice = new System.Windows.Forms.TextBox();
+            this.lbl_TotalPriceTxt = new System.Windows.Forms.Label();
+            this.lbl_TipTxt = new System.Windows.Forms.Label();
+            this.txtBx_Tip = new System.Windows.Forms.TextBox();
+            this.lbl_OrderListTxt = new System.Windows.Forms.Label();
+            this.lbl1_EuroSignTxt = new System.Windows.Forms.Label();
+            this.lbl_VATtxt = new System.Windows.Forms.Label();
             this.txtBx_VAT = new System.Windows.Forms.TextBox();
             this.btn_addTip = new System.Windows.Forms.Button();
             this.btn_ClearTip = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbl3_EuroSignTxt = new System.Windows.Forms.Label();
+            this.lbl2_EuroSignTxt = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_payCard
@@ -81,78 +81,77 @@
             // btn_back
             // 
             this.btn_back.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.Location = new System.Drawing.Point(258, 12);
+            this.btn_back.Location = new System.Drawing.Point(228, 12);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(84, 24);
+            this.btn_back.Size = new System.Drawing.Size(94, 38);
             this.btn_back.TabIndex = 3;
             this.btn_back.Text = "Back";
             this.btn_back.UseVisualStyleBackColor = true;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
-            // lbl_totalPrice
+            // txtBX_totalPrice
             // 
-            this.lbl_totalPrice.Location = new System.Drawing.Point(115, 498);
-            this.lbl_totalPrice.Name = "lbl_totalPrice";
-            this.lbl_totalPrice.Size = new System.Drawing.Size(128, 20);
-            this.lbl_totalPrice.TabIndex = 4;
-            this.lbl_totalPrice.TextChanged += new System.EventHandler(this.lbl_totalPrice_TextChanged);
+            this.txtBX_totalPrice.Location = new System.Drawing.Point(115, 498);
+            this.txtBX_totalPrice.Name = "txtBX_totalPrice";
+            this.txtBX_totalPrice.Size = new System.Drawing.Size(128, 20);
+            this.txtBX_totalPrice.TabIndex = 4;
             // 
-            // label1
+            // lbl_TotalPriceTxt
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 498);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 21);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Total";
+            this.lbl_TotalPriceTxt.AutoSize = true;
+            this.lbl_TotalPriceTxt.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TotalPriceTxt.Location = new System.Drawing.Point(50, 498);
+            this.lbl_TotalPriceTxt.Name = "lbl_TotalPriceTxt";
+            this.lbl_TotalPriceTxt.Size = new System.Drawing.Size(49, 21);
+            this.lbl_TotalPriceTxt.TabIndex = 5;
+            this.lbl_TotalPriceTxt.Text = "Total";
             // 
-            // label2
+            // lbl_TipTxt
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(50, 358);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 21);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Tip";
+            this.lbl_TipTxt.AutoSize = true;
+            this.lbl_TipTxt.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TipTxt.Location = new System.Drawing.Point(50, 358);
+            this.lbl_TipTxt.Name = "lbl_TipTxt";
+            this.lbl_TipTxt.Size = new System.Drawing.Size(34, 21);
+            this.lbl_TipTxt.TabIndex = 7;
+            this.lbl_TipTxt.Text = "Tip";
             // 
-            // lbl_Tip
+            // txtBx_Tip
             // 
-            this.lbl_Tip.Location = new System.Drawing.Point(115, 359);
-            this.lbl_Tip.Name = "lbl_Tip";
-            this.lbl_Tip.Size = new System.Drawing.Size(128, 20);
-            this.lbl_Tip.TabIndex = 8;
+            this.txtBx_Tip.Location = new System.Drawing.Point(115, 359);
+            this.txtBx_Tip.Name = "txtBx_Tip";
+            this.txtBx_Tip.Size = new System.Drawing.Size(128, 20);
+            this.txtBx_Tip.TabIndex = 8;
             // 
-            // label3
+            // lbl_OrderListTxt
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(48, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 34);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Order List";
+            this.lbl_OrderListTxt.AutoSize = true;
+            this.lbl_OrderListTxt.Font = new System.Drawing.Font("Microsoft Tai Le", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_OrderListTxt.Location = new System.Drawing.Point(48, 31);
+            this.lbl_OrderListTxt.Name = "lbl_OrderListTxt";
+            this.lbl_OrderListTxt.Size = new System.Drawing.Size(141, 34);
+            this.lbl_OrderListTxt.TabIndex = 9;
+            this.lbl_OrderListTxt.Text = "Order List";
             // 
-            // label4
+            // lbl1_EuroSignTxt
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(249, 358);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(19, 21);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "€";
+            this.lbl1_EuroSignTxt.AutoSize = true;
+            this.lbl1_EuroSignTxt.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl1_EuroSignTxt.Location = new System.Drawing.Point(249, 358);
+            this.lbl1_EuroSignTxt.Name = "lbl1_EuroSignTxt";
+            this.lbl1_EuroSignTxt.Size = new System.Drawing.Size(19, 21);
+            this.lbl1_EuroSignTxt.TabIndex = 10;
+            this.lbl1_EuroSignTxt.Text = "€";
             // 
-            // label6
+            // lbl_VATtxt
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(50, 461);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 21);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "VAT";
+            this.lbl_VATtxt.AutoSize = true;
+            this.lbl_VATtxt.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_VATtxt.Location = new System.Drawing.Point(50, 461);
+            this.lbl_VATtxt.Name = "lbl_VATtxt";
+            this.lbl_VATtxt.Size = new System.Drawing.Size(41, 21);
+            this.lbl_VATtxt.TabIndex = 12;
+            this.lbl_VATtxt.Text = "VAT";
             // 
             // txtBx_VAT
             // 
@@ -184,25 +183,25 @@
             this.btn_ClearTip.UseVisualStyleBackColor = true;
             this.btn_ClearTip.Click += new System.EventHandler(this.btn_ClearTip_Click);
             // 
-            // label5
+            // lbl3_EuroSignTxt
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(249, 498);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(19, 21);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "€";
+            this.lbl3_EuroSignTxt.AutoSize = true;
+            this.lbl3_EuroSignTxt.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl3_EuroSignTxt.Location = new System.Drawing.Point(249, 498);
+            this.lbl3_EuroSignTxt.Name = "lbl3_EuroSignTxt";
+            this.lbl3_EuroSignTxt.Size = new System.Drawing.Size(19, 21);
+            this.lbl3_EuroSignTxt.TabIndex = 17;
+            this.lbl3_EuroSignTxt.Text = "€";
             // 
-            // label7
+            // lbl2_EuroSignTxt
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(249, 461);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(19, 21);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "€";
+            this.lbl2_EuroSignTxt.AutoSize = true;
+            this.lbl2_EuroSignTxt.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2_EuroSignTxt.Location = new System.Drawing.Point(249, 461);
+            this.lbl2_EuroSignTxt.Name = "lbl2_EuroSignTxt";
+            this.lbl2_EuroSignTxt.Size = new System.Drawing.Size(19, 21);
+            this.lbl2_EuroSignTxt.TabIndex = 18;
+            this.lbl2_EuroSignTxt.Text = "€";
             // 
             // PayOrderUI
             // 
@@ -211,18 +210,18 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(362, 664);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lbl2_EuroSignTxt);
+            this.Controls.Add(this.lbl3_EuroSignTxt);
             this.Controls.Add(this.btn_ClearTip);
             this.Controls.Add(this.btn_addTip);
             this.Controls.Add(this.txtBx_VAT);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.lbl_Tip);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbl_totalPrice);
+            this.Controls.Add(this.lbl_VATtxt);
+            this.Controls.Add(this.lbl1_EuroSignTxt);
+            this.Controls.Add(this.lbl_OrderListTxt);
+            this.Controls.Add(this.txtBx_Tip);
+            this.Controls.Add(this.lbl_TipTxt);
+            this.Controls.Add(this.lbl_TotalPriceTxt);
+            this.Controls.Add(this.txtBX_totalPrice);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.listViewPay);
             this.Controls.Add(this.btn_payCash);
@@ -239,18 +238,18 @@
         private System.Windows.Forms.Button btn_payCard;
         private System.Windows.Forms.Button btn_payCash;
         private System.Windows.Forms.Button btn_back;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_TotalPriceTxt;
+        private System.Windows.Forms.Label lbl_TipTxt;
         public System.Windows.Forms.ListView listViewPay;
-        public System.Windows.Forms.TextBox lbl_totalPrice;
-        public System.Windows.Forms.TextBox lbl_Tip;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox txtBX_totalPrice;
+        public System.Windows.Forms.TextBox txtBx_Tip;
+        private System.Windows.Forms.Label lbl_OrderListTxt;
+        private System.Windows.Forms.Label lbl1_EuroSignTxt;
+        private System.Windows.Forms.Label lbl_VATtxt;
         public System.Windows.Forms.TextBox txtBx_VAT;
         private System.Windows.Forms.Button btn_addTip;
         private System.Windows.Forms.Button btn_ClearTip;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbl3_EuroSignTxt;
+        private System.Windows.Forms.Label lbl2_EuroSignTxt;
     }
 }

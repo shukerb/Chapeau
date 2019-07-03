@@ -12,11 +12,10 @@ namespace ChepeauModel
     {
         // there are all variables for the bill, so that when the bill is written into the database TimeStamp is used for time of the transaction
         public int BillID { get; set; }
-        public Order Order { get; set; }
         public DateTime TimeStamp { get; set; }
-        public decimal TotalPrice { get; set; }
-        public decimal BackUpTotalPrice { get; set; }
-        public decimal VAT { get; set; }
+        public decimal TotalPrice { get; private set; }
+        public decimal BackUpTotalPrice { get; private set; }
+        public decimal VAT { get; private set; }
         public decimal Tip { get; set; }
         public string Feedback { get; set; }
 

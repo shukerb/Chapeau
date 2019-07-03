@@ -22,8 +22,10 @@ namespace Chepeau_UI
         public Card_payment(Bill bill, Order order)
         {
             InitializeComponent();
-            this.Bill = bill;
-            this.Order = order;
+
+            Bill = bill;
+            Order = order;
+
             txtBx_fullPrice.Text = bill.TotalPrice.ToString("0.00");
         }
         // when the button is clicked it saves the information inside the database
@@ -33,11 +35,11 @@ namespace Chepeau_UI
             try
             {
                 if (Bill.CheckCard(txtBx_pin.Text))
-                {
+                {                   
                     CustomerFeedbackFormUI feedback = new CustomerFeedbackFormUI(Bill, Order);
                     feedback.Show();
 
-                    this.Close();
+                    Close();
                 }
             }
             catch (Exception)
@@ -52,7 +54,7 @@ namespace Chepeau_UI
         private void btn_Back_Click(object sender, EventArgs e)
         {
             PayOrderUI goBack = new PayOrderUI(Order);
-            this.Close();
+            Close();
             goBack.Show();
         }
 

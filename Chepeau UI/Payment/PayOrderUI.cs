@@ -18,7 +18,6 @@ namespace Chepeau_UI
         private Order Order;
         private Bill bill;
        
-
         // inside the constructer we pass the values of order from previous form
         public PayOrderUI(Order order)
         {
@@ -29,17 +28,18 @@ namespace Chepeau_UI
 
             ShowOrder(order);                      
             DisplayVatAndPrice(bill.VAT, bill.TotalPrice);
-            lbl_Tip.Text = "0";
+            txtBx_Tip.Text = "0";
         }
+
         // shows payment with card windows form and passes order and bill values to it
         private void btn_PayWithCard_Click(object sender, EventArgs e)
         {
             try {
                 
                 Card_payment cardPayUI = new Card_payment(bill, Order);
-
                 cardPayUI.Show();
-                this.Close();
+
+                Close();
             }
             catch(Exception)
             {
@@ -54,13 +54,12 @@ namespace Chepeau_UI
 
                 MessageBox.Show(error);
             }
-
         }
-        
+
         // returns to table information
         private void btn_back_Click(object sender, EventArgs e)
         {
-            TableInformationUI tableInfo = new TableInformationUI(Order.Table,Order.Employee);
+            TableInformationUI tableInfo = new TableInformationUI(Order.Table, Order.Employee);
             tableInfo.Show();
             Close();
         }
@@ -82,16 +81,15 @@ namespace Chepeau_UI
                 listViewItem.SubItems.Add(item.Amount.ToString());
 
                 listViewPay.Items.Add(listViewItem);
-            }
-            
+            }          
         }
+
         // when the button is clicked it saves the information inside the database
         private void btn_payCash_Click(object sender, EventArgs e)
         {
             
             try
             {
-                bill.RecordTimeOfPayment();
                 CustomerFeedbackFormUI feedback = new CustomerFeedbackFormUI(bill,Order);
                 feedback.Show();
                 
@@ -113,25 +111,19 @@ namespace Chepeau_UI
             }
         }
 
-        private void lbl_totalPrice_TextChanged(object sender, EventArgs e)
-        {
-            
-
-        }
-       
-        private void AddNewTipToPrice(string tip,string fullPrice)
-        {
-            
+       // adds tip to price    
+        private void AddTipToPrice(string tip,string fullPrice)
+        {          
             string displayNew = bill.AddTipToPrice(tip,fullPrice).ToString("0.00");
-            lbl_totalPrice.Text = displayNew;
+            txtBX_totalPrice.Text = displayNew;
         }
-
+        // calls AddTipToPrice method to add the tip to price and display it
         private void btn_addTip_Click(object sender, EventArgs e)
         {
             
             try
             {
-                AddNewTipToPrice(lbl_Tip.Text, lbl_totalPrice.Text);
+                AddTipToPrice(txtBx_Tip.Text, txtBX_totalPrice.Text);
             }
 
             catch (Exception)
@@ -139,22 +131,24 @@ namespace Chepeau_UI
                 MessageBox.Show("Please use only numbers for the tip.");
             }
         }
+
+        // displays VAT and total price of the bill using txtBX_totalPrice and txtBx_VAT.Text
         private void DisplayVatAndPrice(decimal VAT,decimal totalPrice)
         {
             string displayVAT = VAT.ToString("0.00");
             txtBx_VAT.Text = displayVAT;
 
             string TotalPrice = bill.TotalPrice.ToString("0.00");
-            lbl_totalPrice.Text = TotalPrice;
+            txtBX_totalPrice.Text = TotalPrice;
         }
-        
-
+                      
+        // resets the tip of the bill
         private void btn_ClearTip_Click(object sender, EventArgs e)
         {
-            lbl_Tip.Text = "0";
+            txtBx_Tip.Text = "0";
             bill.RemoveTip();
             DisplayVatAndPrice(bill.VAT, bill.TotalPrice);
-        }
+        }       
     }
 }
 

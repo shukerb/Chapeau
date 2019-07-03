@@ -27,12 +27,12 @@ namespace ChepeauLogic
                 
             }
         }
-        public int AssignOrderID()
+        public int AssignBillID()
         {
             
             try
             {
-                return order_DAO.DB_Retrive_New_Order_ID();
+                return order_DAO.DB_Retrive_Order_ID();
             }
             catch (Exception)
             {

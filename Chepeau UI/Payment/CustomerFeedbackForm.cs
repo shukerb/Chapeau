@@ -17,6 +17,8 @@ namespace Chepeau_UI
     {
         private Bill bill;
         private Order order;
+
+        // takes order and bill information
         public CustomerFeedbackFormUI(Bill bill,Order order)
         {
             InitializeComponent();
@@ -25,25 +27,16 @@ namespace Chepeau_UI
             this.order = order;       
         }
 
+        // calls RecordPayment, CompleteOrder and FreeTable to to finish order,record data to database and free table
         private void btn_Feedback_Click(object sender, EventArgs e)
         {
             try
             {
-                ChepeauLogic.Payment_Service payment = new ChepeauLogic.Payment_Service();
-                bill.FinishBill(payment.AssignOrderID(), txtBx_Feedback.Text);
-                payment.CreateBill(bill);
+                RecordPayment();
+                CompleteOrder();
+                FreeTable();
 
-                ChepeauLogic.TakeOrder_Service freeOrder = new ChepeauLogic.TakeOrder_Service();
-                order.Status = Enum_OrderStatus.Complete;
-                freeOrder.Update_OrderStatus(order);
-
-                ChepeauLogic.Table_Service tableService = new ChepeauLogic.Table_Service();
-                Table table = tableService.GetTable(order.Table.TableNumber);
-                table.Status = Enum_TableStatus.Free;
-                tableService.updateTable(table);
-
-                Close();
-                //ReturnToTableOverview();
+                Close();                
             }
             catch (Exception)
             {
@@ -59,11 +52,32 @@ namespace Chepeau_UI
                 MessageBox.Show(error);
             }
         }
-        //private void ReturnToTableOverview()
-        //{
-        //    TablesOverviewUI tableOverview = new TablesOverviewUI(Order.Employee);
-        //    tableOverview.Show();
-        //    this.Close();
-        //}
+
+        // saves feedback from customer, assigns Bill ID and records bill in Database
+        private void RecordPayment()
+        {
+            ChepeauLogic.Payment_Service payment = new ChepeauLogic.Payment_Service();
+            bill.FinishBill(payment.AssignBillID(), txtBx_Feedback.Text);
+            bill.RecordTimeOfPayment();
+            payment.CreateBill(bill);
+        }
+
+        // sets order to complete
+        private void CompleteOrder()
+        {
+            ChepeauLogic.TakeOrder_Service freeOrder = new ChepeauLogic.TakeOrder_Service();
+            order.Status = Enum_OrderStatus.Complete;
+            freeOrder.Update_OrderStatus(order);
+        }
+
+        // frees up the table after payment is done
+        private void FreeTable()
+        {
+            ChepeauLogic.Table_Service tableService = new ChepeauLogic.Table_Service();
+            Table table = tableService.GetTable(order.Table.TableNumber);
+            table.Status = Enum_TableStatus.Free;
+            tableService.updateTable(table);
+        }
+        
     }
 }

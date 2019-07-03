@@ -21,12 +21,12 @@ namespace ChepeauDAL
             ExecuteEditQuery(query, sqlParameters);
         }
 
-        //reads last used ID from the database
-        public int DB_Retrive_New_Order_ID()
+        //reads last used ID from the database and assigns next one using GetIdValue
+        public int DB_Retrive_Order_ID()
         {
             string query = string.Format("SELECT MAX(BillId) FROM Bill");
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return GetIdValue(query, sqlParameters);
+            return GetValue(query, sqlParameters)+1;
         }
         
             

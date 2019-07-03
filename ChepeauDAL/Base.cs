@@ -104,7 +104,8 @@ namespace ChepeauDAL
             }
             return dataTable;
         }
-            protected int GetIdValue(String query, params SqlParameter[] sqlParameters)
+        //returns specific int value from database using query
+            protected int GetValue(String query, params SqlParameter[] sqlParameters)
         {
             SqlCommand command = new SqlCommand();
             DataTable dataTable;
@@ -115,7 +116,7 @@ namespace ChepeauDAL
                 command.Connection = OpenConnection();
                 command.CommandText = query;
                 command.Parameters.AddRange(sqlParameters);
-                value = Convert.ToInt32(command.ExecuteScalar())+1;
+                value = Convert.ToInt32(command.ExecuteScalar());
                 adapter.SelectCommand = command;
                 adapter.Fill(dataSet);
                 dataTable = dataSet.Tables[0];
