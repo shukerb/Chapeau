@@ -21,8 +21,8 @@ namespace ChepeauDAL
             string query = "";
             if (type == "INSERT")
             {
-                query = string.Format("INSERT INTO OrderContent (OrderID, ItemName, ItemID, Comment, Amount, Price, Status) VALUES ({0}, '{1}', {2}, '{3}', {4}, {5}, '{6}')",
-                    order.ID, item.Name, item.ID, item.Comment, item.Amount, item.Price, item.Status);
+                query = string.Format("INSERT INTO OrderContent (OrderID, ItemName, ItemID, Comment, Amount, Price, Status, Type) VALUES ({0}, '{1}', {2}, '{3}', {4}, {5}, '{6}', '{7}')",
+                    order.ID, item.Name, item.ID, item.Comment, item.Amount, item.Price, item.Status, item.Type);
             }
             else if (type == "UPDATE")
             {
@@ -81,12 +81,6 @@ namespace ChepeauDAL
             string query = string.Format("SELECT * FROM [Order] WHERE TableID = {0} AND Status NOT LIKE 'Complete'", table.TableNumber);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return FindOrder(ExecuteSelectQuery(query, sqlParameters));
-        }
-        public Item DB_Get_Item(string itemName)
-        {
-            string query = string.Format("SELECT * FROM [Item] WHERE Name = '{0}'", itemName);
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return FindItem(ExecuteSelectQuery(query, sqlParameters), "DB_Get_Item");
         }
         public Item DB_Get_Item_Amount(Item item, Order order)
         {

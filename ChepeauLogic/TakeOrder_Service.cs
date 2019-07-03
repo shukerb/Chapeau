@@ -43,10 +43,6 @@ namespace ChepeauLogic
             order_DAO.DB_Create_Order(table, user);
             return order_DAO.DB_Get_Order(table);
         }
-        public Item Get_Item(string itemName)
-        {
-            return order_DAO.DB_Get_Item(itemName);
-        }
         public Item Get_ItemAmount_And_Comment(Item item, Order order)
         {
             return order_DAO.DB_Get_Item_Amount(item, order);
