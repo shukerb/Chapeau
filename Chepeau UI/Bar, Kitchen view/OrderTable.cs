@@ -45,6 +45,7 @@ namespace Chepeau_UI
 
             //the time the order was created
             lbl_timetbl.Text = order.TimeStamp.ToString("HH:mm");
+
             ShowOrder();
         }
 
@@ -54,7 +55,7 @@ namespace Chepeau_UI
             Close();
         }
 
-        //timer to refresh form every single second
+        //timer to refresh form every five seconds
         private void timer1_Tick(object sender, EventArgs e)
         {
             Refresh();
@@ -89,6 +90,7 @@ namespace Chepeau_UI
                 ListViewItem li;
                 if (item.Status == Enum_Item_Status.Preparing)
                 {
+                    //filter to see what is displayed
                     if (employee.Position == Enum_Employee.Chef && (item.Type == Enum_Item_Type.Dinner_Desserts ||
                         item.Type == Enum_Item_Type.Dinner_Mains ||
                         item.Type == Enum_Item_Type.Dinner_Starters ||
@@ -111,6 +113,7 @@ namespace Chepeau_UI
             }
         }
 
+        //add the items to a listviewitem
         private ListViewItem Item(Item item)
         {
             ListViewItem li = new ListViewItem(item.Name);

@@ -85,7 +85,8 @@ namespace Chepeau_UI
                 }
             }
         }
-        //refreshes the form every single second
+
+        //refreshes the form every five seconds
         private void timer1_Tick(object sender, EventArgs e)
         {
             Refresh();

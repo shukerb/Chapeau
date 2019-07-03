@@ -39,6 +39,8 @@ namespace Chepeau_UI
             //start the timer
             Timer timer = new Timer();
             StartTimer(timer);
+
+            ShowOrders();
         }
 
         //button to log out of the chef/bartender
@@ -74,12 +76,15 @@ namespace Chepeau_UI
                 completed.ShowDialog();
             }
         }
+
         //method to show both listviews
         private void ShowOrders()
         {
+            orders = service.GetOrders();
             ShowListViewSent();
             ShowListViewPreparing();
         }
+
         //show the listview for sent orders
         private void ShowListViewSent()
         {
@@ -94,11 +99,20 @@ namespace Chepeau_UI
             {
                 if (order.Status == Enum_OrderStatus.Sent)
                 {
-                    ListViewItem li = Item(order);
-                    listViewSent.Items.Add(li);
+                    if (CheckChefOrder(order) == true)
+                    {
+                        ListViewItem li = Item(order);
+                        listViewPreparing.Items.Add(li);
+                    }
+                    else
+                    {
+                        ListViewItem li = Item(order);
+                        listViewPreparing.Items.Add(li);
+                    }
                 }
             }
         }
+
         //listview for preparing orders
         private void ShowListViewPreparing()
         {
@@ -113,11 +127,42 @@ namespace Chepeau_UI
             {
                 if (order.Status == Enum_OrderStatus.Preparing)
                 {
-                    ListViewItem li = Item(order);
-                    listViewPreparing.Items.Add(li);
+                    if (CheckChefOrder(order) == true)
+                    {
+                        ListViewItem li = Item(order);
+                        listViewPreparing.Items.Add(li);
+                    }
+                    else
+                    {
+                        ListViewItem li = Item(order);
+                        listViewPreparing.Items.Add(li);
+                    }
                 }
             }
         }
+
+        private bool CheckChefOrder(Order order)
+        {
+            order.items = service.GetItems(order);
+            foreach (Item item in order.items)
+            {
+                if (employee.Position == Enum_Employee.Chef && (item.Type == Enum_Item_Type.Dinner_Desserts ||
+                            item.Type == Enum_Item_Type.Dinner_Mains ||
+                            item.Type == Enum_Item_Type.Dinner_Starters ||
+                            item.Type == Enum_Item_Type.Lunch_Bites ||
+                            item.Type == Enum_Item_Type.Lunch_Mains ||
+                            item.Type == Enum_Item_Type.Lunch_Specials))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
+
         //adding the items to an listviewitem
         private ListViewItem Item(Order order)
         {
@@ -146,7 +191,7 @@ namespace Chepeau_UI
             }
         }
 
-        //timer startup for refresh every second
+        //timer startup for refresh every five seconds
         private void StartTimer(Timer timer)
         {
             timer.Interval = (5000);
