@@ -51,9 +51,9 @@
             // lbl_timetbl
             // 
             this.lbl_timetbl.Font = new System.Drawing.Font("Microsoft Tai Le", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_timetbl.Location = new System.Drawing.Point(339, 96);
+            this.lbl_timetbl.Location = new System.Drawing.Point(333, 96);
             this.lbl_timetbl.Name = "lbl_timetbl";
-            this.lbl_timetbl.Size = new System.Drawing.Size(132, 35);
+            this.lbl_timetbl.Size = new System.Drawing.Size(143, 35);
             this.lbl_timetbl.TabIndex = 32;
             this.lbl_timetbl.Text = "Unknown";
             this.lbl_timetbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;

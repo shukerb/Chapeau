@@ -45,7 +45,7 @@ namespace Chepeau_UI
 
             //the time the order was created
             lbl_timetbl.Text = order.TimeStamp.ToString("HH:mm");
-
+            lbl_timenow.Text = DateTime.Now.ToString("HH:mm");
             ShowOrder();
         }
 
@@ -87,30 +87,40 @@ namespace Chepeau_UI
 
             foreach (Item item in order.items)
             {
-                ListViewItem li;
                 if (item.Status == Enum_Item_Status.Preparing)
                 {
-                    //filter to see what is displayed
-                    if (employee.Position == Enum_Employee.Chef && (item.Type == Enum_Item_Type.Dinner_Desserts ||
-                        item.Type == Enum_Item_Type.Dinner_Mains ||
-                        item.Type == Enum_Item_Type.Dinner_Starters ||
-                        item.Type == Enum_Item_Type.Lunch_Bites ||
-                        item.Type == Enum_Item_Type.Lunch_Mains ||
-                        item.Type == Enum_Item_Type.Lunch_Specials))
+                    ListViewItem li = CheckItem(item);
+                    if (li != null)
                     {
-                        li = Item(item);
-                        listViewOrder.Items.Add(li);
-                    }
-                    else if (employee.Position == Enum_Employee.Barman && (item.Type == Enum_Item_Type.Beer ||
-                        item.Type == Enum_Item_Type.Hot_Drink ||
-                        item.Type == Enum_Item_Type.Soft_Drink ||
-                        item.Type == Enum_Item_Type.Wine))
-                    {
-                        li = Item(item);
                         listViewOrder.Items.Add(li);
                     }
                 }
             }
+        }
+
+        //filter to see what is displayed
+        private ListViewItem CheckItem(Item item)
+        {
+            ListViewItem li;
+            if (employee.Position == Enum_Employee.Chef && (item.Type == Enum_Item_Type.Dinner_Desserts ||
+                item.Type == Enum_Item_Type.Dinner_Mains ||
+                item.Type == Enum_Item_Type.Dinner_Starters ||
+                item.Type == Enum_Item_Type.Lunch_Bites ||
+                item.Type == Enum_Item_Type.Lunch_Mains ||
+                item.Type == Enum_Item_Type.Lunch_Specials))
+            {
+                li = Item(item);
+                return li;
+            }
+            else if (employee.Position == Enum_Employee.Barman && (item.Type == Enum_Item_Type.Beer ||
+                    item.Type == Enum_Item_Type.Hot_Drink ||
+                    item.Type == Enum_Item_Type.Soft_Drink ||
+                    item.Type == Enum_Item_Type.Wine))
+            {
+                li = Item(item);
+                return li;
+            }
+            return null;
         }
 
         //add the items to a listviewitem

@@ -40,6 +40,7 @@ namespace Chepeau_UI
             Timer timer = new Timer();
             StartTimer(timer);
 
+            lbl_timenow.Text = DateTime.Now.ToString("HH:mm");
             ShowOrders();
         }
 
@@ -99,15 +100,10 @@ namespace Chepeau_UI
             {
                 if (order.Status == Enum_OrderStatus.Sent)
                 {
-                    if (CheckChefOrder(order) == true)
+                    ListViewItem li = CheckOrder(order);
+                    if (li != null)
                     {
-                        ListViewItem li = Item(order);
-                        listViewPreparing.Items.Add(li);
-                    }
-                    else
-                    {
-                        ListViewItem li = Item(order);
-                        listViewPreparing.Items.Add(li);
+                        listViewSent.Items.Add(li);
                     }
                 }
             }
@@ -127,40 +123,42 @@ namespace Chepeau_UI
             {
                 if (order.Status == Enum_OrderStatus.Preparing)
                 {
-                    if (CheckChefOrder(order) == true)
+                    ListViewItem li = CheckOrder(order);
+                    if (li != null)
                     {
-                        ListViewItem li = Item(order);
-                        listViewPreparing.Items.Add(li);
-                    }
-                    else
-                    {
-                        ListViewItem li = Item(order);
                         listViewPreparing.Items.Add(li);
                     }
                 }
             }
         }
 
-        private bool CheckChefOrder(Order order)
+        //filter to check if the order belongs to the chef, bartender, or both
+        private ListViewItem CheckOrder(Order order)
         {
+            ListViewItem li;
             order.items = service.GetItems(order);
             foreach (Item item in order.items)
             {
                 if (employee.Position == Enum_Employee.Chef && (item.Type == Enum_Item_Type.Dinner_Desserts ||
-                            item.Type == Enum_Item_Type.Dinner_Mains ||
-                            item.Type == Enum_Item_Type.Dinner_Starters ||
-                            item.Type == Enum_Item_Type.Lunch_Bites ||
-                            item.Type == Enum_Item_Type.Lunch_Mains ||
-                            item.Type == Enum_Item_Type.Lunch_Specials))
+                    item.Type == Enum_Item_Type.Dinner_Mains ||
+                    item.Type == Enum_Item_Type.Dinner_Starters ||
+                    item.Type == Enum_Item_Type.Lunch_Bites ||
+                    item.Type == Enum_Item_Type.Lunch_Mains ||
+                    item.Type == Enum_Item_Type.Lunch_Specials))
                 {
-                    return true;
+                    li = Item(order);
+                    return li;
                 }
-                else
+                else if (employee.Position == Enum_Employee.Barman && (item.Type == Enum_Item_Type.Beer ||
+                        item.Type == Enum_Item_Type.Hot_Drink ||
+                        item.Type == Enum_Item_Type.Soft_Drink ||
+                        item.Type == Enum_Item_Type.Wine))
                 {
-                    return false;
+                    li = Item(order);
+                    return li;
                 }
             }
-            return false;
+            return null;
         }
 
         //adding the items to an listviewitem

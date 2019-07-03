@@ -19,6 +19,7 @@ namespace Chepeau_UI
         private Employee employee;
         private Timer timer;
         private List<Order> completedorders = new List<Order>();
+        private Order_Service service = new Order_Service();
 
         public CompletedOrders(Employee user)
         {
@@ -39,8 +40,8 @@ namespace Chepeau_UI
             StartTimer(timer);
 
             //get all completed orders
-            Order_Service service = new Order_Service();
             completedorders = service.GetCompletedOrders();
+            lbl_timenow.Text = DateTime.Now.ToString("HH:mm");
             ShowCompleteOrders();
         }
 
@@ -53,7 +54,7 @@ namespace Chepeau_UI
         //start the timer
         private void StartTimer(Timer timer)
         {
-            timer.Interval = (5000);
+            timer.Interval = (10000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
         }
@@ -61,14 +62,14 @@ namespace Chepeau_UI
         //showing the completed orders list view
         private void ShowCompleteOrders()
         {
-            //filling in the listview with columns
-            listViewCompleted.GridLines = true;
+            listViewCompleted.Clear();
             listViewCompleted.View = View.Details;
 
             listViewCompleted.Columns.Add("OrderID", 70, HorizontalAlignment.Left);
             listViewCompleted.Columns.Add("TableID", 70, HorizontalAlignment.Left);
             listViewCompleted.Columns.Add("Status", 90, HorizontalAlignment.Left);
             listViewCompleted.Columns.Add("Time", 150, HorizontalAlignment.Left);
+
             //showing all of the completed orders from today
             foreach (Order order in completedorders)
             {
@@ -76,22 +77,62 @@ namespace Chepeau_UI
                     order.TimeStamp.Day == DateTime.Today.Day && order.Status == Enum_OrderStatus.Served || 
                     order.TimeStamp.Day == DateTime.Today.Day && order.Status == Enum_OrderStatus.Complete)
                 {
-                    ListViewItem li = new ListViewItem(order.ID.ToString());
-                    li.SubItems.Add(order.TableID.ToString());
-                    li.SubItems.Add(order.Status.ToString());
-                    li.SubItems.Add(order.TimeStamp.ToString("HH:mm"));
-
-                    listViewCompleted.Items.Add(li);
+                    ListViewItem li = CheckOrder(order);
+                    if (li != null)
+                    {
+                        listViewCompleted.Items.Add(li);
+                    }
                 }
             }
         }
 
-        //refreshes the form every five seconds
+        //filter to check if the completed order belongs to the chef, bartender, or both
+        private ListViewItem CheckOrder(Order order)
+        {
+            ListViewItem li;
+            order.items = service.GetItems(order);
+            foreach (Item item in order.items)
+            {
+                if (employee.Position == Enum_Employee.Chef && (item.Type == Enum_Item_Type.Dinner_Desserts ||
+                    item.Type == Enum_Item_Type.Dinner_Mains ||
+                    item.Type == Enum_Item_Type.Dinner_Starters ||
+                    item.Type == Enum_Item_Type.Lunch_Bites ||
+                    item.Type == Enum_Item_Type.Lunch_Mains ||
+                    item.Type == Enum_Item_Type.Lunch_Specials))
+                {
+                    li = Item(order);
+                    return li;
+                }
+                else if (employee.Position == Enum_Employee.Barman && (item.Type == Enum_Item_Type.Beer ||
+                        item.Type == Enum_Item_Type.Hot_Drink ||
+                        item.Type == Enum_Item_Type.Soft_Drink ||
+                        item.Type == Enum_Item_Type.Wine))
+                {
+                    li = Item(order);
+                    return li;
+                }
+            }
+            return null;
+        }
+
+        //add the items to the listview
+        private ListViewItem Item(Order order)
+        {
+            ListViewItem li = new ListViewItem(order.ID.ToString());
+            li.SubItems.Add(order.TableID.ToString());
+            li.SubItems.Add(order.Status.ToString());
+            li.SubItems.Add(order.TimeStamp.ToString("HH:mm"));
+            return li;
+        }
+
+        //refreshes the form every ten seconds
         private void timer1_Tick(object sender, EventArgs e)
         {
             Refresh();
             Invalidate();
             lbl_timenow.Text = DateTime.Now.ToString("HH:mm");
+            completedorders = service.GetCompletedOrders();
+            ShowCompleteOrders();
             Application.DoEvents();
         }
     }
