@@ -99,6 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(482, 653);
             this.Controls.Add(this.btn_complete);
             this.Controls.Add(this.lbl_timenow);

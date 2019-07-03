@@ -42,13 +42,11 @@ namespace Chepeau_UI
             lbl_timetbl.Text = order.TimeStamp.ToString("hh:mm:ss");
             ShowOrder();
         }
-
         //going back to the order list screen
         private void btn_back_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         //timer to refresh form every single second
         private void timer1_Tick(object sender, EventArgs e)
         {
