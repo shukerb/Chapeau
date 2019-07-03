@@ -25,14 +25,8 @@ namespace Chepeau_UI
 
             InitializeComponent();
 
-            if (user.Position == Enum_Employee.Chef)
-            {
-                this.Text = "Completed Orders Kitchen";
-            }
-            else
-            {
-                this.Text = "Completed Orders Bar";
-            }
+            this.Text = string.Format("Order Table {0}", order.TableID);
+
             //timer needed for refresh
             timer = new Timer();
             timer.Interval = (1000);
@@ -43,15 +37,18 @@ namespace Chepeau_UI
             this.order = order;
             TakeOrder_Service take = new TakeOrder_Service();
             order.items = take.Get_Order_Items(order);
+
             //the time the order was created
             lbl_timetbl.Text = order.TimeStamp.ToString("hh:mm:ss");
             ShowOrder();
         }
+
         //going back to the order list screen
         private void btn_back_Click(object sender, EventArgs e)
         {
             Close();
         }
+
         //timer to refresh form every single second
         private void timer1_Tick(object sender, EventArgs e)
         {

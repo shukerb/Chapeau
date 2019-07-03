@@ -16,7 +16,6 @@ namespace Chepeau_UI
 {
     public partial class OrderList : Form
     {
-        Timer timer;
         List<Order> orders;
         Employee employee;
 
@@ -26,7 +25,7 @@ namespace Chepeau_UI
             employee = user;
 
             InitializeComponent();
-
+            //check if the user is a chef or bartender and then change the name of the form
             if (user.Position == Enum_Employee.Chef)
             {
                 this.Text = "Kitchen Order List";
@@ -36,11 +35,9 @@ namespace Chepeau_UI
                 this.Text = "Bar Order List";
             }
 
-            //timer startup for refresh every second
-            timer = new Timer();
-            timer.Interval = (1000);
-            timer.Tick += new EventHandler(timer1_Tick);
-            timer.Start();
+            //start the timer
+            Timer timer = new Timer();
+            StartTimer(timer);
 
             //get the orders that are sent to the chef or bartender
             Order_Service service = new Order_Service();
@@ -118,6 +115,14 @@ namespace Chepeau_UI
             //        Show();
             //    }
             //}
+        }
+
+        private void StartTimer(Timer timer)
+        {
+            //timer startup for refresh every second
+            timer.Interval = (1000);
+            timer.Tick += new EventHandler(timer1_Tick);
+            timer.Start();
         }
     }
 }

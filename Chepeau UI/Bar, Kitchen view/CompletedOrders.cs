@@ -16,22 +16,32 @@ namespace Chepeau_UI
 {
     public partial class CompletedOrders : Form
     {
-        string view;
+        Employee employee;
         Timer timer;
-        Order_Service service = new Order_Service();
         List<Order> completedorders = new List<Order>();
 
         public CompletedOrders(Employee user)
         {
-            this.view = view;
+            employee = user;
 
             InitializeComponent();
+
+            if (user.Position == Enum_Employee.Chef)
+            {
+                this.Text = "Completed Orders Kitchen";
+            }
+            else
+            {
+                this.Text = "Completed Orders Bar";
+            }
             //timer for refreshing the form
             timer = new Timer();
             timer.Interval = (1000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
+
             //get all completed orders
+            Order_Service service = new Order_Service();
             completedorders = service.GetCompletedOrders();
             ShowCompleteOrders();
         }
