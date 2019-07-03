@@ -1,6 +1,6 @@
 ﻿namespace Chepeau_UI
 {
-    partial class PaymentUI
+    partial class PaymentMethodUI
     {
         /// <summary>
         /// Required designer variable.
@@ -121,7 +121,7 @@
             this.btn_PayMaestro.UseVisualStyleBackColor = true;
             this.btn_PayMaestro.Click += new System.EventHandler(this.btn_PayMaestro_Click);
             // 
-            // PaymentUI
+            // PaymentMethodUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,7 +135,7 @@
             this.Controls.Add(this.txtBx_fullPrice);
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.btn_PayVisa);
-            this.Name = "PaymentUI";
+            this.Name = "PaymentMethodUI";
             this.Text = "Payment";
             this.ResumeLayout(false);
             this.PerformLayout();
