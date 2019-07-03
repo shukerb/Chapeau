@@ -28,26 +28,30 @@ namespace Chepeau_UI
 
             txtBx_fullPrice.Text = bill.TotalPrice.ToString("0.00");
         }
-        // when the button is clicked it saves the information inside the database
-        private void btn_checkPin_Click(object sender, EventArgs e)
+        // sets payement method to with VISA and opens Feedback form
+        private void btn_PayVisa_Click(object sender, EventArgs e)
         {
-
-            try
-            {
-                if (Bill.CheckCard(txtBx_pin.Text))
-                {                   
-                    CustomerFeedbackFormUI feedback = new CustomerFeedbackFormUI(Bill, Order);
-                    feedback.Show();
-
-                    Close();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Wrong security code.");
-            }
+            Bill.SetPaymentMethod(Enum_Payment_Type.Visa);
+            CreateFeedbackForm();
         }
-             
+        // sets payement method to with Maetsro and opens Feedback form             
+        private void btn_PayMaestro_Click(object sender, EventArgs e)
+        {
+            Bill.SetPaymentMethod(Enum_Payment_Type.Maestro);
+            CreateFeedbackForm();
+        }
+        // sets payement method to with Pin and opens Feedback form
+        private void btn_PayPin_Click(object sender, EventArgs e)
+        {
+            Bill.SetPaymentMethod(Enum_Payment_Type.Pin);
+            CreateFeedbackForm();
+        }
+        // sets payement method to with Cash and opens Feedback form
+        private void btn_PayCash_Click(object sender, EventArgs e)
+        {
+            Bill.SetPaymentMethod(Enum_Payment_Type.Cash);
+            CreateFeedbackForm();
+        }
         // returns to normal payment window
         private void btn_Back_Click(object sender, EventArgs e)
         {
@@ -55,7 +59,13 @@ namespace Chepeau_UI
             Close();
             goBack.Show();
         }
+        //Creates Feedback form UI and closes this
+        private void CreateFeedbackForm()
+        {
+            CustomerFeedbackFormUI feedback = new CustomerFeedbackFormUI(Bill, Order);
+            feedback.Show();
 
-        
+            Close();
+        }
     }
 }
