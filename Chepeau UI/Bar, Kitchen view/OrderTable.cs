@@ -77,7 +77,7 @@ namespace Chepeau_UI
         {
             //retrieve the current order items
             order.items = service.GetItems(order);
-
+            listViewOrder.Clear();
             listViewOrder.View = View.Details;
 
             listViewOrder.Columns.Add("Name", 160, HorizontalAlignment.Left);

@@ -17,7 +17,6 @@ namespace ChepeauModel
 
         public Item()
         {
-
         }
         //this constructor is used for within the program itself
         public Item(int itemID, decimal price, string name, string type, int stock)
@@ -54,13 +53,13 @@ namespace ChepeauModel
         }
 
         //used for bar and kitchen
-        public Item(string name, int amount, string comment, string type, string status)
+        public Item(string name, int amount, string comment, string status, string type)
         {
             Name = name;
             Amount = amount;
             Comment = comment;
-            Type = (Enum_Item_Type)Enum.Parse(typeof(Enum_Item_Type), type, true);
             Status = (Enum_Item_Status)Enum.Parse(typeof(Enum_Item_Status), status, true);
+            Type = (Enum_Item_Type)Enum.Parse(typeof(Enum_Item_Type), type, true);
         }
     }
 }

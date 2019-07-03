@@ -30,7 +30,7 @@ namespace ChepeauDAL
         //gets a list of items for the order
         public List<Item> GetItems(Order order)
         {
-            string query = string.Format("SELECT [ItemName], [Amount], [Comment], [Type], [Status] from [OrderContent] WHERE [OrderID] = {0}", order.ID);
+            string query = string.Format("SELECT [ItemName], [Amount], [Comment], [Status], [Type] FROM [OrderContent] WHERE [OrderID] = {0}", order.ID);
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadItems(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -69,7 +69,7 @@ namespace ChepeauDAL
             List<Item> items = new List<Item>();
             foreach (DataRow dr in dataTable.Rows)
             {
-                Item item = new Item((string)dr["ItemName"], (int)dr["Amount"], (string)dr["Comment"], (string)dr["Type"], (string)dr["Status"]);
+                Item item = new Item((string)dr["ItemName"], (int)dr["Amount"], (string)dr["Comment"], (string)dr["Status"], (string)dr["Type"]);
             }
             return items;
         }
