@@ -18,6 +18,7 @@ namespace ChepeauDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
         }
+
         //gets all completed orders
         public List<Order> GetCompletedOrders()
         {
@@ -25,6 +26,7 @@ namespace ChepeauDAL
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
         }
+
         //sets the current order to ready from not ready
         public void ReadyOrder(int orderID, int tableID)
         {
@@ -32,14 +34,14 @@ namespace ChepeauDAL
             SqlParameter[] sqlParameterAdmin = new SqlParameter[0];
             ExecuteEditQuery(updateOrder, sqlParameterAdmin);
         }
+
         //for assigning the data to Order
         private List<Order> ReadOrder(DataTable dataTable)
         {
             List<Order> orders = new List<Order>();
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order((int)dr["OrderID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true), 
-                    (DateTime)dr["Date"], (int)dr["TableID"]);
+                Order order = new Order((int)dr["OrderID"], (Enum_OrderStatus)Enum.Parse(typeof(Enum_OrderStatus), (string)dr["Status"], true), (DateTime)dr["Date"], (int)dr["TableID"]);
                 orders.Add(order);
             }
             return orders;

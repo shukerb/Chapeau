@@ -16,22 +16,32 @@ namespace Chepeau_UI
 {
     public partial class Order_Table : Form
     {
-        string view;
+        Employee employee;
         Timer timer;
         Order order = new Order();
-        TakeOrder_Service take = new TakeOrder_Service();
-        public Order_Table(Order order, string view)
+        public Order_Table(Order order, Employee user)
         {
-            this.view = view;
+            employee = user;
 
             InitializeComponent();
+
+            if (user.Position == Enum_Employee.Chef)
+            {
+                this.Text = "Completed Orders Kitchen";
+            }
+            else
+            {
+                this.Text = "Completed Orders Bar";
+            }
             //timer needed for refresh
             timer = new Timer();
             timer.Interval = (1000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
+
             //retrieve the current order items
             this.order = order;
+            TakeOrder_Service take = new TakeOrder_Service();
             order.items = take.Get_Order_Items(order);
             //the time the order was created
             lbl_timetbl.Text = order.TimeStamp.ToString("hh:mm:ss");
@@ -63,7 +73,7 @@ namespace Chepeau_UI
 
             foreach (Item item in order.items)
             {
-                if (view == "bar" && item.Type == Enum_Item_Type.Soft_Drink || view == "bar" && item.Type == Enum_Item_Type.Hot_Drink || view == "bar" && item.Type == Enum_Item_Type.Beer || view == "bar" && item.Type == Enum_Item_Type.Wine)
+                if (employee.Position == Enum_Employee.Barman && item.Type == Enum_Item_Type.Soft_Drink || item.Type == Enum_Item_Type.Hot_Drink || item.Type == Enum_Item_Type.Beer || item.Type == Enum_Item_Type.Wine)
                 {
                     ListViewItem li = new ListViewItem(item.Name);
                     li.SubItems.Add(item.Amount.ToString());

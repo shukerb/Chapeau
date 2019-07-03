@@ -17,7 +17,6 @@ namespace Chepeau_UI
     public partial class OrderList : Form
     {
         Timer timer;
-        Order_Service service = new Order_Service();
         List<Order> orders;
         Employee employee;
 
@@ -36,15 +35,19 @@ namespace Chepeau_UI
             {
                 this.Text = "Bar Order List";
             }
+
             //timer startup for refresh every second
             timer = new Timer();
             timer.Interval = (1000);
             timer.Tick += new EventHandler(timer1_Tick);
             timer.Start();
+
             //get the orders that are sent to the chef or bartender
+            Order_Service service = new Order_Service();
             orders = service.GetOrders();
             ShowOrders();
         }
+
         //button to log out of the chef/bartender
         private void btn_off_Click(object sender, EventArgs e)
         {
@@ -53,6 +56,7 @@ namespace Chepeau_UI
             start.ShowDialog();
             Close();
         }
+
         //timer to refresh the form every second
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -62,18 +66,17 @@ namespace Chepeau_UI
             lbl_timenow.Text = DateTime.Now.ToString("HH:mm:ss");
             Application.DoEvents();
         }
+
         //if the view is kitchen or bar, the next form title gets changed, and opens the new form
         private void btn_completedorders_Click(object sender, EventArgs e)
         {
             CompletedOrders completed = new CompletedOrders(employee);
             if (employee.Position == Enum_Employee.Chef)
             {
-                completed.Text = "Completed Orders Kitchen";
                 completed.ShowDialog();
             }
             else
             {
-                completed.Text = "Completed Orders Bar";
                 completed.ShowDialog();
             }
         }
