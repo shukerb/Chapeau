@@ -64,7 +64,8 @@ namespace Chepeau_UI
             {
                 RecordPayment(method);
                 ClearOrder();
-                FreeTable();            
+                FreeTable();
+                Close();            
             }
             catch (Exception)
             {
