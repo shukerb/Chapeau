@@ -183,9 +183,8 @@
             this.lbl_VAT.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_VAT.Location = new System.Drawing.Point(144, 461);
             this.lbl_VAT.Name = "lbl_VAT";
-            this.lbl_VAT.Size = new System.Drawing.Size(45, 21);
+            this.lbl_VAT.Size = new System.Drawing.Size(0, 21);
             this.lbl_VAT.TabIndex = 19;
-            this.lbl_VAT.Text = "?????";
             // 
             // lbl_TotalPrice
             // 
@@ -193,9 +192,8 @@
             this.lbl_TotalPrice.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TotalPrice.Location = new System.Drawing.Point(144, 498);
             this.lbl_TotalPrice.Name = "lbl_TotalPrice";
-            this.lbl_TotalPrice.Size = new System.Drawing.Size(45, 21);
+            this.lbl_TotalPrice.Size = new System.Drawing.Size(0, 21);
             this.lbl_TotalPrice.TabIndex = 20;
-            this.lbl_TotalPrice.Text = "?????";
             // 
             // PayOrderUI
             // 

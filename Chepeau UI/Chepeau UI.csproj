@@ -89,12 +89,6 @@
     <Compile Include="Bar, Kitchen view\OrderTable.Designer.cs">
       <DependentUpon>OrderTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Payment\CustomerFeedbackForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Payment\CustomerFeedbackForm.Designer.cs">
-      <DependentUpon>CustomerFeedbackForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Payment\PayOrderUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,9 +141,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bar, Kitchen view\OrderTable.resx">
       <DependentUpon>OrderTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Payment\CustomerFeedbackForm.resx">
-      <DependentUpon>CustomerFeedbackForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payment\PayOrderUI.resx">
       <DependentUpon>PayOrderUI.cs</DependentUpon>

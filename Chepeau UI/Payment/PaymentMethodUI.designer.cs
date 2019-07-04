@@ -36,12 +36,15 @@
             this.btn_PayPin = new System.Windows.Forms.Button();
             this.btn_PayMaestro = new System.Windows.Forms.Button();
             this.lbl_TotalPrice = new System.Windows.Forms.Label();
+            this.lbl_CommentText = new System.Windows.Forms.Label();
+            this.txtBx_Feedback = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_PayVisa
             // 
             this.btn_PayVisa.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PayVisa.Location = new System.Drawing.Point(58, 354);
+            this.btn_PayVisa.Location = new System.Drawing.Point(58, 527);
             this.btn_PayVisa.Name = "btn_PayVisa";
             this.btn_PayVisa.Size = new System.Drawing.Size(264, 41);
             this.btn_PayVisa.TabIndex = 0;
@@ -64,7 +67,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(113, 123);
+            this.label3.Location = new System.Drawing.Point(54, 253);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 21);
             this.label3.TabIndex = 6;
@@ -74,7 +77,7 @@
             // 
             this.lbl1_EuroSignTxt.AutoSize = true;
             this.lbl1_EuroSignTxt.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl1_EuroSignTxt.Location = new System.Drawing.Point(248, 123);
+            this.lbl1_EuroSignTxt.Location = new System.Drawing.Point(216, 253);
             this.lbl1_EuroSignTxt.Name = "lbl1_EuroSignTxt";
             this.lbl1_EuroSignTxt.Size = new System.Drawing.Size(19, 21);
             this.lbl1_EuroSignTxt.TabIndex = 11;
@@ -83,7 +86,7 @@
             // btn_PayCash
             // 
             this.btn_PayCash.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PayCash.Location = new System.Drawing.Point(58, 177);
+            this.btn_PayCash.Location = new System.Drawing.Point(58, 345);
             this.btn_PayCash.Name = "btn_PayCash";
             this.btn_PayCash.Size = new System.Drawing.Size(264, 41);
             this.btn_PayCash.TabIndex = 13;
@@ -94,7 +97,7 @@
             // btn_PayPin
             // 
             this.btn_PayPin.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PayPin.Location = new System.Drawing.Point(58, 235);
+            this.btn_PayPin.Location = new System.Drawing.Point(58, 401);
             this.btn_PayPin.Name = "btn_PayPin";
             this.btn_PayPin.Size = new System.Drawing.Size(264, 43);
             this.btn_PayPin.TabIndex = 14;
@@ -105,7 +108,7 @@
             // btn_PayMaestro
             // 
             this.btn_PayMaestro.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PayMaestro.Location = new System.Drawing.Point(58, 295);
+            this.btn_PayMaestro.Location = new System.Drawing.Point(58, 464);
             this.btn_PayMaestro.Name = "btn_PayMaestro";
             this.btn_PayMaestro.Size = new System.Drawing.Size(264, 43);
             this.btn_PayMaestro.TabIndex = 15;
@@ -117,18 +120,49 @@
             // 
             this.lbl_TotalPrice.AutoSize = true;
             this.lbl_TotalPrice.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_TotalPrice.Location = new System.Drawing.Point(183, 123);
+            this.lbl_TotalPrice.Location = new System.Drawing.Point(143, 253);
             this.lbl_TotalPrice.Name = "lbl_TotalPrice";
-            this.lbl_TotalPrice.Size = new System.Drawing.Size(45, 21);
+            this.lbl_TotalPrice.Size = new System.Drawing.Size(0, 21);
             this.lbl_TotalPrice.TabIndex = 16;
-            this.lbl_TotalPrice.Text = "?????";
+            // 
+            // lbl_CommentText
+            // 
+            this.lbl_CommentText.AutoSize = true;
+            this.lbl_CommentText.Font = new System.Drawing.Font("Microsoft Tai Le", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CommentText.Location = new System.Drawing.Point(54, 102);
+            this.lbl_CommentText.Name = "lbl_CommentText";
+            this.lbl_CommentText.Size = new System.Drawing.Size(102, 23);
+            this.lbl_CommentText.TabIndex = 19;
+            this.lbl_CommentText.Text = "Comment:";
+            // 
+            // txtBx_Feedback
+            // 
+            this.txtBx_Feedback.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBx_Feedback.Location = new System.Drawing.Point(58, 139);
+            this.txtBx_Feedback.Name = "txtBx_Feedback";
+            this.txtBx_Feedback.Size = new System.Drawing.Size(264, 70);
+            this.txtBx_Feedback.TabIndex = 18;
+            this.txtBx_Feedback.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(54, 308);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 21);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Choose payment method";
             // 
             // PaymentMethodUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(362, 450);
+            this.ClientSize = new System.Drawing.Size(362, 582);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_CommentText);
+            this.Controls.Add(this.txtBx_Feedback);
             this.Controls.Add(this.lbl_TotalPrice);
             this.Controls.Add(this.btn_PayMaestro);
             this.Controls.Add(this.btn_PayPin);
@@ -154,5 +188,8 @@
         private System.Windows.Forms.Button btn_PayPin;
         private System.Windows.Forms.Button btn_PayMaestro;
         private System.Windows.Forms.Label lbl_TotalPrice;
+        private System.Windows.Forms.Label lbl_CommentText;
+        private System.Windows.Forms.RichTextBox txtBx_Feedback;
+        private System.Windows.Forms.Label label1;
     }
 }
