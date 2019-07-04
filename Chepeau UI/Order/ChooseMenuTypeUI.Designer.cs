@@ -36,9 +36,9 @@
             // 
             // btn_Lunch
             // 
-            this.btn_Lunch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Lunch.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btn_Lunch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Lunch.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_Lunch.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_Lunch.Location = new System.Drawing.Point(12, 131);
             this.btn_Lunch.Name = "btn_Lunch";
             this.btn_Lunch.Size = new System.Drawing.Size(340, 61);
@@ -49,9 +49,9 @@
             // 
             // btn_Dinner
             // 
-            this.btn_Dinner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Dinner.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btn_Dinner.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Dinner.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_Dinner.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_Dinner.Location = new System.Drawing.Point(12, 198);
             this.btn_Dinner.Name = "btn_Dinner";
             this.btn_Dinner.Size = new System.Drawing.Size(340, 61);
@@ -62,9 +62,9 @@
             // 
             // btn_Drinks
             // 
-            this.btn_Drinks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_Drinks.BackColor = System.Drawing.SystemColors.ControlDark;
             this.btn_Drinks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Drinks.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_Drinks.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_Drinks.Location = new System.Drawing.Point(12, 265);
             this.btn_Drinks.Name = "btn_Drinks";
             this.btn_Drinks.Size = new System.Drawing.Size(340, 61);
