@@ -26,7 +26,7 @@ namespace Chepeau_UI
             Bill = bill;
             Order = order;
 
-            txtBx_fullPrice.Text = bill.TotalPrice.ToString("0.00");
+            lbl_TotalPrice.Text = bill.TotalPrice.ToString("0.00");
         }
         // sets payement method to with VISA and opens Feedback form
         private void btn_PayVisa_Click(object sender, EventArgs e)

@@ -65,14 +65,14 @@ namespace Chepeau_UI
         private void AddTipToPrice(string tip,string fullPrice)
         {          
             string displayNew = bill.AddTipToPrice(tip,fullPrice).ToString("0.00");
-            txtBX_totalPrice.Text = displayNew;
+            lbl_TotalPrice.Text = displayNew;
         }
         // calls AddTipToPrice method to add the tip to price and display it
         private void btn_addTip_Click(object sender, EventArgs e)
         {          
             try
             {
-                AddTipToPrice(txtBx_Tip.Text, txtBX_totalPrice.Text);
+                AddTipToPrice(txtBx_Tip.Text, lbl_TotalPrice.Text);
             }
 
             catch (Exception)
@@ -86,10 +86,10 @@ namespace Chepeau_UI
         private void DisplayVatAndPrice(decimal VAT,decimal totalPrice)
         {
             string displayVAT = VAT.ToString("0.00");
-            txtBx_VAT.Text = displayVAT;
+            lbl_VAT.Text = displayVAT;
 
             string TotalPrice = bill.TotalPrice.ToString("0.00");
-            txtBX_totalPrice.Text = TotalPrice;
+            lbl_TotalPrice.Text = TotalPrice;
         }
                       
         // resets the tip of the bill

@@ -31,18 +31,18 @@
             this.btn_Pay = new System.Windows.Forms.Button();
             this.listViewPay = new System.Windows.Forms.ListView();
             this.btn_back = new System.Windows.Forms.Button();
-            this.txtBX_totalPrice = new System.Windows.Forms.TextBox();
             this.lbl_TotalPriceTxt = new System.Windows.Forms.Label();
             this.lbl_TipTxt = new System.Windows.Forms.Label();
             this.txtBx_Tip = new System.Windows.Forms.TextBox();
             this.lbl_OrderListTxt = new System.Windows.Forms.Label();
             this.lbl1_EuroSignTxt = new System.Windows.Forms.Label();
             this.lbl_VATtxt = new System.Windows.Forms.Label();
-            this.txtBx_VAT = new System.Windows.Forms.TextBox();
             this.btn_addTip = new System.Windows.Forms.Button();
             this.btn_ClearTip = new System.Windows.Forms.Button();
             this.lbl3_EuroSignTxt = new System.Windows.Forms.Label();
             this.lbl2_EuroSignTxt = new System.Windows.Forms.Label();
+            this.lbl_VAT = new System.Windows.Forms.Label();
+            this.lbl_TotalPrice = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_Pay
@@ -77,13 +77,6 @@
             this.btn_back.Text = "Back";
             this.btn_back.UseVisualStyleBackColor = true;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
-            // 
-            // txtBX_totalPrice
-            // 
-            this.txtBX_totalPrice.Location = new System.Drawing.Point(115, 498);
-            this.txtBX_totalPrice.Name = "txtBX_totalPrice";
-            this.txtBX_totalPrice.Size = new System.Drawing.Size(128, 20);
-            this.txtBX_totalPrice.TabIndex = 4;
             // 
             // lbl_TotalPriceTxt
             // 
@@ -142,14 +135,6 @@
             this.lbl_VATtxt.TabIndex = 12;
             this.lbl_VATtxt.Text = "VAT";
             // 
-            // txtBx_VAT
-            // 
-            this.txtBx_VAT.Location = new System.Drawing.Point(115, 462);
-            this.txtBx_VAT.Name = "txtBx_VAT";
-            this.txtBx_VAT.ReadOnly = true;
-            this.txtBx_VAT.Size = new System.Drawing.Size(128, 20);
-            this.txtBx_VAT.TabIndex = 13;
-            // 
             // btn_addTip
             // 
             this.btn_addTip.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -192,6 +177,26 @@
             this.lbl2_EuroSignTxt.TabIndex = 18;
             this.lbl2_EuroSignTxt.Text = "€";
             // 
+            // lbl_VAT
+            // 
+            this.lbl_VAT.AutoSize = true;
+            this.lbl_VAT.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_VAT.Location = new System.Drawing.Point(144, 461);
+            this.lbl_VAT.Name = "lbl_VAT";
+            this.lbl_VAT.Size = new System.Drawing.Size(45, 21);
+            this.lbl_VAT.TabIndex = 19;
+            this.lbl_VAT.Text = "?????";
+            // 
+            // lbl_TotalPrice
+            // 
+            this.lbl_TotalPrice.AutoSize = true;
+            this.lbl_TotalPrice.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_TotalPrice.Location = new System.Drawing.Point(144, 498);
+            this.lbl_TotalPrice.Name = "lbl_TotalPrice";
+            this.lbl_TotalPrice.Size = new System.Drawing.Size(45, 21);
+            this.lbl_TotalPrice.TabIndex = 20;
+            this.lbl_TotalPrice.Text = "?????";
+            // 
             // PayOrderUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,18 +204,18 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(362, 664);
+            this.Controls.Add(this.lbl_TotalPrice);
+            this.Controls.Add(this.lbl_VAT);
             this.Controls.Add(this.lbl2_EuroSignTxt);
             this.Controls.Add(this.lbl3_EuroSignTxt);
             this.Controls.Add(this.btn_ClearTip);
             this.Controls.Add(this.btn_addTip);
-            this.Controls.Add(this.txtBx_VAT);
             this.Controls.Add(this.lbl_VATtxt);
             this.Controls.Add(this.lbl1_EuroSignTxt);
             this.Controls.Add(this.lbl_OrderListTxt);
             this.Controls.Add(this.txtBx_Tip);
             this.Controls.Add(this.lbl_TipTxt);
             this.Controls.Add(this.lbl_TotalPriceTxt);
-            this.Controls.Add(this.txtBX_totalPrice);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.listViewPay);
             this.Controls.Add(this.btn_Pay);
@@ -228,15 +233,15 @@
         private System.Windows.Forms.Label lbl_TotalPriceTxt;
         private System.Windows.Forms.Label lbl_TipTxt;
         public System.Windows.Forms.ListView listViewPay;
-        public System.Windows.Forms.TextBox txtBX_totalPrice;
         public System.Windows.Forms.TextBox txtBx_Tip;
         private System.Windows.Forms.Label lbl_OrderListTxt;
         private System.Windows.Forms.Label lbl1_EuroSignTxt;
         private System.Windows.Forms.Label lbl_VATtxt;
-        public System.Windows.Forms.TextBox txtBx_VAT;
         private System.Windows.Forms.Button btn_addTip;
         private System.Windows.Forms.Button btn_ClearTip;
         private System.Windows.Forms.Label lbl3_EuroSignTxt;
         private System.Windows.Forms.Label lbl2_EuroSignTxt;
+        private System.Windows.Forms.Label lbl_VAT;
+        private System.Windows.Forms.Label lbl_TotalPrice;
     }
 }
